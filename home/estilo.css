@@ -1,0 +1,20 @@
+body
+{
+	background-color: #E1F5FE;
+	font-family: Arial;
+}
+thead
+{
+	background-color: #B8B400;
+	border-bottom: solid 5px #CFD8DC;
+	color: white;
+}
+tr:nth-child(even)
+{
+	background-color: #B0BEC5;
+}
+tr:hover td
+{
+	background-color: #90CAF9;
+	color: black;
+}

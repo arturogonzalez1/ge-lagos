@@ -1,0 +1,8 @@
+[10-Oct-2019 18:42:14 America/Chicago] PHP Warning:  imagecreatefromjpeg(): Filename cannot be empty in /home/gelagos/public_html/home/php/actualizarVehiculo.php on line 15
+[10-Oct-2019 18:42:14 America/Chicago] PHP Warning:  imagesx() expects parameter 1 to be resource, boolean given in /home/gelagos/public_html/home/php/actualizarVehiculo.php on line 17
+[10-Oct-2019 18:42:14 America/Chicago] PHP Warning:  imagesy() expects parameter 1 to be resource, boolean given in /home/gelagos/public_html/home/php/actualizarVehiculo.php on line 18
+[10-Oct-2019 18:42:14 America/Chicago] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in /home/gelagos/public_html/home/php/actualizarVehiculo.php on line 23
+[14-Oct-2019 01:18:16 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/gelagos/public_html/home/php/filtrarEstado.php on line 36
+[14-Oct-2019 01:18:26 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/gelagos/public_html/home/php/filtrarEstado.php on line 36
+[14-Oct-2019 01:48:57 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/gelagos/public_html/home/php/filtrarEstado.php on line 36
+[16-Oct-2019 18:12:02 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/gelagos/public_html/home/php/filtrarEstado.php on line 36
