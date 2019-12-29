@@ -43,7 +43,7 @@
 				<td>".$ver[5]."</td>
 				<td style='text-align: center;' nowrap='' title='Modificar cliente' data-toggle='popover' data-trigger='hover'>
 					<span class='btn btn-raised btn-warning btn-xs' 
-						onclick='obtenerDatos(".$ver[6].")' data-toggle='modal' data-target='#updatemodal'>
+						onclick='obtenerDatos(".$ver[6].")'>
 						<span class='fa fa-pencil-square-o'></span>
 					</span>
 				</td>"; 

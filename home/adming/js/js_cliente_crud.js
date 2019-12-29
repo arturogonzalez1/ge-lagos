@@ -50,10 +50,7 @@ $(document).ready(function(){
 	//NUEVO CLIENTE
 	$('#btnAgregarg').click(function(){
 
-		if(validarNuevoCliente()){
-			console.log(true);
-		}
-		else {
+		if(!validarNuevoCliente()){
 			return false;
 		}
 		var datos=$('#frmAgregar').serialize();
@@ -78,33 +75,26 @@ $(document).ready(function(){
 	//MODIFICAR CLIENTE
 	$('#btnactualizar').click(function(){
 
-		if(validarFormVacio('frmactualiza') > 0){
-			alertify.alert("Error","Debes llenar todos los campos");
+		if (!validarModificacionCliente()) {
 			return false;
 		}
-		else if (!validarClavesModificar()){
-			alertify.alert("Error","Las contraseñas no coinciden");
-			return false;
-		}
-		else 
-		{
-			var datos = $('#frmactualiza').serialize();
-			$.ajax({
-				type:"POST",
-				data:datos,
-				url:"consultas/modificarCliente.php",
-				success:function(r){
-					if(r==1){
-						$('#frmactualiza')[0].reset();
-						buscar_datos();
-					 	$('#updatemodal').modal('hide');
-						alertify.success("Modificado con exito");
-					}
-					else{
-						alertify.error("No se pudo modificar");
-					}
+
+		var datos = $('#frmactualiza').serialize();
+		$.ajax({
+			type:"POST",
+			data:datos,
+			url:"consultas/modificarCliente.php",
+			success:function(r){
+				if(r==1){
+					$('#frmactualiza')[0].reset();
+					buscar_datos();
+				 	$('#updatemodal').modal('hide');
+					alertify.success("Modificado con exito");
 				}
-			});
-		}
+				else{
+					alertify.error("No se pudo modificar. "+r);
+				}
+			}
+		});
 	});
 });

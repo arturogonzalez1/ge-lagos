@@ -243,7 +243,6 @@
 	<div class="preloader">
 		<img alt="" src="../images/preloader.gif">
 	</div>
-
 	<!-- JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -261,8 +260,6 @@
 	<script type="text/javascript" src="js/js_cliente_validacion.js"></script>
 	<script type="text/javascript" src="js/js_cliente_opciones.js"></script>
 	<script type="text/javascript" src="../assets/alertify/alertify.js"></script>
-
-
 	<script type="text/javascript">
 		//Magnific Popup
 	    $('.show-image').magnificPopup({type: 'image'});

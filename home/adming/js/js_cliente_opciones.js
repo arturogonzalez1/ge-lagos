@@ -61,20 +61,23 @@ function verHistorial(idcliente, f1, f2){
 	});
 }
 //OBTENER DATOS PARA MODIFICAR
-function obtenerDatos(usr){
+function obtenerDatos(id){
 	$.ajax({
 		type:"POST",
-		data:"usr=" + usr,
+		data:"id=" + id,
 		url:"consultas/obtenerCliente.php",
 		success:function(r){
+			alert(r);
 			var datos = jQuery.parseJSON(r);
 
+			$('#idClienteM').val(datos['id']);
 			$('#limiteCM').val(datos['limite']);
 			$('#diasPagoCM').val(datos['diasPago']);
+			$('#diasLimiteCM').val(datos['diasLimite']);
 			$('#paCM').val(datos['pa']);
-			$('#idClienteM').val(datos['id']);
 			$('#nombreCM').val(datos['nombre']);
 			$('#rfcCM').val(datos['rfc']);
+			$('#updatemodal').modal();
 		}
 	});
 }

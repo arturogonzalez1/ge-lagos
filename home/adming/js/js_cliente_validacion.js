@@ -30,15 +30,18 @@ function validarNuevoCliente(){
 }
 
 function validarModificacionCliente(){
+	var resultado = true;
 	var clave1 = document.getElementById("pswCM").value;
 	var clave2 = document.getElementById("pswCCM").value;
 
-	if (validarClaves(clave1, clave2)){
-		return true;
+	if(validarFormVacio('frmactualiza') > 0){
+		alertify.alert("Error","Debes llenar todos los campos");
+		resultado = false;
 	}
-	else {
-		return false;
+	if (!validarClaves(clave1, clave2)){
+		resultado = false;
 	}
+	return resultado;
 }
 
 function validarClaves(clave, claveconfirmacion){
