@@ -113,10 +113,10 @@
 
 			return $contenido;
 		}
-		function VerDatosCliente($usr)
+		function VerDatosCliente($idcliente)
 		{
 			require 'database.php';
-			$query = "CALL v_DATOS_CLIENTE('$usr')";
+			$query = "CALL v_DATOS_CLIENTE('$idcliente')";
 			$consult = mysqli_query($conn, $query);
 			if ($consult)
 			{

@@ -238,6 +238,9 @@
 <SCRIPT>
 	//VALIDAR FORMULARIO AGREGAR NUEVO VEHICULO
 		$(document).ready(function(){
+
+			
+
 			$('#mainset').load('tabla.client.vehiculos.view.php');
 			$('#btnAgregarVehiculo').click(function(){
 				if(validarFormVacio('frmAgrega') > 0){

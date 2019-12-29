@@ -1,5 +1,5 @@
 <?php 
-	$nombreUsuario = $_POST['usuario'];
+	$idcliente= $_POST['idcliente'];
 	$anio = $_POST['anio'];
 	$mes = $_POST['mes'];
 	require '../../assets/funciones.php';
@@ -9,10 +9,10 @@
 
 	$f = new Funciones();
 	$salida = "";
-	$datosCliente = $f ->VerDatosCliente("$nombreUsuario");
-	$idCliente = $datosCliente[3];
+	$datosCliente = $f ->VerDatosCliente("$idcliente");
+	$idUsuario = $datosCliente[3];
 	$limiteCredito = $datosCliente[4];
-	$anios = $f ->LlenarAniosEC($idCliente);
+	$anios = $f ->LlenarAniosEC($idUsuario);
 
 	$salida .= "<div class='col-md-12' style='background-color: #343A46'>
 		<center>
@@ -38,7 +38,7 @@
 	        	<div class='modal-body'>
 		        	<div class='container-fluid'>
 		        		<form name='frmFiltroMes' id='frmFiltroMes'>
-		        			<input type='hidden' name='user' id='user' value='".$nombreUsuario."'>
+		        			<input type='hidden' name='user' id='user' value='".$idcliente."'>
 		   					<label>AÑO</label>
 		   					<select class='form-control' name = 'selectAnio' id = 'selectAnio' onchange=''>
 								". $anios ."
@@ -83,7 +83,7 @@
 	        	<div class='modal-body'>
 		        	<div class='container-fluid'>
 		        		<form name='frmFiltroMes' id='frmFiltroMes'>
-		        			<input type='hidden' name='userPDF' id='userPDF' value='".$nombreUsuario."'>
+		        			<input type='hidden' name='userPDF' id='userPDF' value='".$idcliente."'>
 		        			<input type='hidden' name='nameclientePDF' id='nameclientePDF' value='".$datosCliente[0]."'>
 		   					<label>AÑO</label>
 		   					<select class='form-control' name = 'selectAnioPDF' id = 'selectAnioPDF'>
@@ -137,7 +137,7 @@
 						<th>Saldo</th>
 					</tr>
 				</thead>";
-				$query="CALL V_ESTADO_CUENTA($idCliente, $anio, $mes);";
+				$query="CALL V_ESTADO_CUENTA($idUsuario, $anio, $mes);";
 				$consult=mysqli_query($conn2,$query);
 				$indice = 0;
 				while ($sho=mysqli_fetch_array($consult))
