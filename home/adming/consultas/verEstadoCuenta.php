@@ -9,7 +9,7 @@
 
 	$f = new Funciones();
 	$salida = "";
-	$datosCliente = $f ->VerDatosCliente("$idcliente");
+	$datosCliente = $f ->VerDatosCliente($idcliente);
 	$idUsuario = $datosCliente[3];
 	$limiteCredito = $datosCliente[4];
 	$anios = $f ->LlenarAniosEC($idUsuario);

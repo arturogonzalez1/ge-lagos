@@ -258,7 +258,8 @@
 	<script type="text/javascript" src="js/js_cliente_actualizar.js"></script>
 	<script type="text/javascript" src="js/js_cliente_crud.js"></script>
 	<script type="text/javascript" src="js/js_cliente_validacion.js"></script>
-	<script type="text/javascript" src="js/js_cliente_opciones.js"></script>
+	<script type="text/javascript" src="js/js_cliente_opp.js"></script>
+	<script type="text/javascript" src="../js/js_validaciones.js"></script>
 	<script type="text/javascript" src="../assets/alertify/alertify.js"></script>
 	<script type="text/javascript">
 		//Magnific Popup

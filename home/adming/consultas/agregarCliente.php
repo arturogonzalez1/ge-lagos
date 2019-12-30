@@ -38,8 +38,8 @@
                 }
             }
             else{
-                echo 0;
+                echo "Error en la consulta";
             }
 	}
-	else echo false;
+	else echo "Constrasenas no coinciden";
  ?>

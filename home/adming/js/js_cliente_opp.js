@@ -67,7 +67,6 @@ function obtenerDatos(id){
 		data:"id=" + id,
 		url:"consultas/obtenerCliente.php",
 		success:function(r){
-			alert(r);
 			var datos = jQuery.parseJSON(r);
 
 			$('#idClienteM').val(datos['id']);

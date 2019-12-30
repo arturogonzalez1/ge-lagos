@@ -25,22 +25,26 @@
         imagecopyresampled($copia, $original, 0,0,0,0, 240, 300, $anchoOriginal, $altoOriginal);
         $ruta= '../../images/imgDes'; $ruta=$ruta."/".$usr.".jpg";
         
-        if (move_uploaded_file(imagejpeg($copia, $ruta, 100),$ruta) != false){
-            $query = "CALL p_GASOLINERO('$nombre','$domicilio','$ciudad','$estado','$telefono','$usr','$psw', $estacion)";
-            $result = mysqli_query($conn,$query);
+        move_uploaded_file(imagejpeg($copia, $ruta, 100),$ruta);
+        $query = "CALL p_GASOLINERO('$nombre','$domicilio','$ciudad','$estado','$telefono','$usr','$psw', $estacion)";
+        $result = mysqli_query($conn,$query);
+        echo $query;
 
-            if ($result){
-                $ver = mysqli_fetch_row($result);
-                if ($ver[0] == 2){
-                    echo 1;
-                }
-                else{
-                    echo "ESTE USUARIO YA ESTA REGISTRADO";
-                }
+        if ($result)
+        {
+            $ver = mysqli_fetch_row($result);
+            if ($ver[0] == 2)
+            {
+                echo 1;
             }
-            else{
-                echo 0;
+            else
+            {
+                echo "ESTE USUARIO YA ESTA REGISTRADO";
             }
+        }
+        else
+        {
+            echo 0;
         }
     }
     else echo "Las contraseñas no coinciden";

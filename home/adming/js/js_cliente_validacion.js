@@ -53,3 +53,4 @@ function validarClaves(clave, claveconfirmacion){
 		return false;
 	}
 }
+

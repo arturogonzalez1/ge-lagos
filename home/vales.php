@@ -396,6 +396,8 @@
 	<script type="text/javascript" src="js/retina-1.1.0.min.js"></script>
 	<script type="text/javascript" src="js/SmoothScroll.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/js_validaciones.js"></script>
+	<script type="text/javascript" src="js/js_vales_validacion.js"></script>
 	<script src="assets/alertify/alertify.js"></script>
 
 	<script type="text/javascript">
