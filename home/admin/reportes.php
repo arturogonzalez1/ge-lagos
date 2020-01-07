@@ -36,7 +36,7 @@
 <body>
 
 	<!-- Container -->
-	<div id="container">
+		<div id="container">
 		<!-- Header
 		================================================== -->
 		<header>
@@ -45,7 +45,7 @@
 			</div>
             <div class="logo-box logo">
 				<h1><img src="../images/perfil.png" alt="Login"></h1>
-                <p>Bienvenido <?php echo $_SESSION['a_name_cliente'] ?></p>
+                <p>Bienvenido <?php echo $_SESSION['adm_name_user'] ?></p>
 			</div>
 			
 			<a class="elemadded responsive-link" href="#">MENU</a>
@@ -78,8 +78,6 @@
 						</a>
 					</li>
                     <li><a href="../logout.php"><i class="fa fa-user-times"></i><span>SALIR</span></a></li>
-
-					
 				</ul>				
 			</div>
 
@@ -94,13 +92,26 @@
 		<!-- content 
 		================================================== -->
 		<div id="content">
-			
+			<div class="col-md-12" style="background-color: #343A46">
+				<center>
+					<h1 style="color: white">
+					<?php echo $_SESSION['adm_name_estacion'] ?>
+					</h1>
+				</center>
+			</div>
+			<style type="text/css">
+				.scroll { height:600px; overflow: auto;}
+			</style>
+			<div class="col-md-12 scroll" id="mainset">
+				<div class="col-md-12">
+					<script id="infogram_0_74d76b0d-4a6c-4800-b22c-009856b2d27f" title="User Dashboard" src="https://e.infogram.com/js/dist/embed.js?6TQ" type="text/javascript"></script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/74d76b0d-4a6c-4800-b22c-009856b2d27f" style="color:#989898!important;text-decoration:none!important;" target="_blank">User Dashboard</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a></div>
+				</div>
+			</div>
 		</div>
 		<!-- End content -->
 
 	</div>
 	<!-- End Container -->
-
 	<!-- Preloader -->
 	<div class="preloader">
 		<img alt="" src="../images/preloader.gif">

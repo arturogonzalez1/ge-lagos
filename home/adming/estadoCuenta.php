@@ -9,7 +9,6 @@
 
 	$nombreUsuario = $_SESSION['usrEstadoCuenta'];
 	$datosCliente = $f ->VerDatosCliente('$nombreUsuario');
-	
  ?>
 <!DOCTYPE html >
 <html lang="en">

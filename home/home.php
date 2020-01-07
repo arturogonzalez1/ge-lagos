@@ -164,47 +164,15 @@
 	<script type="text/javascript" src="js/retina-1.1.0.min.js"></script>
 	<script type="text/javascript" src="js/SmoothScroll.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
-
-	<script>
-	    $(document).ready(function(){
-	    	obtenerEstadoCliente(<?php echo $_SESSION['c_user_id'] ?>)
+	<script type="text/javascript" src="js/js-home-opciones.js"></script>
+	<script type="text/javascript">
+		 $(document).ready(function(){
+			obtenerEstadoCliente(<?php echo $_SESSION['c_user_id'] ?>)
 			$(".home-text .rotate").textrotator({
 		        animation: "fade",
 		        speed: 3000
 		    });
 		});
 	</script>
-	<script type="text/javascript">
-		function obtenerEstadoCliente(usuario){
-			$.ajax({
-			type:"POST",
-			data:"usuario=" + usuario,
-			url:"php/estadoCliente.php",
-			success:function(r){
-				datos=jQuery.parseJSON(r);
-				document.getElementById('infoAdvertencia').innerText = "";
-				document.getElementById('infoAdvertenciaCredito').innerText = "";
-				var estado = datos['estado'];
-				var cantidad = datos['cantidad'];
-
-				if (estado != 'ACTIVO' || cantidad <= 500)
-				{
-					if (estado != 'ACTIVO')
-					{
-						document.getElementById('infoAdvertencia').innerText = 'Su credito se encuentra '+estado+'. Pongase en contacto con el administrador';
-					}
-					if (cantidad <= 500)
-					{
-						document.getElementById('infoAdvertenciaCredito').innerText = 'Su saldo esta por agotarse. Realice un pago para continuar con su credito';
-					}
-					$('#notificacionModal').modal();
-				}
-				
-			}
-			});
-		}
-	</script>
-
-
 </body>
 </html>

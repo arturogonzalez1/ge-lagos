@@ -1,1 +1,0 @@
-[04-Oct-2019 12:33:08 America/Chicago] PHP Catchable fatal error:  Object of class mysqli_result could not be converted to string in /home/gelagos/public_html/home/admin/consultas/agregarEstacion.php on line 11

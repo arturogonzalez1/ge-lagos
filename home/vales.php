@@ -13,69 +13,9 @@
 	$saldo = $f ->ConsultarSaldo($idU);
 
 	//Datos del Vehiculo
-	$contenidoCombobox = $f ->LlenarComboboxVehiculo($idU);
+	$contenidoCombobox = $f -> LlenarComboboxVehiculo($idU);
 	$datosVehiculo = $f -> VerDatosVehiculo($idU);
 	$numVale = ($f -> noVale($idU))+1;
-
-	$qrcode = "";
-
-	if (isset($_POST['txtVPlacaAutorizada']) && isset($_POST['txtVChoferAutorizado']) && isset($_POST['txtVTipoCombustible']))
-	{
-		//$_SESSION['numVale'] = "";
-
-		if ($_POST['txtVPlacaAutorizada'] != "NA" && $_POST['txtVChoferAutorizado'] != "NA" && $_POST['txtVTipoCombustible'] != "NA") 
-		{  
-			$p = $_POST['txtVPlacaAutorizada'];
-			$tipoCombustible = $_POST['txtVTipoCombustible'];
-			//POR LITROS
-			if ($_POST['txtVPorLitros'] != "NA" && $_POST['txtVPorImporte'] == "NA" && $tipoCombustible != "LUBRICANTE")
-			{
-				$chofer = $_POST['txtVChoferAutorizado'];
-				$litros = $_POST['txtVPorLitros'];
-				
-
-				$query = "CALL p_VALE('$chofer', $litros, 0, '$p', $idU, '$tipoCombustible')";
-				$consult = mysqli_query($conn, $query);
-
-				if ($consult)
-				{
-					//echo '<script language="javascript">window.open("view_pdf.php","_blank");</script>'; 
-					$messsage = "Vale creado correctamente";
-					header("Location: vales.php");
-				}
-				else
-					$message = "Error al crear el vale";
-			}
-			//POR IMPORTE
-			if ($_POST['txtVPorLitros'] == "NA" && $_POST['txtVPorImporte'] != "NA" || $tipoCombustible == "LUBRICANTE")
-			{
-				$chofer = $_POST['txtVChoferAutorizado'];
-				$importe = $_POST['txtVPorImporte'];
-
-				$query = "CALL p_VALE('$chofer', 0, $importe, '$p', $idU, '$tipoCombustible')";
-				$consult = mysqli_query($conn, $query);
-				if ($consult)
-				{
-					//echo '<script language="javascript">window.open("view_pdf.php","_blank");</script>'; 
-					$message = "Vale creado correctamente";
-					header("Location: vales.php");
-				}
-				else
-					$message = "Error al crear el vale";
-			}
-			if ($_POST['txtVPorLitros'] == "NA" && $_POST['txtVPorImporte'] == "NA")
-			{
-				$message = "Ingrese solo litros o importe. Lubricante solo por importe";
-			}
-			else
-				$message = "Lubricante solo por importe";
-		}
-		else
-		{
-			echo '<script language="javascript">alert("LLENE TODOS LOS CAMPOS DE TEXTO");</script>'; 
-		}
-		unset($_POST['btnEnviar']);
-	}
 ?>
 <!DOCTYPE html >
 <html lang="en">
@@ -109,7 +49,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">NUEVO VALE</h5>
+					<h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">NUEVO VALE</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 					</button>
@@ -123,6 +63,7 @@
 									<option disabled selected>Placa Vehiculo</option>
 									<?php echo $contenidoCombobox ?>
 								</select>
+
 								<select class="form-control" id = "slcTipoCombustible" onchange="ControlPorTipoCombustible()">
 									<option disabled selected name="slcTipo">Tipo de Combustible</option>
 									<option value="DIESEL">DIESEL</option>
@@ -398,255 +339,13 @@
 	<script type="text/javascript" src="js/script.js"></script>
 	<script type="text/javascript" src="js/js_validaciones.js"></script>
 	<script type="text/javascript" src="js/js_vales_validacion.js"></script>
+	<script type="text/javascript" src="js/js-vales-opciones.js"></script>
+	<script type="text/javascript" src="js/js-vales-crud.js"></script>
 	<script src="assets/alertify/alertify.js"></script>
 
 	<script type="text/javascript">
 		//Magnific Popup
 	    $('.show-image').magnificPopup({type: 'image'});
-	</script>
-
-	<script>
-		//CUANDO SE CARGA EL DOCUMENTO
-		$(document).ready(function(){
-			//CARGAR LA TABLA DE VALES VIGENTES
-			$('#mainset').load('tabla.cliente.vales.view.php');
-
-			$('#btnAgregarVale').click(function(){
-				if(validarFormVacio('frmAgrega') > 0){
-					alertify.alert("Error","Debes llenar todos los campos.");
-					return false;
-				}
-				GenerarVale();
-				$('#autorizarmodal').modal();
-			});
-
-			$('#btnEnviar').click(function(){
-				datos = $('#frmAutoriza').serialize();
-				$.ajax({
-					type:"POST",
-					data:datos,
-					url:"php/agregarVale.php",
-					success:function(r){
-						if(r==1){
-							$('#addmodal').modal('hide');
-							$('#autorizarmodal').modal('hide');
-							$('#frmAgrega')[0].reset();
-							$('#frmAutoriza')[0].reset();
-							$('#mainset').load('tabla.cliente.vales.view.php');
-							alertify.success("Vale autorizado.");
-						}
-						else if (r==2){
-							alertify.error("Vehiculo no corresponde al cliente.");
-						}
-						else if (r==3){
-							alertify.error("Saldo Insuficiente para autorizar el vale.");
-						}
-						else if (r==4){
-							alertify.error("No se pudo autorizar. Su cuenta no esta activa.");
-						}
-						else{
-							alertify.error("No se pudo autorizar.");
-						}
-					}
-				});
-			});
-			$('#btnBorrar').click(function(){
-				$('#frmDatosVale')[0].reset();
-				$('#autorizarmodal').modal('hide');
-				$('#frmAgrega')[0].reset();
-				$('#addmodal').modal('hide');
-			});
-		});
-		//VALIDAR FORMULARIOS VACIOS
-		function validarFormVacio(formulario){
-			datos=$('#' + formulario).serialize();
-			d=datos.split('&');
-			vacios=0;
-			for(i=0;i< d.length;i++){
-			controles=d[i].split("=");
-			if(controles[1]=="A" || controles[1]==""){
-				vacios++;
-			}
-			}
-			return vacios;
-		}
-
-		//CONTROLAR TEXT INPUTS
-		function ControlPorTipoConsumo()
-		{
-			var litros = document.getElementById("txtLitros");
-			var importe = document.getElementById("txtImporte");
-			var combobox = document.getElementById("slcTipoCons");
-
-			if (combobox.value == "Litros")
-			{
-				importe.value = "";litros.disabled = false;
-				importe.disabled = true;
-			}
-			if (combobox.value == "Importe")
-			{
-				litros.disabled = true;
-				litros.value = "";importe.disabled = false;
-			}
-		}
-		function ControlPorTipoCombustible(){
-			var litros = document.getElementById("txtLitros");
-			var importe = document.getElementById("txtImporte");
-			var comboboxTipoCombustible = document.getElementById("slcTipoCombustible");
-			var comboboxTipoConsumo = document.getElementById("slcTipoCons");
-
-			if (comboboxTipoCombustible.value == "LUBRICANTE")
-			{
-				comboboxTipoConsumo.disabled = true;
-				litros.value = "";litros.disabled = true;
-				importe.disabled = false; 
-			}
-			else
-			{
-				comboboxTipoConsumo.disabled = false;
-				if (comboboxTipoConsumo.value == "Litros")
-				{
-					importe.value = "";litros.disabled = false; 
-					importe.disabled = true;
-				}
-				if (comboboxTipoConsumo.value == "Importe")
-				{
-					litros.disabled = true;
-					litros.value = "";importe.disabled = false; 
-				}
-			}
-		}
-		//MOSTRAR IMAGEN VEHICULO
-		function ImagenV()
-		{
-			var combobox = document.getElementById("slcVehiculo"); 
-			var placa = combobox.options[combobox.selectedIndex].text;
-			var fvehiculo = document.getElementById("imgFotoVehiculo");
-			var numplaca = document.getElementById("lblPlaca");
-			fvehiculo.src = "images/imgVeh/"+placa+".jpg";
-			fvehiculo.style.visibility = "visible";
-			fvehiculo.width = 240;
-  			fvehiculo.height = 150;
-			numplaca.innerHTML = placa;
-		}
-		function GenerarVale()
-		{
-			var comboboxPlaca = document.getElementById("slcVehiculo"); 
-			var placa = comboboxPlaca.options[comboboxPlaca.selectedIndex].text;
-
-			var comboboxTipoComb = document.getElementById("slcTipoCombustible");
-			var tipoComb = comboboxTipoComb.options[comboboxTipoComb.selectedIndex].text;
-
-			var comboboxTipoCons = document.getElementById("slcTipoCons").value;
-
-			var choferAutorizado = document.getElementById("txtChofer").value;
-			var litros = document.getElementById("txtLitros").value;
-			var importe = document.getElementById("txtImporte").value;
-
-			var lblPlacaA = document.getElementById("lblPlacaAutorizada");
-			var lblTipoComb  = document.getElementById("lblTipoCombustible");
-			var lblFechaHora = document.getElementById("lblFechaHora");
-			var lblChoferAutorizado = document.getElementById("lblChoferAutorizado");
-			var lblPorLitros = document.getElementById("lblPorLitros");
-			var lblPorImporte = document.getElementById("lblPorImporte");
-
-			if (placa != "Placa Vehiculo" && tipoComb != "Tipo de Combustible" && choferAutorizado != "")
-			{
-				if (comboboxTipoCons == "Litros")
-				{
-					lblPorLitros.value = litros;
-					lblPorImporte.value = "NA";
-				}
-				else if (comboboxTipoCons == "Importe")
-				{
-					lblPorImporte.value = importe;
-					lblPorLitros.value = "NA"
-				}
-				else if (comboboxTipoCons == "Tipo de consumo")
-				{
-					lblPorImporte.value = importe;
-					lblPorLitros.value = "NA"
-				}
-				lblPlacaA.value = placa;
-				lblTipoComb.value = tipoComb;
-				lblChoferAutorizado.value = choferAutorizado;
-				var fecha = new Date();
-				lblFechaHora.value = fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getFullYear()+" "+fecha.getHours()+":"+fecha.getMinutes();
-			}
-			else alertify.error("VERIFIQUE QUE TODOS LOS CAMPOS ESTEN LLENOS")
-		}
-
-		function ConfirmarVale()
-		{
-			var lblPlacaA = document.getElementById("lblPlacaAutorizada").value;
-			var lblTipoC  = document.getElementById("lblTipoCombustible").value;
-			var lblChoferA = document.getElementById("lblChoferAutorizado").value;
-			var lblPorL = document.getElementById("lblPorLitros").value;
-			var lblPorI = document.getElementById("lblPorImporte").value;
-
-			if (lblPlacaA != "" && lblTipoC != "" && lblChoferA != "")
-			{
-				
-				if (lblPorL != "" || lblPorI != "")
-				{
-					alertify.confirm('AUTORIZACION DE VALE', '¿DESEA AUTORIZAR EL VALE?', 
-					function(){ 
-						document.frmDatosVale.submit()
-					}
-					,function(){ 
-					});
-				}
-				else
-				{
-					alert("ERROR AL AUTORIZAR VALE LITROS O IMPORTE");
-				}
-			}
-			else
-			{
-				alertify.error("NO HA AUTORIZADO EL VALE")
-			}
-		}
-		function exportar(numVale)
-		{
-                  $.ajax({
-                     type:"POST",
-                      data:"numVale=" + numVale,
-                      url:"php/exportar_pdf.php",
-                      success:function(r){
-                          if(r==1){     
-                              window.open("view_pdf.php","_blank");
-                          }else{
-                               alertify.error("Error al exportar PDF");
-                          }
-                      }
-                  });
-
-		}
-		function cancelar(numVale)
-		{
-			alertify.confirm('Cancelar Vale', '¿Desea cancelar el vale?', 
-              function(){ 
-                  $.ajax({
-                     type:"POST",
-                      data:"numVale=" + numVale,
-                      url:"php/cancelar.php",
-                      success:function(r){
-                          if(r==1){     
-                              window.location="vales.php";
-                              alertify.success("EL VALE SE HA CANCELADO");
-                          }else{
-                               alertify.error("NO SE PUDO CANCELAR EL VALE");
-                          }
-                      }
-                  });
-              }
-              ,function(){ 
-                alertify.error('Operacion Cancelada')
-              });
-		}	
-		function EnviarWhatsapp(){
-			window.open("https://web.whatsapp.com/", "_blank");
-		}
 	</script>
 </body>
 </html>

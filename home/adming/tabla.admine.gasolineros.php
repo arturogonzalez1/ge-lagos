@@ -5,7 +5,7 @@
 <span class="btn btn-raised btn-primary btn-lg" data-toggle="modal" data-target="#addmodal">
 	<span class="fa fa-plus-circle"></span> AGREGAR NUEVO
 </span>
-	<table class="table table-striped table-bordered"  style="border-style:solid;" >
+	<table class="table table-striped table-bordered"  style="border-style:solid; font-size: 12px" >
 			<thead>
 				<tr>
 					<th>NOMBRE</th>

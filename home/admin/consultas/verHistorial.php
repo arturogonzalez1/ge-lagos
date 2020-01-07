@@ -1,5 +1,5 @@
 <?php 
-	$nombreUsuario = $_POST['usuario'];
+	$idcliente = $_POST['idcliente'];
 	$filtro1 = $_POST['filtro1'];
 	$filtro2 = $_POST['filtro2'];
 	
@@ -7,21 +7,21 @@
 	require '../../assets/database.php';
 	$f = new Funciones();
 	$salida = "";
-	$datosCliente = $f ->VerDatosCliente("$nombreUsuario");
+	$datosCliente = $f ->VerDatosCliente("$idcliente");
 
 	$idUsuario = $datosCliente[3];
 	$limiteCredito = $datosCliente[4];
 	$anios = $f ->LlenarAniosEC($idUsuario);
 
-	if ($filtro1 != '' && $filtro2 == '')
+	if ($filtro1 != 0 && $filtro2 == 0)
 	{
 		$query = "CALL v_VALES_FILTRO($idUsuario, 1, '$filtro1','');";
 	}
-	else if ($filtro1 != '' && $filtro2 != '')
+	else if ($filtro1 != 0 && $filtro2 != 0)
 	{
 		$query = "CALL v_VALES_FILTRO($idUsuario, 2, '$filtro1','$filtro2');";
 	}
-	else if ($filtro1 == '' && $filtro2 == '')
+	else if ($filtro1 == 0 && $filtro2 == 0)
 	{
 		$query = "CALL v_VALES_FILTRO($idUsuario, 3, '','');";
 	}
@@ -51,7 +51,7 @@
 	        	<div class='modal-body'>
 		        	<div class='container-fluid'>
 		        		<form name='frmFiltroMes' id='frmFiltroMes'>
-		        			<input type='hidden' name='user' id='user' value='".$nombreUsuario."'>
+		        			<input type='hidden' name='user' id='user' value='".$idcliente."'>
 		   					<label>AÑO</label>
 		   					<select class='form-control' name = 'selectAnio' id = 'selectAnio' onchange=''>
 								". $anios ."
@@ -178,7 +178,7 @@
 				var anio = $('#selectAnio').prop('value');
 				var mes = $('#selectMes').prop('value');
 				var filtro = anio+mes;
-				verHistorial('".$nombreUsuario."', filtro, '');
+				verHistorial('".$idcliente."', filtro, '');
 		}
 
 		function ObtenerImporte(idcliente, numvale){
@@ -219,7 +219,7 @@
 					{
 						$('#newImporteModal').modal('hide');
 						alertify.success('El importe se ha modificado correctamente');
-						verHistorial('".$nombreUsuario."', '', '');
+						verHistorial('".$idcliente."', '', '');
 					}
 					if (r == 2)
 					{

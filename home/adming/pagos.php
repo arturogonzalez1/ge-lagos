@@ -61,7 +61,6 @@
 	        		<label>CLIENTE</label>
 	        		<input list="clientesb" class="form-control" name = "clientesba" id = "clientesba">
 						<datalist id="clientesb" name= "clientesb">
-						<option disabled selected>Estacion</option>
 						<?php echo $contenidoComboboxCliente ?>
 						</datalist>
 					</imput>

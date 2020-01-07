@@ -1,6 +1,6 @@
 <?php
 
-$server = '35.239.178.56';
+$server = '207.210.232.36';
 $username = 'gelagos_ultra';
 $password = 'd43m0nt00l5';
 $database = 'gelagos_ge';

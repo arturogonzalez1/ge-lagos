@@ -28,7 +28,6 @@
         move_uploaded_file(imagejpeg($copia, $ruta, 100),$ruta);
         $query = "CALL p_GASOLINERO('$nombre','$domicilio','$ciudad','$estado','$telefono','$usr','$psw', $estacion)";
         $result = mysqli_query($conn,$query);
-        echo $query;
 
         if ($result)
         {

@@ -164,31 +164,35 @@
 	</header>
 	<!-- End Header -->
 	<!-- Container -->
-	<div id="container">
+	<div id="container-fluid">
 		<!-- content 
 		================================================== -->
 		<div id="content">
-			<div class="col-md" style="background-color: #343A46">
+			<div class="col-md-12" style="background-color: #343A46">
 				<center>
 					<h1 style="color: white">
 					<?php echo $_SESSION['c_name_cliente'] ?><BR><font size="5">  SALDO DISPONIBLE  <?php echo $saldo ?></font>
 					</h1>
 				</center>
 	   		</div>
-	   			<div class="col-md-12" style="margin-bottom: 10px" align="center">
-	   				<span class="btn btn-raised btn-primary btn-lg" data-toggle="modal" data-target="#modalFiltroMes">
-						<span class="fas fa-sort"></span> FILTRAR POR MES
-					</span>
-					<span class="btn btn-raised btn-primary btn-lg" data-toggle="modal" data-target="#modalFiltroDia">
-						<span class="fas fa-sort"></span> FILTRAR POR FECHAS
-					</span>
-					<label id="lblFecha"></label>
-	   			</div>
-	   		<div class="col-md-1" style="max-width: 20px"></div>
-	   		<div class="col-md" style="margin: 20px">
-	   			<div id="mainset"></div>
-	   		</div>
-	   		<div class="col-md-1" style="max-width: 20px"></div>
+   			<div class="col-md-12" style="margin-bottom: 10px" align="center">
+   				<span class="btn btn-raised btn-primary btn-lg" data-toggle="modal" data-target="#modalFiltroMes">
+					<span class="fas fa-sort"></span> FILTRAR POR MES
+				</span>
+				<span class="btn btn-raised btn-primary btn-lg" data-toggle="modal" data-target="#modalFiltroDia">
+					<span class="fas fa-sort"></span> FILTRAR POR FECHAS
+				</span>
+				<br>
+				<label id="lblFecha"></label>
+   			</div>
+   			<div class="col-md-12">
+   				<div class="col-md-1" style="max-width: 20px"></div>
+		   		<div class="col-md" style="margin: 20px">
+	   				<div id="mainset"></div>
+		   		</div>
+		   		<div class="col-md-1" style="max-width: 20px"></div>
+   			</div>
+	   		
 				
 		</div>
 		<!-- End content -->
@@ -212,96 +216,11 @@
 	<script type="text/javascript" src="js/retina-1.1.0.min.js"></script>
 	<script type="text/javascript" src="js/SmoothScroll.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/js-historial-opciones.js"></script>
 
 	<script type="text/javascript">
 		//Magnific Popup
 	    $('.show-image').magnificPopup({type: 'image'});
 	</script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			var defaultData = new FormData();
-				defaultData.append('tpFiltro', 3);
-			$.ajax({
-						url: 'php/filtrarHistorial.php',
-						type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
-						contentType: false,
-						data: defaultData, // Al atributo data se le asigna el objeto FormData.
-						dataType: 'html',
-						processData: false,
-						cache: false, 
-					success:function(r){
-						$('#modalFiltroMes').modal('hide');
-						$('#frmFiltroMes')[0].reset();
-						$('#mainset').html(r);
-						var f = new Date();
-						var date = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-						document.getElementById('lblFecha').innerHTML= date;
-					}
-				})
-			$('#btnFiltrarMes').click(function(){
-				var paquedeDeDatos = new FormData();
-				paquedeDeDatos.append('selectAnio', $('#selectAnio').prop('value'));
-				paquedeDeDatos.append('selectMes', $('#selectMes').prop('value'));
-				paquedeDeDatos.append('tpFiltro', 1);
-				$.ajax({
-						url: 'php/filtrarHistorial.php',
-						type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
-						contentType: false,
-						data: paquedeDeDatos, // Al atributo data se le asigna el objeto FormData.
-						dataType: 'html',
-						processData: false,
-						cache: false, 
-					success:function(r){
-						$('#modalFiltroMes').modal('hide');
-						$('#frmFiltroMes')[0].reset();
-						$('#mainset').html(r);
-						document.getElementById('lblFecha').innerHTML = $('#selectAnio').prop('value')+"/"+$('#selectMes').prop('value');
-					}
-				});
-
-			});
-			$('#btnFiltrarDia').click(function(){
-				var datosPorDia = new FormData();
-				datosPorDia.append('dtpFechaInicio', $('#dtpFechaInicio').prop('value'));
-				datosPorDia.append('dtpHoraInicio', $('#dtpHoraInicio').prop('value'));
-				datosPorDia.append('dtpFechaFin', $('#dtpFechaFin').prop('value'));
-				datosPorDia.append('dtpHoraFin', $('#dtpHoraFin').prop('value'));
-				datosPorDia.append('tpFiltro', 2);
-				$.ajax({
-						url: 'php/filtrarHistorial.php',
-						type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
-						contentType: false,
-						data: datosPorDia, // Al atributo data se le asigna el objeto FormData.
-						dataType: 'html',
-						processData: false,
-						cache: false, 
-					success:function(r){
-						$('#modalFiltroDia').modal('hide');
-						document.getElementById('lblFecha').innerHTML = $('#dtpFechaInicio').prop('value')+
-						" "+$('#dtpHoraInicio').prop('value')+ " - " + $('#dtpFechaFin').prop('value') + " "+ $('#dtpHoraFin').prop('value');
-						$('#frmFiltroDia')[0].reset();
-						$('#mainset').html(r);
-					}
-				});
-			});
-		})
-		function exportar(numVale)
-		{
-                  $.ajax({
-                     type:"POST",
-                      data:"numVale=" + numVale,
-                      url:"php/exportar_pdf.php",
-                      success:function(r){
-                          if(r==1){     
-                              window.open("view_pdf.php","_blank");
-                          }else{
-                               alertify.error("Error al exportar PDF");
-                          }
-                      }
-                  });
-
-		}
-	</script>
-	<script type="text/javascript"></script>
 </body>
 </html>
