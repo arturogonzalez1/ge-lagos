@@ -121,9 +121,9 @@
 								<label>NOMBRE DE USUARIO</label>
 								<input type="text" class="form-control form-control-sm" name="usrGASM" id="usrGASM" maxlength="20">
 								<label>NUEVA CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="passGASM" id="passGASM" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="passGASM" id="pswGASM" maxlength="10">
 								<label>CONFIRMAR CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="passcGASM" id="passcGASM" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="passcGASM" id="pswcGASM" maxlength="10">
 								<br><br>
 							</div>
 							<div class="col-md-12">
@@ -236,209 +236,16 @@
 	<script type="text/javascript" src="../js/retina-1.1.0.min.js"></script>
 	<script type="text/javascript" src="../js/SmoothScroll.js"></script>
 	<script type="text/javascript" src="../js/script.js"></script>
-	<script src="../assets/alertify/alertify.js"></script>
+	<script type="text/javascript" src="../assets/alertify/alertify.js"></script>
+	<script type="text/javascript" src="../js/js_validaciones.js"></script>
+	<script type="text/javascript" src="js/js-despachadores-crud.js"></script>
+	<script type="text/javascript" src="js/js-despachadores-opciones.js"></script>
+	<script type="text/javascript" src="js/js-despachadores-validaciones.js"></script>
+
 
 	<script type="text/javascript">
 		//Magnific Popup
 	    $('.show-image').magnificPopup({type: 'image'});
 	</script>
-
-	<script></script>
-
-<SCRIPT>
-	//VALIDAR FORMULARIO AGREGAR NUEVA ESTACION
-		$(document).ready(function(){
-			$('#mainset').load('tabla.admine.gasolineros.php');
-			$('#btnAgregarg').click(function(){
-				
-				if(validarFormVacio('frmAgregar') > 0){
-					alertify.alert("Error","Debes llenar todos los campos");
-					return false;
-				}
-				if (!validarClaves()){
-					alertify.alert("Error","Las contraseñas no coinciden");
-					return false;
-				}
-				var paqueteDeDatos = new FormData();
-
-				paqueteDeDatos.append('nombreGAS', $('#nombreGAS').prop('value'));
-				paqueteDeDatos.append('domicilioGAS', $('#domicilioGAS').prop('value'));
-				paqueteDeDatos.append('ciudadGAS', $('#ciudadGAS').prop('value'));
-				paqueteDeDatos.append('estadoGAS', $('#estadoGAS').prop('value'))
-				paqueteDeDatos.append('telefonoGAS', $('#telefonoGAS').prop('value'));
-				paqueteDeDatos.append('usrGAS', $('#usrGAS').prop('value'));
-				paqueteDeDatos.append('pswGAS', $('#pswGAS').prop('value'));
-				paqueteDeDatos.append('pswcGAS', $('#pswcGAS').prop('value'));
-				paqueteDeDatos.append('fotoGAS', $('#fotoGAS')[0].files[0]);
-
-				$.ajax({
-						url: 'consultas/agregarDespachador.php',
-						type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
-						contentType: false,
-						data: paqueteDeDatos, // Al atributo data se le asigna el objeto FormData.
-						processData: false,
-						cache: false, 
-					success:function(r){
-						if(r==1){
-							$('#mainset').load('tabla.admine.gasolineros.php');
-							$('#addmodal').modal('hide');
-							$('#frmAgregar')[0].reset();
-							alertify.success("Agregado con exito :)");
-						}
-						else{
-							alertify.error("No se pudo agregar: " + r);
-						}
-					}
-				});
-
-			});
-		});
-
-		//VALIDAR FORMULARIO ACTUALIZAR ESTACION
-		$(document).ready(function(){
-			$('#btnModificar').click(function(){
-				if(validarFormVacio('frmActualiza') > 0){
-					alertify.alert("Error","Debes llenar todos los campos");
-					return false;
-				}
-				if (!validarClavesModificar()){
-					alertify.alert("Error","Las contraseñas no coinciden");
-					return false;
-				}
-
-				var data = new FormData();
-
-				data.append('idGAS', $('#idGASM').prop('value'));
-				data.append('nombreGAS', $('#nombreGASM').prop('value'));
-				data.append('domicilioGAS', $('#domicilioGASM').prop('value'));
-				data.append('ciudadGAS', $('#ciudadGASM').prop('value'));
-				data.append('estadoGAS', $('#estadoGASM').prop('value'))
-				data.append('telefonoGAS', $('#telefonoGASM').prop('value'));
-				data.append('usrGAS', $('#usrGASM').prop('value'));
-				data.append('pswGAS', $('#pswGASM').prop('value'));
-				data.append('pswcGAS', $('#pswcGASM').prop('value'));
-				data.append('foto', $('#fotoGASM')[0].files[0]);
-
-				//data=$('#frmActualiza').serialize();
-				$.ajax({
-					url: 'consultas/modificarDespachador.php',
-					type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
-					contentType: false,
-					data: data, // Al atributo data se le asigna el objeto FormData.
-					processData: false,
-					cache: false, 
-					success:function(r){
-						if(r==1){
-							$('#mainset').load('tabla.admine.gasolineros.php');
-							$('#updatemodal').modal('hide');
-							$('#frmActualiza')[0].reset();
-							alertify.success("El usuario se ha actualizado con exito");
-						}
-						else{
-							alertify.error("No se pudo actualizar " + r);
-						}
-					}
-				});
-			});
-		});
-
-		//VALIDAR FORMULARIO SI SE ENCUENTRA VACIO O LLENO
-		function validarFormVacio(formulario){
-			datos=$('#' + formulario).serialize();
-			d=datos.split('&');
-			vacios=0;
-			for(i=0;i< d.length;i++){
-			controles=d[i].split("=");
-			if(controles[1]=="A" || controles[1]==""){
-				vacios++;
-			}
-			}
-			return vacios;
-		}
-
-		//VALIDAR CLAVES
-		function validarClaves(){
-			clave1 = document.getElementById("pswGAS").value;
-			clave2 = document.getElementById("pswcGAS").value;
-			if (clave1 == clave2)
-			{
-				return true;
-			}
-			else
-				return false;
-		}
-		function validarClavesModificar(){
-			clave1 = document.getElementById("passGASM").value;
-			clave2 = document.getElementById("passcGASM").value;
-			if (clave1 == clave2)
-			{
-				return true;
-			}
-			else
-				return false;
-		}
-	</SCRIPT>
-	<!--************************************************* CRUD ***********************************************-->
-	<SCRIPT>
-
-		function obtenerDatos(usr){
-			$.ajax({
-			type:"POST",
-			data:"usr=" + usr,
-			url:"consultas/obtenerDespachador.php",
-			success:function(r){
-				datos=jQuery.parseJSON(r);
-
-				$('#idGASM').val(datos['idGas']);
-				$('#nombreGASM').val(datos['nombre']);
-				$('#domicilioGASM').val(datos['domicilio']);
-				$('#ciudadGASM').val(datos['ciudad']);
-				$('#estadoGASM').val(datos['estado']);
-				$('#telefonoGASM').val(datos['telefono']);
-				$('#usrGASM').val(datos['usr']);
-			}
-			});
-		}
-
-		function eliminarDespachador(usr){
-		alertify.confirm('BAJA DESPACHADOR', '<CENTER>¿ESTA SEGURO DE BORRAR EL DESPACHADOR? <br><br> <FONT style="color:red;">SE PERDERAN TODOS LOS REGISTROS EN RELACION<FONT></CENTER>', 
-				function(){ 
-					$.ajax({
-						type:"POST",
-						data:"usr=" + usr,
-						url:"consultas/borrarDespachador.php",
-						success:function(r){
-							if(r==1){     
-								$('#mainset').load('tabla.admine.gasolineros.php');
-								alertify.success("El despachador ha sido eliminado con exito");
-							}else{
-								alertify.error("No se pudo eliminar");
-							}
-						}
-					});
-				}
-				,function(){ 
-					alertify.error('OPERACION CANCELADA')
-				});
-		}
-	</SCRIPT>
-
-	<SCRIPT>
-		function GenerarGAFETE(usr){
-			$.ajax({
-                     type:"POST",
-                      data:"usuario=" + usr,
-                      url:"gafete/generarGafete.php",
-                      success:function(r){
-                          if(r==1){    
-                              window.open("admine.gafete.view.php","_blank");
-                          }else{
-                               alert("Error al exportar PDF"+r);
-                          }
-                      }
-                  });
-		}
-
-	</SCRIPT>
 </body>
 </html>

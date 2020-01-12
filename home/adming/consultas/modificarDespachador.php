@@ -1,13 +1,13 @@
 <?php 
 	require "../../assets/database.php";
 
-	$idGas = $_POST['idGAS'];
-	$nom = $_POST['nombreGAS'];
+	$id = $_POST['idGAS'];
+	$nombre = $_POST['nombreGAS'];
     $usr = $_POST['usrGAS'];
-	$dom = $_POST['domicilioGAS'];
-    $ciu = $_POST['ciudadGAS'];
-    $edo = $_POST['estadoGAS'];
-    $tel = $_POST['telefonoGAS'];
+	$domicilio = $_POST['domicilioGAS'];
+    $ciudad = $_POST['ciudadGAS'];
+    $estado = $_POST['estadoGAS'];
+    $telefono = $_POST['telefonoGAS'];
     $pass = $_POST['pswGAS'];
     $passc = $_POST['pswcGAS'];
 
@@ -32,7 +32,7 @@
 
         if($pass == $passc)
         {
-            $query = "CALL p_UPDATE_GAS($idGas, '$nom', '$dom', '$ciu', '$edo', '$tel', '$pass');";
+            $query = "CALL p_UPDATE_GAS($id, '$nombre', '$domicilio', '$ciudad', '$estado', '$telefono', '$pass', '$usr');";
             if(mysqli_query($conn,$query))
             {
                 move_uploaded_file(imagejpeg($copia, $ruta, 100), $ruta);

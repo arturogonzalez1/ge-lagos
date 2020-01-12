@@ -11,11 +11,6 @@
     $nFactura= $_POST['nfacturau'];
     
     	$query = "call p_PAGOS('$cliente', $idEstacion, '$fInicial', '$fFinal', '$tPago','$nFactura', '$fecha')";
-    	$result = mysqli_query($conn,$query);
-        $ver = mysqli_fetch_row($result);
-        if ($ver[0] == 1)
-            echo 1;
-        else if ($ver[0] == 2)
-            echo 2;
-
+    	mysqli_query($conn,$query);
+        echo 1;
  ?>

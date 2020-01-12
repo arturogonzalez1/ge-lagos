@@ -81,3 +81,13 @@ function validarFormVacio(formulario){
 	return vacios;
 }
 
+function validarClaves(clave, claveconfirmacion){
+	if (clave == claveconfirmacion) {
+		return true;
+	}
+	else {
+		alertify.alert("Error","Las contraseñas no coinciden");
+		return false;
+	}
+}
+

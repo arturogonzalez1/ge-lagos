@@ -1,19 +1,5 @@
 'use strict'
 //VALIDACIONES
-
-function validarFormVacio(formulario){
-	var datos = $('#' + formulario).serialize();
-	var d = datos.split('&');
-	var vacios = 0;
-	for(var i=0;i< d.length;i++){
-		var controles = d[i].split("=");
-		if(controles[1]=="A" || controles[1]==""){
-			vacios++;
-		}
-	}
-	return vacios;
-}
-
 function validarNuevoCliente(){
 	var resultado = true;
 	var clave1 = document.getElementById("pswC").value;

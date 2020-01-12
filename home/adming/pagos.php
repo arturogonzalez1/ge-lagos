@@ -296,29 +296,30 @@
 		$(document).ready(function(){
 			$('#btnpagar').click(function(){
 
-			datos=$('#frmactualiza').serialize();
+			var datos=$('#frmactualiza').serialize();
 				$.ajax({
-				type:"POST",
-				data:datos,
-				url:"consultas/modificarPagos.php",
-				success:function(r){
-					if(r==1){
-						alertify.success("El pago se ha realizado correctamente");
+					type:"POST",
+					data:datos,
+					url:"consultas/modificarPagos.php",
+					success:function(r){
+						if(r==1){
+							alertify.success("El pago se ha realizado correctamente");
+							location.reload();
+						}
+						else if(r==2){
+							alertify.error("Error en las fechas");
+						}
+						else if (r != 1 || r != 2){
+						alertify.error("Error al realizar el pago");
+						}
 					}
-					else if(r==2){
-						alertify.error("Error en las fechas");
-					}
-					else if (r != 1 || r != 2){
-					alertify.error("Error al realizar el pago");
-					}
-				}
 				});
 			});
 		});
 
 		//VALIDAR FORMULARIO SI SE ENCUENTRA VACIO O LLENO
 		function validarFormVacio(formulario){
-			datos=$('#' + formulario).serialize();
+			var datos = $('#' + formulario).serialize();
 			d=datos.split('&');
 			vacios=0;
 			for(i=0;i< d.length;i++){
