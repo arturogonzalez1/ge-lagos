@@ -9,7 +9,6 @@
 	$f = new Funciones();
 	$contenidoComboboxCliente = $f -> Cliente();
 	$idEstaciones = $_SESSION['adm_idEstacion'];
-
  ?>
 <!DOCTYPE html >
 <html lang="en">
@@ -96,33 +95,34 @@
           </button>
         </div>
         <div class="modal-body">
-        	<form id="frmactualiza">
-        		
-        		<label>CLIENTE</label>
-        		<input list="clientesu" class="form-control" name = "clientesuu" id = "clientesuu">
-					<datalist id="clientesu" name= "clientesu">
-					<option disabled selected>Estacion</option>
-					<?php echo $contenidoComboboxCliente ?>
-					</datalist>
-            	<label>Fecha y hora Inicial</label><br>
-	        	<input type="date"  name="finicialu" id="finicialu">
-	            <input type="time" value="00:00" name="hinicialu" id="hinicialu">
-	            <br><label>Fecha y Hora Final</label><br>
-	            <input type="date"  name="ffinalu" id="ffinalu">
-	            <input type="time" value="23:59" name="hfinalu" id="hfinalu">
-	            <br><label>Tipo de Pago</label>
-	            <select class="form-control" name = "tpagou" id = "tpagou">
-					<option value="Deposito Bancario">Deposito Bancario</option>
-					<option value="Tranferencia Bancaria">Tranferencia Bancaria</option>
-					<option value="Cheques">Cheques</option>
-					<option value="Efectivo">Efectivo</option>
-				</select>
-				<label>Numero de Factura</label>
-	            <input type="text" class="form-control form-control-sm" name="nfacturau" id="nfacturau">
-	            <br><label>Fecha y Hora de Pago</label><br>
-	            <input type="date"  name="fpago" id="fpago">
-	            <input type="time" value="23:59" name="hpago" id="hpago">
-          </form>
+        	<div class="container-fluid">
+        		<form id="frmactualiza">
+	        		<label>CLIENTE</label>
+	        		<input list="clientesu" class="form-control" name = "clientesuu" id = "clientesuu">
+						<datalist id="clientesu" name= "clientesu">
+						<option disabled selected>Estacion</option>
+						<?php echo $contenidoComboboxCliente ?>
+						</datalist>
+	            	<label>Fecha y hora Inicial</label><br>
+		        	<input type="date"  name="finicialu" id="finicialu">
+		            <input type="time" value="00:00" name="hinicialu" id="hinicialu">
+		            <br><label>Fecha y Hora Final</label><br>
+		            <input type="date"  name="ffinalu" id="ffinalu">
+		            <input type="time" value="23:59" name="hfinalu" id="hfinalu">
+		            <br><label>Tipo de Pago</label>
+		            <select class="form-control" name = "tpagou" id = "tpagou">
+						<option value="Deposito Bancario">Deposito Bancario</option>
+						<option value="Tranferencia Bancaria">Tranferencia Bancaria</option>
+						<option value="Cheques">Cheques</option>
+						<option value="Efectivo">Efectivo</option>
+					</select>
+					<label>Numero de Factura</label>
+		            <input type="text" class="form-control form-control-sm" name="nfacturau" id="nfacturau">
+		            <br><label>Fecha y Hora de Pago</label><br>
+		            <input type="date"  name="fpago" id="fpago">
+		            <input type="time" value="23:59" name="hpago" id="hpago">
+	          </form>
+        	</div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -202,7 +202,7 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 					<span class="btn btn-raised btn-primary btn-lg" data-toggle="modal" data-target="#insertmodal">
-						<span class="fa fa-plus-circle"></span> BUSCAR
+						<span class="fa fa-plus-circle"></span> BUSCAR TICKETS
 					</span>
 					<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#updatemodal"> REALIZAR PAGO
 						<span class="fa fa-pencil-square-o"></span> 
@@ -215,36 +215,9 @@
 							</h1>
 						</center>
 			   		</div>
-			   		 <table class="table table-striped table-bordered"  style="border-style:solid;" >
-					<thead>
-						<tr>
-							<th>CLIENTE</th>
-							<th>FECHA PAGO</th>
-							<th>PAGO</th>
-							<th>FACTURA</th>
-							<th>TICKET(S)</th>
-						</tr>
-					</thead>
-				<?php
-				$sql="CALL v_CONSULTAPAGOSP($idEstaciones)";
-				$result=mysqli_query($conn,$sql);
-
-				while($ver=mysqli_fetch_array($result))
-				{
-				 ?>
-				 <tr>
-
-					<td><?php echo $ver[0]; ?></td>
-					<td><?php echo $ver[1]; ?></td>
-					<td><?php echo $ver[2]; ?></td>
-					<td><?php echo $ver[3]; ?></td>
-					<td><?php echo $ver[4]; ?></td>
-				</tr>
-
-				<?php 
-				}
-				 ?>
-				</table>
+			   		<div id="mainset">
+			   			
+			   		</div>
 				</div>
 			<div class="col-md-2"></div>
 			
@@ -272,65 +245,13 @@
 	<script type="text/javascript" src="../js/SmoothScroll.js"></script>
 	<script type="text/javascript" src="../js/script.js"></script>
 	<script src="../assets/alertify/alertify.js"></script>
+	<script type="text/javascript" src="../js/js_validaciones.js"></script>
+	<script type="text/javascript" src="js/js-pagos-crud.js"></script>
+	<script type="text/javascript" src="js/js-pagos-opciones.js"></script>
 
 	<script type="text/javascript">
 		//Magnific Popup
 	    $('.show-image').magnificPopup({type: 'image'});
-
-		
 	</script>
-	<!--************************************************* VALIDACION ***********************************************-->
-	<SCRIPT type="text/javascript">
-	//VALIDAR FORMULARIO AGREGAR NUEVA ESTACION
-		$(document).ready(function(){
-			$('#btnbuscar').click(function(){
-				if(validarFormVacio('frmBusca') > 0){
-					alertify.alert("Error","Debes llenar todos los campos");
-					return false;
-				}
-				$('#frmBusca').submit();
-			});
-		});
-
-		//VALIDAR FORMULARIO ACTUALIZAR ESTACION
-		$(document).ready(function(){
-			$('#btnpagar').click(function(){
-
-			var datos=$('#frmactualiza').serialize();
-				$.ajax({
-					type:"POST",
-					data:datos,
-					url:"consultas/modificarPagos.php",
-					success:function(r){
-						if(r==1){
-							alertify.success("El pago se ha realizado correctamente");
-							location.reload();
-						}
-						else if(r==2){
-							alertify.error("Error en las fechas");
-						}
-						else if (r != 1 || r != 2){
-						alertify.error("Error al realizar el pago");
-						}
-					}
-				});
-			});
-		});
-
-		//VALIDAR FORMULARIO SI SE ENCUENTRA VACIO O LLENO
-		function validarFormVacio(formulario){
-			var datos = $('#' + formulario).serialize();
-			d=datos.split('&');
-			vacios=0;
-			for(i=0;i< d.length;i++){
-			controles=d[i].split("=");
-			if(controles[1]=="A" || controles[1]==""){
-				vacios++;
-			}
-			}
-			return vacios;
-		}
-	</SCRIPT>
-	<!--************************************************* CRUD ***********************************************-->
 </body>
 </html>

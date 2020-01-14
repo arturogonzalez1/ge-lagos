@@ -2,13 +2,13 @@
 
 	require "../../assets/database.php";
 
-	$nombre = $_POST['nombreC'];
-    $rfc = $_POST['rfcC'];
+	$nombre = strtoupper($_POST['nombreC']);
+    $rfc = strtoupper($_POST['rfcC']);
     $limite = $_POST['limiteC'];
     $diasPago = $_POST['diasPagoC'];
     $diasLimite = $_POST['diasLimiteC'];
     $modalidad = $_POST['modalidadC'];
-    $pa = $_POST['paC'];
+    $pa = strtoupper($_POST['paC']);
     $usuario = $_POST['usuarioC'];
     $psw = $_POST['pswC'];
     $pswC = $_POST['pswCC'];

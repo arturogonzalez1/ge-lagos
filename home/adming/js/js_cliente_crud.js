@@ -78,7 +78,6 @@ $(document).ready(function(){
 		if (!validarModificacionCliente()) {
 			return false;
 		}
-
 		var datos = $('#frmactualiza').serialize();
 		$.ajax({
 			type:"POST",
@@ -92,7 +91,7 @@ $(document).ready(function(){
 					alertify.success("Modificado con exito");
 				}
 				else{
-					alertify.error("No se pudo modificar. "+r);
+					alertify.alert("ERROR AL MODIFICAR", r);
 				}
 			}
 		});

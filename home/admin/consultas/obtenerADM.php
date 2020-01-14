@@ -9,14 +9,15 @@
 
 	$datos=array(
 					'nombre' => $ver[0],
-		            'domicilio' => $ver[1],
-		            'ciudad' => $ver[2],
-		            'estado' => $ver[3],
-		            'telefono' => $ver[4],
-		            'estacion' => $ver[5],
-		            'id' => $ver[6],
-		            'usr' => $ver[7],
-		            'psw' => $ver[8],
+					'rfc' => $ver[1],
+		            'domicilio' => $ver[2],
+		            'ciudad' => $ver[3],
+		            'estado' => $ver[4],
+		            'telefono' => $ver[5],
+		            'estacion' => $ver[6],
+		            'id' => $ver[7],
+		            'usr' => $ver[8],
+		            'psw' => $ver[9],
 				);
 	echo json_encode($datos);
  ?>

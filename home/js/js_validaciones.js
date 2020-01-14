@@ -6,6 +6,7 @@ function ValidarRFC(rfc){
 	var respuesta = true;
 	var expresion = /^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((-)?([A-Z\d]{3}))?$/;
 	if (!expresion.test(rfc)){
+		alertify.alert("ERROR","Introduzca un RFC valido");
 		respuesta = false;
 	}
 	return respuesta;
@@ -14,7 +15,8 @@ function ValidarRFC(rfc){
 function ValidarUserName(username, max){
 	var respuesta = true;
 	var expresion = /\s/;
-	if (!expresion.test(username) || username.lenght > max) {
+	if (expresion.test(username) || username.length > max || username == "") {
+		alertify.alert("ERROR","Introduzca un nombre de usuario valido.");
 		respuesta = false;
 	}
 	return respuesta;
@@ -22,10 +24,14 @@ function ValidarUserName(username, max){
 
 function ValidarNombre(nombre, max){
 	var respuesta = true;
-	var expresion = /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/;
-	if (!expresion.test(nombre) || nombre.lenght > max) {
+	var expresion = /^([A-ZÁÉÍÓÚ][\s]*)+$/
+	if (!expresion.test(nombre) || nombre.length > max) 
+	{
+		alertify.alert("ERROR","Introduzca un nombre valido");
 		respuesta = false;
 	}
+	else
+		console.log("NOMBRE VALIDO");
 	return respuesta;
 }
 
@@ -48,19 +54,40 @@ function ValidarPrecios(value, max){
 }
 
 function ValidarTelefono(telefono){
+	var respuesta = true;
 	var expresion = /^[0-9]{10}$/;
-	console.log(expresion.test(telefono));
+	if (!expresion.test(telefono)){
+		alertify.alert("ERROR","Introduzca un telefono valido.");
+		respuesta = false;
+	}
+	else
+		console.log("TELEFONO VALIDO");
+	return respuesta;
 }
 
 function ValidarEmail(email){
+	var respuesta = true;
 	var expresion = /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/;
-	console.log(expresion.test(email));
+	if (!expresion.test(email)){
+		alertify.alert("ERROR","Introduzca un email valido.");
+		respuesta = false;
+	}
+	return respuesta;
 }
 
 //Solo permite introducir numeros.
 function soloNumeros(e){
     var key = e.charCode;
     if (key == 46 || key >= 48 && key <=57) {
+    	return true;
+    }
+    else{
+    	return false;
+    }
+}
+function SoloNumerosEnteros(e){
+    var key = e.charCode;
+    if (key >= 48 && key <=57) {
     	return true;
     }
     else{

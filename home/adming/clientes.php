@@ -29,6 +29,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../css/light-blue.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../assets/alertify/css/themes/default.css">
 	<link rel="stylesheet" type="text/css" href="../assets/alertify/css/alertify.css">
 
@@ -51,9 +52,9 @@
 						<form id="frmAgregar">
 							<div class="col-md-6">
 								<label>NOMBRE</label>
-								<input type="text" class="form-control form-control-sm" name="nombreC" id="nombreC" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="nombreC" id="nombreC" maxlength="50">
 								<label>RFC</label>
-								<input type="text" class="form-control form-control-sm" name="rfcC" id="rfcC" maxlength="13">
+								<input type="text" class="form-control form-control-sm upper" name="rfcC" id="rfcC" maxlength="13">
 								<label>LIMITE CREDITO</label>
 								<input type="text" class="form-control form-control-sm" name="limiteC" id="limiteC">
 								<label>DIAS DE PAGO</label>
@@ -72,7 +73,7 @@
 									<option value="3">TRIMESTRAL</option>
 								</select>
 								<label>PERSONA AUTORIZADA</label>
-								<input type="text" class="form-control form-control-sm" name="paC" id="paC" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="paC" id="paC" maxlength="50">
 								<label>USUARIO</label>
 								<input type="text" class="form-control form-control-sm" name="usuarioC" id="usuarioC" maxlength="20">
 								<label>CONTRASEÑA</label>
@@ -108,31 +109,31 @@
 					<div class="container-fluid">
 						<form id="frmactualiza">
 							<div class="col-md-6">
-									<input type="text" hidden="" name="idClienteM" id="idClienteM">
-									<label>NOMBRE</label>
-									<input type="text" class="form-control form-control-sm" name="nombreCM" id="nombreCM" maxlength="50">
-									<label>RFC</label>
-									<input type="text" class="form-control form-control-sm" name="rfcCM" id="rfcCM" maxlength="13">
-									<label>LIMITE CREDITO</label>
-									<input type="text" class="form-control form-control-sm" name="limiteCM" id="limiteCM">
-									<label>DIAS DE PAGO</label>
-									<input type="text" class="form-control form-control-sm" name="diasPagoCM" id="diasPagoCM">
-									<label>DIAS LIMITE DE PAGO</label>
-									<select class="form-control" id = "diasLimiteCM" name="diasLimiteCM">
-										<option value="1">MENSUAL</option>
-										<option value="2">BIMESTRAL</option>
-										<option value="3">TRIMESTRAL</option>
-									</select>
+								<input type="text" hidden="" name="idClienteM" id="idClienteM">
+								<label>NOMBRE</label>
+								<input type="text" class="form-control form-control-sm upper" name="nombreCM" id="nombreCM" maxlength="50">
+								<label>RFC</label>
+								<input type="text" class="form-control form-control-sm upper" name="rfcCM" id="rfcCM" maxlength="13">
+								<label>LIMITE CREDITO</label>
+								<input type="text" class="form-control form-control-sm" name="limiteCM" id="limiteCM">
+								<label>DIAS DE PAGO</label>
+								<input type="text" class="form-control form-control-sm" name="diasPagoCM" id="diasPagoCM">
+								<label>DIAS LIMITE DE PAGO</label>
+								<select class="form-control" id = "diasLimiteCM" name="diasLimiteCM">
+									<option value="1">MENSUAL</option>
+									<option value="2">BIMESTRAL</option>
+									<option value="3">TRIMESTRAL</option>
+								</select>
+							</div>
+								<div class="col-md-6">
 									<label>MODALIDAD</label>
 									<select class="form-control" id = "modalidadCM" name="modalidadCM">
 										<option value="1">CREDITO</option>
 										<option value="2">DEBITO</option>
 										<option value="3">CONTADO</option>
 									</select>
-								</div>
-								<div class="col-md-6">
 									<label>PERSONA AUTORIZADA</label>
-									<input type="text" class="form-control form-control-sm" name="paCM" id="paCM" maxlength="50">
+									<input type="text" class="form-control form-control-sm upper" name="paCM" id="paCM" maxlength="50">
 									<label>USUARIO</label>
 									<input type="text" class="form-control form-control-sm" name="usuarioCM" id="usuarioCM" maxlength="20">
 									<label>NUEVA CONTRASEÑA</label>

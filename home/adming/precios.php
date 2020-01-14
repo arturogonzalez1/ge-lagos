@@ -22,10 +22,6 @@
   <!-- Mobile Specific Metas-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-
-	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,700,800' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Crete+Round:400,400italic' rel='stylesheet' type='text/css'>
-
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" media="screen">
 	
 	<link rel="stylesheet" type="text/css" href="../css/magnific-popup.css" media="screen">
@@ -52,17 +48,17 @@
 				<div class="modal-body">
 					<form id="frmAgrega">
 							<label>PRECIO DIESEL</label>
-							<input type="text" class="form-control form-control-sm" name="diesel" id="diesel" MAXLENGTH="5" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+							<input type="text" class="form-control form-control-sm" name="diesel" id="diesel" MAXLENGTH="5">
 							<br>
 							<label>PRECIO MAGNA</label>
-							<input type="text" class="form-control form-control-sm" name="magna" id="magna" MAXLENGTH="5" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+							<input type="text" class="form-control form-control-sm" name="magna" id="magna" MAXLENGTH="5">
 							<label>PRECIO PREMIUM</label>
-							<input type="text" class="form-control form-control-sm" name="premium" id="premium" MAXLENGTH="5" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+							<input type="text" class="form-control form-control-sm" name="premium" id="premium" MAXLENGTH="5">
 					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<button type="button" class="btn btn-raised btn-primary" id="btnAgregarEstacion">Programar</button>
+					<button type="button" class="btn btn-raised btn-primary" id="btnAgregarPrecio">Programar</button>
 				</div>
 			</div>
 		</div>
@@ -83,16 +79,16 @@
 				<div class="modal-body">
 					<form id="frmactualiza">
 						<label>PRECIO DIESEL</label>
-						<input type="text" class="form-control form-control-sm" name="dieselm" id="dieselm" MAXLENGTH="5" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+						<input type="text" class="form-control form-control-sm" name="dieselm" id="dieselm" MAXLENGTH="5">
 						<label>PRECIO MAGNA</label>
-						<input type="text" class="form-control form-control-sm" name="magnam" id="magnam" MAXLENGTH="5" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+						<input type="text" class="form-control form-control-sm" name="magnam" id="magnam" MAXLENGTH="5">
 						<label>PRECIO PREMIUM</label>
-						<input type="text" class="form-control form-control-sm" name="premiumm" id="premiumm" MAXLENGTH="5" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+						<input type="text" class="form-control form-control-sm" name="premiumm" id="premiumm" MAXLENGTH="5">
 					</form>
 				</div>
 				<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-raised btn-warning" id="btnactualizar">MODIFICAR</button>
+				<button type="button" class="btn btn-raised btn-warning" id="btnActualizar">MODIFICAR</button>
 				</div>
 			</div>
 		</div>
@@ -170,7 +166,7 @@
 				<span class="btn btn-raised btn-primary btn-lg" data-toggle="modal" data-target="#addmodal">
 					<span class="fa fa-plus-circle"></span> PROGRAMAR PRECIO
 				</span>
-				<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#updatemodal">
+				<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#updatemodal" id="btnUpdateModal">
 					<span class="fa fa-pencil-square-o"></span> MODIFICAR PRECIO ACTUAL
 				</span>
 				<div class="row" style="background-color: #343A46 ">
@@ -224,148 +220,14 @@
 	<script type="text/javascript" src="../js/SmoothScroll.js"></script>
 	<script type="text/javascript" src="../js/script.js"></script>
 	<script src="../assets/alertify/alertify.js"></script>
+	<script type="text/javascript" src="../js/js_validaciones.js"></script>
+	<script type="text/javascript" src="js/js-precios-crud.js"></script>
+	<script type="text/javascript" src="js/js-precios-opciones.js"></script>
+	<script type="text/javascript" src="js/js-precios-validaciones.js"></script>
 
 	<script type="text/javascript">
 		//Magnific Popup
 	    $('.show-image').magnificPopup({type: 'image'});
-
-		
 	</script>
-	<!--************************************************* VALIDACION ***********************************************-->
-	<SCRIPT>
-	//VALIDAR FORMULARIO AGREGAR NUEVA precio
-		$(document).ready(function(){
-			$('#mainsetPrecioActual').load('content.admine.precioactual.view.php');
-			$('#mainsetSiguientePrecio').load('content.admine.precionext.view.php');
-			$('#mainsetHistorialPrecios').load('content.admine.historial.view.php');
-			$('#btnAgregarEstacion').click(function(){
-			if(validarFormVacio('frmAgrega') > 0){
-				alertify.alert("Error","Debes llenar todos los campos");
-				return false;
-			}
-			datos=$('#frmAgrega').serialize();
-			$.ajax({
-				type:"POST",
-				data:datos,
-				url:"consultas/agregarPrecio.php",
-				success:function(r){
-				if(r==1){
-					$('#frmAgrega')[0].reset();
-					$('#mainsetSiguientePrecio').load('content.admine.precionext.view.php');
-					$('#addmodal').modal('hide');
-					alertify.success("Agregado con exito :)");
-					window.location("estaciones.php");
-				}
-				else{
-					alertify.error("No se pudo agregar: " + r);
-				}
-			}
-			});
-			});
-
-
-			$('#btnactualizar').click(function(){
-			if(validarFormVacio('frmactualiza') > 0){
-				alertify.alert("Error","Debes llenar todos los campos");
-				return false;
-			}
-			datos=$('#frmactualiza').serialize();
-			$.ajax({
-				type:"POST",
-				data:datos,
-				url:"consultas/modificarPrecio.php",
-				success:function(r){
-				if(r==1){
-					$('#frmactualiza')[0].reset();
-					$('#updatemodal').modal('hide');
-					$('#mainsetPrecioActual').load('content.admine.precioactual.view.php');
-					$('#mainsetSiguientePrecio').load('content.admine.precionext.view.php');
-					$('#mainsetHistorialPrecios').load('content.admine.historial.view.php');
-					alertify.success("El precio se ha modificado con exito :)");
-				}
-				else{
-					alertify.error("No se pudo modificar: " + r);
-				}
-			}
-			});
-			});
-		});
-
-		//VALIDAR FORMULARIO ACTUALIZAR ESTACION
-		$(document).ready(function(){
-			$('#btnactualizar').click(function(){
-
-			datos=$('#frmactualiza').serialize();
-				$.ajax({
-				type:"POST",
-				data:datos,
-				url:"php/actualizar.php",
-				success:function(r){
-					if(r==1){
-					//$('#tablastores').load('tabla.php');
-					alertify.success("Actualizado con exito :)");
-					}else{
-					alertify.error("No se pudo actualizar :(");
-					}
-				}
-				});
-			});
-		});
-
-		//VALIDAR FORMULARIO SI SE ENCUENTRA VACIO O LLENO
-		function validarFormVacio(formulario){
-			datos=$('#' + formulario).serialize();
-			d=datos.split('&');
-			vacios=0;
-			for(i=0;i< d.length;i++){
-			controles=d[i].split("=");
-			if(controles[1]=="A" || controles[1]==""){
-				vacios++;
-			}
-			}
-			return vacios;
-		}
-	</SCRIPT>
-	<!--************************************************* CRUD ***********************************************-->
-	<SCRIPT>
-
-		function obtenerDatos(){
-			var x = 0;
-			$.ajax({
-			type:"POST",
-			data:"x=" + x,
-			url:"consultas/obtenerPrecio.php",
-			success:function(r){
-				datos=jQuery.parseJSON(r);
-
-				$('#dieselm').val(datos['diesel']);
-				$('#magnam').val(datos['magna']);
-				$('#premiumm').val(datos['premium']);
-			}
-			});
-		}
-
-		function eliminarEstacion(){
-		alertify.confirm('ELIMINAR ESTACION', '<CENTER>¿ESTA SEGURO DE BORRAR ESTA ESTACION? <br><br> <FONT style="color:red;">SE PERDERAN TODOS LOS REGISTROS EN RELACION<FONT></CENTER>', 
-				function(){ 
-					$.ajax({
-						type:"POST",
-						data:"idjuego=" + idjuego,
-						url:"php/eliminar.php",
-						success:function(r){
-							if(r==1){     
-								$('#tablastores').load('tabla.php');
-								alertify.success("Eliminado con exito :)");
-							}else{
-								alertify.error("No se pudo eliminar :(");
-							}
-						}
-					});
-				}
-				,function(){ 
-					alertify.error('OPERACION CANCELADA')
-				});
-		}
-	</SCRIPT>
 </body>
 </html>

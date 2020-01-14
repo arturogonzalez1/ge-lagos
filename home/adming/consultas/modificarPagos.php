@@ -10,7 +10,6 @@
     $fecha = $_POST['fpago']. ' ' .$_POST['hpago'];
     $nFactura= $_POST['nfacturau'];
     
-    	$query = "call p_PAGOS('$cliente', $idEstacion, '$fInicial', '$fFinal', '$tPago','$nFactura', '$fecha')";
-    	mysqli_query($conn,$query);
-        echo 1;
+    $query = "call p_PAGOS('$cliente', $idEstacion, '$fInicial', '$fFinal', '$tPago','$nFactura', '$fecha')";
+    echo mysqli_query($conn,$query);
  ?>

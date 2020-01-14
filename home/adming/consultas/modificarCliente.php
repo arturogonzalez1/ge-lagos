@@ -4,13 +4,13 @@
 
 	$id = $_POST['idClienteM'];
 
-    $nombre = $_POST['nombreCM'];
-    $rfc = $_POST['rfcCM'];
+    $nombre = strtoupper($_POST['nombreCM']);
+    $rfc = strtoupper($_POST['rfcCM']);
     $lim = $_POST['limiteCM'];
     $dias = $_POST['diasPagoCM'];
     $diasLimite = $_POST['diasLimiteCM'];
     $modalidad = $_POST['modalidadCM'];
-    $pa = $_POST['paCM'];
+    $pa = strtoupper($_POST['paCM']);
     $usr = $_POST['usuarioCM'];
     $psw = $_POST['pswCM'];
     $pswc = $_POST['pswCCM'];
@@ -37,8 +37,11 @@
 
         if ($result){
                 $ver = mysqli_fetch_row($result);
-                if ($ver[0] == 2){
+                if ($ver[0] == 1){
                     echo 1;
+                }
+                if ($ver[0] == 2){
+                    echo "LA DEUDA ACTUAL SOBREPASA EL LIMITE DE CREDITO";
                 }
                 if ($ver[0] == 3){
                     echo "USUARIO NO DISPONIBLE. INTENTE USAR OTRO";

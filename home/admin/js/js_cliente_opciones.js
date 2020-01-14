@@ -76,6 +76,7 @@ function obtenerDatos(id){
 			$('#paCM').val(datos['pa']);
 			$('#nombreCM').val(datos['nombre']);
 			$('#rfcCM').val(datos['rfc']);
+			$('#modalidadCM').val(datos['modalidad']);
 			$('#updatemodal').modal();
 		}
 	});

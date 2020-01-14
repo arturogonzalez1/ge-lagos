@@ -42,6 +42,7 @@ function modificarTicket(user, numvale, importe){
 }
 //VER HISTORIAL DEL CLIENTE
 function verHistorial(idcliente, f1, f2){
+
 	var datos = new FormData();
 	datos.append('idcliente', idcliente);
 	datos.append('filtro1', f1);
@@ -62,6 +63,7 @@ function verHistorial(idcliente, f1, f2){
 }
 //OBTENER DATOS PARA MODIFICAR
 function obtenerDatos(id){
+	$('#frmactualiza')[0].reset();
 	$.ajax({
 		type:"POST",
 		data:"id=" + id,
