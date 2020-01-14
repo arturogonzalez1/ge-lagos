@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	if (!isset($_SESSION['adm_loged']) || $_SESSION['adm_loged'] == false || $_SESSION['adm_nivelP'] != 4)
+	if (!isset($_SESSION['adm_loged']) || !$_SESSION['adm_loged'] || $_SESSION['adm_nivelP'] != 4)
 	{
 		header("Location: ../logout.php");
 	}
