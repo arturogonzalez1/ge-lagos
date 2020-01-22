@@ -1,14 +1,20 @@
 <?php 
     session_start();
+
+    require "../../assets/bd.php";
 	require "../../assets/database.php";
+    require "../../assets/funciones.php";
+
+    $funciones = new Funciones();
+    $_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
 
     //INFORMACION
-	$nombre = $_POST['nombreGAS'];
-    $domicilio = $_POST['domicilioGAS'];
-    $ciudad = $_POST['ciudadGAS'];
+	$nombre = strtoupper(trim($_POST['nombreGAS']));
+    $domicilio = strtoupper(trim($_POST['domicilioGAS']));
+    $ciudad = strtoupper(trim($_POST['ciudadGAS']));
     $estado = $_POST['estadoGAS'];
     $telefono = $_POST['telefonoGAS'];
-    $usr = $_POST['usrGAS'];
+    $usr = trim($_POST['usrGAS']);
     $psw = $_POST['pswGAS'];
     $pswc = $_POST['pswcGAS'];
     $estacion = $_SESSION['adm_idEstacion'];
@@ -27,24 +33,34 @@
         
         move_uploaded_file(imagejpeg($copia, $ruta, 100),$ruta);
         $query = "CALL p_GASOLINERO('$nombre','$domicilio','$ciudad','$estado','$telefono','$usr','$psw', $estacion)";
-        $result = mysqli_query($conn,$query);
+        $ver = $_conexion->EjecutarConsulta($query);
+        //$result = mysqli_query($conn,$query);
 
-        if ($result)
+        if (is_array($ver))
         {
-            $ver = mysqli_fetch_row($result);
-            if ($ver[0] == 2)
+            if ($ver[0] == 1)
             {
+                $_conexion->Commit();
                 echo 1;
             }
-            else
+            else if ($ver[0] == 2)
             {
+                if(file_exists($ruta))
+                {
+                    unlink($ruta);
+                }
                 echo "ESTE USUARIO YA ESTA REGISTRADO";
             }
         }
         else
         {
-            echo 0;
+            $funciones -> Rollback();
+            if(file_exists($ruta))
+            {
+                unlink($ruta);
+            }
+            echo "ERROR AL INSERTAR";
         }
     }
-    else echo "Las contraseñas no coinciden";
+    else echo "LAS CONTRASENAS NO COINCIDEN";
  ?>

@@ -50,26 +50,28 @@ ciudad.addEventListener('keypress', function(event){
 	}
 });
 telefono.addEventListener('keypress', function(event){
-	if (telefono.value.length >= 10) {
-		console.log("Solo se permiten 10 caracteres en el campo telefono");
+	var key = event.charCode;
+	if (telefono.value.length >= 10 || key < 48 || key > 57) {
+		console.log("Solo se permiten 10 caracteres numericos en el campo telefono");
 		event.returnValue = false;
 	}
 });
 username.addEventListener('keypress', function(event){
-	if (username.value.length >= 50) {
-		console.log("Solo se permiten 50 caracteres en el campo username");
+	var key = event.charCode;
+	if (username.value.length >= 20 || key == 32) {
+		console.log("Solo se permiten 20 caracteres en el campo username sin espacios");
 		event.returnValue = false;
 	}
 });
 psw.addEventListener('keypress', function(event){
-	if (psw.value.length >= 16) {
-		console.log("Solo se permiten 16 caracteres en el campo clave");
+	if (psw.value.length >= 8) {
+		console.log("Solo se permiten 8 caracteres en el campo contrasena");
 		event.returnValue = false;
 	}
 });
 pswc.addEventListener('keypress', function(event){
-	if (pswc.value.length >= 16) {
-		console.log("Solo se permiten 50 caracteres en el campo clave confirmacion");
+	if (pswc.value.length >= 8) {
+		console.log("Solo se permiten 8 caracteres en el campo confirmacion de contrasena");
 		event.returnValue = false;
 	}
 });
@@ -104,26 +106,28 @@ ciudadM.addEventListener('keypress', function(event){
 	}
 });
 telefonoM.addEventListener('keypress', function(event){
-	if (telefonoM.value.length >= 10) {
-		console.log("Solo se permiten 10 caracteres en el campo telefono");
+	var key = event.charCode;
+	if (telefonoM.value.length >= 10 || key < 48 || key > 57) {
+		console.log("Solo se permiten 10 caracteres numericos en el campo telefono");
 		event.returnValue = false;
 	}
 });
 usernameM.addEventListener('keypress', function(event){
-	if (usernameM.value.length >= 50) {
-		console.log("Solo se permiten 50 caracteres en el campo username");
+	var key = event.charCode;
+	if (usernameM.value.length >= 20 || key == 32) {
+		console.log("Solo se permiten 20 caracteres en el campo username sin espacios");
 		event.returnValue = false;
 	}
 });
 pswM.addEventListener('keypress', function(event){
-	if (pswM.value.length >= 16) {
-		console.log("Solo se permiten 16 caracteres en el campo clave");
+	if (pswM.value.length >= 8) {
+		console.log("Solo se permiten 8 caracteres en el campo clave");
 		event.returnValue = false;
 	}
 });
 pswcM.addEventListener('keypress', function(event){
-	if (pswcM.value.length >= 16) {
-		console.log("Solo se permiten 50 caracteres en el campo clave confirmacion");
+	if (pswcM.value.length >= 8) {
+		console.log("Solo se permiten 8 caracteres en el campo clave confirmacion");
 		event.returnValue = false;
 	}
 });

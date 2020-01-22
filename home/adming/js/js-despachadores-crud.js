@@ -38,10 +38,10 @@ $(document).ready(function(){
 					$('#mainset').load('tabla.admine.gasolineros.php');
 					$('#addmodal').modal('hide');
 					$('#frmAgregar')[0].reset();
-					alertify.success("Agregado con exito :)");
+					alertify.success("Despachador agregado con exito.");
 				}
 				else{
-					alertify.error("No se pudo agregar: " + r);
+					alertify.alert("No se pudo agregar: " + r);
 				}
 			}
 		});
@@ -90,7 +90,7 @@ $(document).ready(function(){
 					alertify.success("El usuario se ha actualizado con exito");
 				}
 				else{
-					alertify.error("No se pudo actualizar " + r);
+					alertify.alert("ERROR",  r);
 				}
 			}
 		});
@@ -110,7 +110,7 @@ alertify.confirm('BAJA DESPACHADOR', '<CENTER>¿ESTA SEGURO DE BORRAR EL DESPACH
 						$('#mainset').load('tabla.admine.gasolineros.php');
 						alertify.success("El despachador ha sido eliminado con exito");
 					}else{
-						alertify.error("No se pudo eliminar");
+						alertify.alert("ERROR", r);
 					}
 				}
 			});

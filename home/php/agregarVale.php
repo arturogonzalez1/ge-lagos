@@ -9,7 +9,7 @@
 	$idU = $_SESSION['c_user_id'];
 
 	$placa = $_POST['txtVPlacaAutorizada'];
-	$chofer = $_POST['txtVChoferAutorizado'];
+	$chofer = strtoupper($_POST['txtVChoferAutorizado']);
 	$tipoComb = $_POST['txtVTipoCombustible'];
 
 

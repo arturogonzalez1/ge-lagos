@@ -3,10 +3,10 @@
 	require "../assets/database.php";
 
     $id = $_SESSION['c_user_id'];
-	$placa = $_POST['placa'];
-    $marca = $_POST['marca'];
+	$placa = strtoupper($_POST['placa']);
+    $marca = strtoupper($_POST['marca']);
     $unidad = $_POST['unidad'];
-    $modelo = $_POST['modelo'];
+    $modelo = strtoupper($_POST['modelo']);
     $motor = $_POST['motor'];
 
     if (isset($_FILES['foto']['name']))

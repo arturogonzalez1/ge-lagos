@@ -38,6 +38,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="css/light-blue.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="assets/alertify/css/themes/default.css">
 	<link rel="stylesheet" type="text/css" href="assets/alertify/css/alertify.css">
 	
@@ -59,29 +60,34 @@
 						<div class="col-md-6">
 							<br>
 							<form id="frmAgrega">
-								<select class="form-control" name = "txtfkVehiculo" id = "slcVehiculo" onchange="ImagenV()">
-									<option disabled selected>Placa Vehiculo</option>
+								<label>PLACA</label>
+								<select class="form-control" name = "txtfkVehiculo" id = "slcVehiculo">
 									<?php echo $contenidoCombobox ?>
 								</select>
-
-								<select class="form-control" id = "slcTipoCombustible" onchange="ControlPorTipoCombustible()">
-									<option disabled selected name="slcTipo">Tipo de Combustible</option>
+								<label>TIPO DE COMBUSTIBLE</label>
+								<select class="form-control" id = "slcTipoCombustible">
 									<option value="DIESEL">DIESEL</option>
 									<option value="MAGNA">MAGNA</option>
 									<option value="PREMIUM">PREMIUM</option>
 									<option value="LUBRICANTE">LUBRICANTE</option>
 								</select>
-								<select class="form-control" id = "slcTipoCons" onchange="ControlPorTipoConsumo()">
-									<option disabled selected name="slcTipoCons">Tipo de consumo</option>
-									<option value="Litros">Por Litros</option>
-									<option value="Importe">Por Importe</option>
+								<label>TIPO DE CONSUMO</label>
+								<select class="form-control" id = "slcTipoCons">
+									<option value="Litros">POR LITROS</option>
+									<option value="Importe">POR IMPORTE</option>
 								</select>
-								<input type="text" name="txtLitros" class="form-control" placeholder="Litros" disabled="" id="txtLitros">
-								<input type="text" name="txtImporte" class="form-control" placeholder="Importe" disabled="" id="txtImporte">
-								<input type="text" name="txtChofer" class="form-control" placeholder="Operador Autorizado" id="txtChofer" onkeyup="javascript:this.value=this.value.toUpperCase();">
 							</form>
 						</div>
 						<div class="col-md-6">
+							<br>
+							<label>LITROS</label>
+							<input type="text" name="txtLitros" class="form-control" placeholder="0.000" disabled="" id="txtLitros">
+							<label>IMPORTE</label>
+							<input type="text" name="txtImporte" class="form-control" placeholder="0.00" disabled="" id="txtImporte">
+							<label>OPERADOR AUTORIZADO</label>
+							<input type="text" name="txtChofer" class="form-control upper" placeholder="NOMBRE" id="txtChofer">
+						</div>
+						<div class="col-md-12">
 							<font color="black" style="text-align: center;"><H3 id = "lblPlaca">PLACA</H3></font>
 							<br>
 							<center>
@@ -132,7 +138,7 @@
 						<form id="frmAutoriza">
 							<div class="row">
 								<div class="col-md-6" style="text-align: right;">
-									<label>NUMERO DE VALE</label>
+									<label>NO. VALE</label>
 								</div>
 								<div class="col-md-6" style="text-align: center;">
 									<input type="text" name="txtVNoVale" id="lblNoVale" value='<?php echo $numVale ?>' style="border:0" readonly="" size="10">
@@ -207,41 +213,8 @@
 		</div>
 	</div>
 	<!--************************************************* autorizar modal ***********************************************-->
-	<!--************************************************* updatemodal ***********************************************-->
-	<div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-sm" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-		
-				<h5 class="modal-title" id="exampleModalLabel">MODIFICAR VEHICULO</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				</div>
-				<div class="modal-body">
-					<form id="frmactualiza">
-						<label>PLACA</label>
-						<input type="text" class="form-control form-control-sm" name="placaVM" id="placaVM">
-						<label>MARCA</label>
-						<input type="text" class="form-control form-control-sm" name="marcaVM" id="marcaVM">
-						<label>MODELO</label>
-						<input type="text" class="form-control form-control-sm" name="modeloVM" id="modeloVM">
-						<label>UNIDAD</label>
-						<input type="text" class="form-control form-control-sm" name="unidadVM" id="unidadVM">
-						<label>MOTOR</label>
-						<input type="text" class="form-control form-control-sm" name="motorVM" id="motorVM">
-				</form>
-				</div>
-				<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-raised btn-warning" id="btnactualizar">MODIFICAR</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--************************************************* updatemodal ***********************************************-->
-	<!-- Header
-	================================================== -->
+	
+	<!-- Header================================================== -->
 	<header style="position:fixed;">
 		<div class="logo-box logo">
 			<h1><a href=""><img src="images/logo1.jpg" alt="Login"> </a></h1>

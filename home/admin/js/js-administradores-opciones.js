@@ -17,7 +17,7 @@ function obtenerDatos(usr){
 			$('#estadoADMM').val(datos['estado']);
 			$('#telefonoADMM').val(datos['telefono']);
 			$('#estacionADMM').val(datos['estacion']);
-			//$('#usrADMM').val(datos['usr']);
+			$('#updatemodal').modal();
 		}
 	});
 }

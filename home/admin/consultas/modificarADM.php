@@ -1,5 +1,9 @@
 <?php 
+	require "../../assets/bd.php";
 	require "../../assets/database.php";
+
+	$_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
+
 	$id = $_POST['idADMM'];
 	$nombre = strtoupper($_POST['nombreADMM']);
 	$rfc = strtoupper($_POST['rfcADMM']);
@@ -15,11 +19,22 @@
     if ($psw == $pswc)
     {
 		$query = "CALL p_UPDATE_ADM($id, $estacion, '$nombre', '$rfc','$domicilio', '$ciudad', '$estado', '$telefono', '$usr', '$psw');";
-		$result = mysqli_query($conn,$query);
-		$ver = mysqli_fetch_row($result);
-
-	    if ($ver[0] == 1)echo 1;
-	    if ($ver[0] == 2)echo 2;
-	    if ($ver[0] == 3)echo 3;
+		$datos = $_conexion->EjecutarConsulta($query);
+		if (is_array($datos)) {
+			if ($datos[0] == 1) {
+				$_conexion->Commit();
+				echo 1;
+			}
+			if ($datos[0] == 2) {
+				echo "El RFC ya esta registrado";
+			}
+			if ($datos[0] == 3) {
+				echo "El usuario ya esta registrado";
+			}
+		}
+		else {
+			$_conexion->Rollback();
+			echo "No se ha podido actualizar";
+		}
 	}
  ?>

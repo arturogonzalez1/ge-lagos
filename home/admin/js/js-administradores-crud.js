@@ -5,11 +5,6 @@ $(document).ready(function(){
 
 	//------------------------------------- NUEVO ADMINISTRADOR DE ESTACION --------------------------------------
 	$('#btnAgregarADM').click(function(){
-		if(validarFormVacio('frmAgrega') > 0){
-			alertify.alert("Error","Debes llenar todos los campos");
-			console.log("Debes llenar todos los campos");
-			return false;
-		}
 		if (!ValidarADM()){
 			return false;
 		}
@@ -23,7 +18,7 @@ $(document).ready(function(){
 					$('#frmAgrega')[0].reset();
 					$('#mainset').load('tabla.admin.administradores.view.php');
 					$('#addmodal').modal('hide');
-					alertify.success("Agregado con exito :)");
+					alertify.success("Agregado con exito.");
 				}
 				else{
 					alertify.error("No se pudo agregar: " + r);
@@ -34,11 +29,6 @@ $(document).ready(function(){
 
 	//------------------------------------- MODIFICAR ADMINISTRADOR DE ESTACION --------------------------------------
 	$('#btnactualizar').click(function(){
-		console.log("Has clickeado el boton de actualizar");
-		if(validarFormVacio('frmactualiza') > 0){
-			alertify.alert("Error","Debes llenar todos los campos");
-			return false;
-		}
 		if (!ValidarModificacionADM()){
 			return false;
 		}
@@ -55,11 +45,8 @@ $(document).ready(function(){
 					$('#mainset').load('tabla.admin.administradores.view.php');
 					alertify.success("Actualizado con exito");
 				}
-				else if (r == 3) {
-					alertify.error("No se ha actualizado. Usuario no disponible");
-				}
-				else{
-					alertify.error("No se pudo actualizar");
+				else {
+					alertify.alert("ERROR AL MODIFICAR", r);
 				}
 			}
 		});

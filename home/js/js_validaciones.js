@@ -6,7 +6,6 @@ function ValidarRFC(rfc){
 	var respuesta = true;
 	var expresion = /^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((-)?([A-Z\d]{3}))?$/;
 	if (!expresion.test(rfc)){
-		alertify.alert("ERROR","Introduzca un RFC valido");
 		respuesta = false;
 	}
 	return respuesta;
@@ -16,7 +15,6 @@ function ValidarUserName(username, max){
 	var respuesta = true;
 	var expresion = /\s/;
 	if (expresion.test(username) || username.length > max || username == "") {
-		alertify.alert("ERROR","Introduzca un nombre de usuario valido.");
 		respuesta = false;
 	}
 	return respuesta;
@@ -24,14 +22,10 @@ function ValidarUserName(username, max){
 
 function ValidarNombre(nombre, max){
 	var respuesta = true;
-	var expresion = /^([A-ZÁÉÍÓÚ][\s]*)+$/
-	if (!expresion.test(nombre) || nombre.length > max) 
-	{
-		alertify.alert("ERROR","Introduzca un nombre valido");
+	var expresion = /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?/g
+	if (!expresion.test(nombre) || nombre.length > max || nombre == "") {
 		respuesta = false;
 	}
-	else
-		console.log("NOMBRE VALIDO");
 	return respuesta;
 }
 
@@ -57,7 +51,6 @@ function ValidarTelefono(telefono){
 	var respuesta = true;
 	var expresion = /^[0-9]{10}$/;
 	if (!expresion.test(telefono)){
-		alertify.alert("ERROR","Introduzca un telefono valido.");
 		respuesta = false;
 	}
 	else
@@ -69,7 +62,6 @@ function ValidarEmail(email){
 	var respuesta = true;
 	var expresion = /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/;
 	if (!expresion.test(email)){
-		alertify.alert("ERROR","Introduzca un email valido.");
 		respuesta = false;
 	}
 	return respuesta;
@@ -113,7 +105,6 @@ function validarClaves(clave, claveconfirmacion){
 		return true;
 	}
 	else {
-		alertify.alert("Error","Las contraseñas no coinciden");
 		return false;
 	}
 }

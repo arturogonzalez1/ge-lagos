@@ -39,7 +39,7 @@
 							<td><?php echo $ver[8]; ?></td>
 							<td style="text-align: center;">
 								<span class="btn btn-raised btn-warning btn-xs" 
-									onclick="obtenerDatos('<?php echo $ver[5]; ?>')" data-toggle="modal" data-target="#updatemodal">
+									onclick="obtenerDatos('<?php echo $ver[5]; ?>')">
 									<span class="fa fa-pencil-square-o"></span>
 								</span>
 							</td>

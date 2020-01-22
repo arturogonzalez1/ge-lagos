@@ -13,6 +13,7 @@ function obtenerDatos(numEstacion){
 			$('#nombreEM').val(datos['nombre']);
 			$('#rfcEM').val(datos['rfc']);
 			$('#estadoEM').val(datos['estado']);
+			$('#updatemodal').modal();
 		}
 	});
 }

@@ -3,8 +3,8 @@
 
 	$id = $_POST['idEM'];
 	$num = $_POST['numEM'];
-	$nombre = $_POST['nombreEM'];
-	$rfc = $_POST['rfcEM'];
+	$nombre = strtoupper($_POST['nombreEM']);
+	$rfc = strtoupper($_POST['rfcEM']);
     $estado = $_POST['estadoEM'];
 
 	$query = "CALL p_UPDATE_ESTACION($id, $num, '$nombre', '$rfc', '$estado');";

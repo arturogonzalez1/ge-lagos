@@ -250,5 +250,17 @@
 			}
 				return $ver;
 	    }
+
+	    function Commit(){
+	    	require 'database.php';
+	    	$query = "CALL p_COMMIT()";
+	    	return mysqli_query($conn2, $query);
+	    }
+
+	    function Rollback(){
+	    	require 'database.php';
+	    	$query = "CALL p_ROLLBACK()";
+	    	return mysqli_query($conn2, $query);
+	    }
 	}
  ?>

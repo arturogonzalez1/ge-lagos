@@ -29,6 +29,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../css/light-blue.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../assets/alertify/css/themes/default.css">
 	<link rel="stylesheet" type="text/css" href="../assets/alertify/css/alertify.css">
 	
@@ -46,32 +47,31 @@
 				<div class="modal-body">
 					<div class="container-fluid">
 						<form id="frmAgregar">
-							<div class="col-md-6">
-								<br>
+							<div class="col-md-12">
 								<label>NOMBRE</label>
-								<input type="text" class="form-control form-control-sm" name="nombreGAS" id="nombreGAS" maxlength="50">
-								<label>DOMICILIO</label>
-								<input type="text" class="form-control form-control-sm" name="domicilioGAS" id="domicilioGAS" maxlength="50">
-								<label>CIUDAD</label>
-								<input type="text" class="form-control form-control-sm" name="ciudadGAS" id="ciudadGAS" maxlength="30">
-								<label>ESTADO</label>
-								<select type="text" class="form-control form-control-sm" name="estadoGAS" id="estadoGAS">
-									<option disabled selected>ESTADO</option>
-							  		<option value="JALISCO">JALISCO</option>
-								</select>
-								<label>FOTOGRAFIA</label>
-								<input type="file" class="form-control form-control-sm" name="fotoGAS" id="fotoGAS" accept="image/jpeg">
+								<input type="text" class="form-control form-control-sm upper" name="nombreGAS" id="nombreGAS">
 							</div>
 							<div class="col-md-6">
-								<br>
+								<label>DOMICILIO</label>
+								<input type="text" class="form-control form-control-sm upper" name="domicilioGAS" id="domicilioGAS">
+								<label>CIUDAD</label>
+								<input type="text" class="form-control form-control-sm upper" name="ciudadGAS" id="ciudadGAS">
+								<label>ESTADO</label>
+								<select type="text" class="form-control form-control-sm" name="estadoGAS" id="estadoGAS">
+							  		<option value="JALISCO">JALISCO</option>
+								</select>
 								<label>TELEFONO</label>
-								<input type="text" class="form-control form-control-sm" name="telefonoGAS" id="telefonoGAS" maxlength="20">
+								<input type="text" class="form-control form-control-sm" name="telefonoGAS" id="telefonoGAS">
+							</div>
+							<div class="col-md-6">
 								<label>NOMBRE DE USUARIO</label>
-								<input type="text" class="form-control form-control-sm" name="usrGAS" id="usrGAS" maxlength="20">
+								<input type="text" class="form-control form-control-sm" name="usrGAS" id="usrGAS">
 								<label>CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="pswGAS" id="pswGAS" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="pswGAS" id="pswGAS">
 								<label>CONFIRMAR CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="pswcGAS" id="pswcGAS" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="pswcGAS" id="pswcGAS">
+								<label>FOTOGRAFIA</label>
+								<input type="file" class="form-control form-control-sm" name="fotoGAS" id="fotoGAS" accept="image/jpeg">
 							</div> 
 						</form>
 					</div>
@@ -99,34 +99,30 @@
 				<div class="modal-body">
 					<div class="container-fluid">
 						<form id="frmActualiza">
-							<div class="col-md-6">
-								<br>
-								<input type="text" hidden="" name="idGASM" id="idGASM">
+							<div class="col-md-12">
 								<label>NOMBRE</label>
-								<input type="text" class="form-control form-control-sm" name="nombreGASM" id="nombreGASM" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="nombreGASM" id="nombreGASM">
+							</div>
+							<div class="col-md-6">
+								<input type="text" hidden="" name="idGASM" id="idGASM">
 								<label>DOMICILIO</label>
-								<input type="text" class="form-control form-control-sm" name="domicilioGASM" id="domicilioGASM" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="domicilioGASM" id="domicilioGASM">
 								<label>CIUDAD</label>
-								<input type="text" class="form-control form-control-sm" name="ciudadGASM" id="ciudadGASM" maxlength="30">
+								<input type="text" class="form-control form-control-sm upper" name="ciudadGASM" id="ciudadGASM">
 								<label>ESTADO</label>
 								<select type="text" class="form-control form-control-sm" name="estadoGASM" id="estadoGASM">
-									<option disabled selected>ESTADO</option>
 							  		<option value="JALISCO">JALISCO</option>
 								</select>
+								<label>TELEFONO</label>
+								<input type="text" class="form-control form-control-sm" name="telefonoGASM" id="telefonoGASM">
 							</div>
 							<div class="col-md-6">
-								<br>
-								<label>TELEFONO</label>
-								<input type="text" class="form-control form-control-sm" name="telefonoGASM" id="telefonoGASM" maxlength="20">
 								<label>NOMBRE DE USUARIO</label>
-								<input type="text" class="form-control form-control-sm" name="usrGASM" id="usrGASM" maxlength="20">
+								<input type="text" class="form-control form-control-sm" name="usrGASM" id="usrGASM">
 								<label>NUEVA CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="passGASM" id="pswGASM" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="passGASM" id="pswGASM">
 								<label>CONFIRMAR CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="passcGASM" id="pswcGASM" maxlength="10">
-								<br><br>
-							</div>
-							<div class="col-md-12">
+								<input type="password" class="form-control form-control-sm" name="passcGASM" id="pswcGASM">
 								<label>FOTOGRAFIA</label>
 								<input type="file" class="form-control form-control-sm" name="fotoGASM" id="fotoGASM" accept="image/jpeg">
 							</div>
@@ -241,6 +237,7 @@
 	<script type="text/javascript" src="js/js-despachadores-crud.js"></script>
 	<script type="text/javascript" src="js/js-despachadores-opciones.js"></script>
 	<script type="text/javascript" src="js/js-despachadores-validaciones.js"></script>
+	<script type="text/javascript" src="js/js-despachadores-eventos.js"></script>
 
 
 	<script type="text/javascript">

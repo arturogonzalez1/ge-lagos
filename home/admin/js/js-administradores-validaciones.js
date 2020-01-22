@@ -5,31 +5,33 @@ function ValidarADM(){
 	var clave1 = document.getElementById("pswADM").value;
 	var clave2 = document.getElementById("pswcADM").value;
 	var nombre = document.getElementById("nombreADM").value;
-	//var rfc = document.getElementById("rfcADM").value;
 	var telefono = document.getElementById("telefonoADM").value;
 	var username = document.getElementById("usrADM").value;
 
-	if (!validarClaves(clave1, clave2))
+	if(validarFormVacio('frmAgrega') > 0)
 	{
-		respuesta = false;
-		console.log("Error en claves");
+		return false;
+		alertify.alert("ERROR","Debes llenar todos los campos.");
 	}
 	if (!ValidarNombre(nombre, 100))
 	{
 		respuesta = false;
-		console.log("Error en nombre");
+		alertify.alert("ERROR","Introduzca un nombre valido.");
 	}
-	// if (!ValidarRFC(rfc))
-	// 	respuesta = false;
 	if (!ValidarTelefono(telefono))
 	{
 		respuesta = false;
-		console.log("Error en telefono");
+		alertify.alert("ERROR","Introduzca un telefono valido.");
 	}
 	if (!ValidarUserName(username, 50))
 	{
 		respuesta = false;
-		console.log("Error en username");
+		alertify.alert("ERROR","Introduzca un nombre de usuario valido.");
+	}
+	if (!validarClaves(clave1, clave2))
+	{
+		respuesta = false;
+		alertify.alert("ERROR","Las contraseñas no coinciden.");
 	}
 	return respuesta;
 }
@@ -45,27 +47,29 @@ function ValidarModificacionADM(){
 	var telefono = document.getElementById("telefonoADMM").value;
 	var username = document.getElementById("usrADMM").value;
 
-
-	if (!validarClaves(clave1, clave2))
-	{
-		respuesta = false;
-		console.log("Error en claves");
+	if(validarFormVacio('frmactualiza') > 0){
+		alertify.alert("Error","Debes llenar todos los campos.");
+		return false;
 	}
 	if (!ValidarNombre(nombre, 100))
 	{
 		respuesta = false;
-		console.log("Error en nombre");
+		alertify.alert("ERROR","Introduzca un nombre valido.");
 	}
 	if (!ValidarTelefono(telefono))
 	{
 		respuesta = false;
-		console.log("Error en telefono");
+		alertify.alert("ERROR","Introduzca un telefono valido.");
 	}
 	if (!ValidarUserName(username, 50))
 	{
 		respuesta = false;
-		console.log("Error en username");
+		alertify.alert("ERROR","Introduzca un nombre de usuario valido.");
 	}
-	console.log("MODIFICACION VALIDA: "+respuesta);
+	if (!validarClaves(clave1, clave2))
+	{
+		respuesta = false;
+		alertify.alert("ERROR","Las contraseñas no coinciden.");
+	}
 	return respuesta;
 }

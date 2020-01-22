@@ -1,5 +1,22 @@
 'use strict'
 
+$(document).ready(function(){
+	ImagenV();
+	var combobox = document.getElementById("slcVehiculo");
+	var comboboxTipoCombustible = document.getElementById("slcTipoCombustible");
+	var comboboxTipoCons = document.getElementById("slcTipoCons");
+
+	combobox.addEventListener('change', function(){
+		ImagenV();
+	});
+	comboboxTipoCombustible.addEventListener('change', function(){
+		 ControlPorTipoCombustible();
+	});
+	comboboxTipoCons.addEventListener('change', function(){
+		 ControlPorTipoConsumo();
+	});
+});
+
 //---------------------------------------------------- CONTROLAR TEXT INPUTS -------------------------------------------------------------->
 function ControlPorTipoConsumo()
 {
@@ -68,10 +85,11 @@ function GenerarVale()
 	var tipoComb = comboboxTipoComb.options[comboboxTipoComb.selectedIndex].text;
 
 	var comboboxTipoCons = document.getElementById("slcTipoCons").value;
-
 	var choferAutorizado = document.getElementById("txtChofer").value;
 	var litros = document.getElementById("txtLitros").value;
 	var importe = document.getElementById("txtImporte").value;
+
+
 
 	var lblPlacaA = document.getElementById("lblPlacaAutorizada");
 	var lblTipoComb  = document.getElementById("lblTipoCombustible");
@@ -80,7 +98,7 @@ function GenerarVale()
 	var lblPorLitros = document.getElementById("lblPorLitros");
 	var lblPorImporte = document.getElementById("lblPorImporte");
 
-	if (placa != "Placa Vehiculo" && tipoComb != "Tipo de Combustible" && choferAutorizado != "")
+	if (tipoComb != "LUBRICANTE")
 	{
 		if (comboboxTipoCons == "Litros")
 		{
@@ -90,20 +108,21 @@ function GenerarVale()
 		else if (comboboxTipoCons == "Importe")
 		{
 			lblPorImporte.value = importe;
-			lblPorLitros.value = "NA"
+			lblPorLitros.value = "NA";
 		}
-		else if (comboboxTipoCons == "Tipo de consumo")
-		{
-			lblPorImporte.value = importe;
-			lblPorLitros.value = "NA"
-		}
-		lblPlacaA.value = placa;
-		lblTipoComb.value = tipoComb;
-		lblChoferAutorizado.value = choferAutorizado;
-		var fecha = new Date();
-		lblFechaHora.value = fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getFullYear()+" "+fecha.getHours()+":"+fecha.getMinutes();
 	}
-	else alertify.error("VERIFIQUE QUE TODOS LOS CAMPOS ESTEN LLENOS")
+	else
+	{
+		lblPorImporte.value = importe;
+		lblPorLitros.value = "NA";
+	}
+	
+	lblPlacaA.value = placa;
+	lblTipoComb.value = tipoComb;
+	lblChoferAutorizado.value = choferAutorizado;
+	var fecha = new Date();
+	lblFechaHora.value = fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getFullYear()+" "+fecha.getHours()+":"+fecha.getMinutes();
+
 }
 //------------------------------------------------------------------------------------------------------------------------------------------>
 

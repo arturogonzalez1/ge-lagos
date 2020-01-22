@@ -1,6 +1,8 @@
 <?php 
 
-	require "../../assets/database.php";
+    require "../../assets/bd.php";
+
+    $_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
 
 	$nombre = strtoupper($_POST['nombreC']);
     $rfc = strtoupper($_POST['rfcC']);
@@ -23,23 +25,20 @@
     if ($psw == $pswC)
     {
 		$query = "CALL p_CLIENTE('$nombre', '$rfc', $limite, $diasPago, $diasLimite, '$modalidad', '$pa', '$usuario', '$psw');";
-	    $result = mysqli_query($conn,$query);
-
-        if ($result){
-                $ver = mysqli_fetch_row($result);
-                if ($ver[0] == 2){
-                    echo 1;
-                }
-                if ($ver[0] == 3){
-                    echo "EL RFC YA ESTA REGISTRADO";
-                }
-                if ($ver[0] == 4){
-                    echo "USUARIO NO DISPONIBLE. INTENTE USAR OTRO";
-                }
+        $datos = $_conexion->EjecutarConsulta($query);
+        if (is_array($datos)) {
+            if ($datos[0] == 1) {
+                $_conexion->Commit();
+                echo 1;
             }
-            else{
-                echo "Error en la consulta";
+            if ($datos[0] == 2) {
+                echo "El usuario ingresado ya esta registrado.";
             }
+        }
+        else {
+            $_conexion->Rollback();
+            echo "Error al insertar.";
+        }
 	}
 	else echo "Constrasenas no coinciden";
  ?>

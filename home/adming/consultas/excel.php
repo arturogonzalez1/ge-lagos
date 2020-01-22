@@ -20,7 +20,6 @@
     $fInicial = $_POST['finicialb'].' '.$_POST['hinicialb'].':00';
     $fFinal = $_POST['ffinalb'].' '.$_POST['hfinalb'].':00';
     $sql="CALL v_CONSULTAPAGOS('$cliente', $idEstacion, '$fInicial', '$fFinal');";
-    echo $sql;
     $result=mysqli_query($conn2,$sql);
     while($ver=mysqli_fetch_array($result))
 {

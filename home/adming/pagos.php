@@ -248,6 +248,7 @@
 	<script type="text/javascript" src="../js/js_validaciones.js"></script>
 	<script type="text/javascript" src="js/js-pagos-crud.js"></script>
 	<script type="text/javascript" src="js/js-pagos-opciones.js"></script>
+	<script type="text/javascript" src="js/js-pagos-validaciones.js"></script>
 
 	<script type="text/javascript">
 		//Magnific Popup

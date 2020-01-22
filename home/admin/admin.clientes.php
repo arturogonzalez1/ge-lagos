@@ -29,6 +29,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../css/light-blue.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../assets/alertify/css/themes/default.css">
 	<link rel="stylesheet" type="text/css" href="../assets/alertify/css/alertify.css">
 	
@@ -48,36 +49,43 @@
 				<div class="modal-body">
 					<div class="container-fluid">
 						<form id="frmAgregar">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<label>NOMBRE</label>
-								<input type="text" class="form-control form-control-sm" name="nombreC" id="nombreC" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="nombreC" id="nombreC">
+							</div>
+							<div class="col-md-6">
 								<label>RFC</label>
-								<input type="text" class="form-control form-control-sm" name="rfcC" id="rfcC" maxlength="13">
+								<input type="text" class="form-control form-control-sm upper" name="rfcC" id="rfcC">
 								<label>LIMITE CREDITO</label>
 								<input type="text" class="form-control form-control-sm" name="limiteC" id="limiteC">
 								<label>DIAS DE PAGO</label>
-								<input type="text" class="form-control form-control-sm" name="diasPagoC" id="diasPagoC">
+								<select class="form-control" id = "diasPagoC" name="diasPagoC">
+									<option value="7">SEMANAL</option>
+									<option value="15">QUINCENAL</option>
+									<option value="30">MENSUAL</option>
+								</select>
 								<label>MODALIDAD</label>
 								<select class="form-control" id = "modalidadC" name="modalidadC">
 									<option value="CREDITO">CREDITO</option>
 									<option disabled="" value="DEBITO">DEBIDO</option>
 								</select>
-							</div>
-							<div class="col-md-6">
 								<label>DIAS LIMITE DE PAGO</label>
 								<select class="form-control" id = "diasLimiteC" name="diasLimiteC">
 									<option value="1">MENSUAL</option>
 									<option value="2">BIMESTRAL</option>
 									<option value="3">TRIMESTRAL</option>
 								</select>
+							</div>
+							<div class="col-md-6">
+								
 								<label>PERSONA AUTORIZADA</label>
-								<input type="text" class="form-control form-control-sm" name="paC" id="paC" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="paC" id="paC">
 								<label>USUARIO</label>
-								<input type="text" class="form-control form-control-sm" name="usuarioC" id="usuarioC" maxlength="20">
+								<input type="text" class="form-control form-control-sm" name="usuarioC" id="usuarioC">
 								<label>CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="pswC" id="pswC" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="pswC" id="pswC">
 								<label>CONFIRMAR CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="pswCC" id="pswCC" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="pswCC" id="pswCC">
 							</div>
 						</form>
 					</div>
@@ -109,15 +117,19 @@
 							<input type="text" hidden="" name="idClienteM" id="idClienteM">
 							<div class="col-md-12">
 								<label>NOMBRE</label>
-								<input type="text" class="form-control form-control-sm" name="nombreCM" id="nombreCM" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="nombreCM" id="nombreCM">
 							</div>
 							<div class="col-md-6">
 								<label>RFC</label>
-								<input type="text" class="form-control form-control-sm" name="rfcCM" id="rfcCM" maxlength="13">
+								<input type="text" class="form-control form-control-sm upper" name="rfcCM" id="rfcCM">
 								<label>LIMITE CREDITO</label>
 								<input type="text" class="form-control form-control-sm" name="limiteCM" id="limiteCM">
 								<label>DIAS DE PAGO</label>
-								<input type="text" class="form-control form-control-sm" name="diasPagoCM" id="diasPagoCM">
+								<select class="form-control" id = "diasPagoCM" name="diasPagoCM">
+									<option value="7">SEMANAL</option>
+									<option value="15">QUINCENAL</option>
+									<option value="30">MENSUAL</option>
+								</select>
 								<label>DIAS LIMITE DE PAGO</label>
 								<select class="form-control" id = "diasLimiteCM" name="diasLimiteCM">
 									<option value="1">MENSUAL</option>
@@ -133,13 +145,13 @@
 							</div>
 							<div class="col-md-6">
 								<label>PERSONA AUTORIZADA</label>
-								<input type="text" class="form-control form-control-sm" name="paCM" id="paCM" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="paCM" id="paCM">
 								<label>USUARIO</label>
-								<input type="text" class="form-control form-control-sm" name="usuarioCM" id="usuarioCM" maxlength="20">
+								<input type="text" class="form-control form-control-sm" name="usuarioCM" id="usuarioCM">
 								<label>NUEVA CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="pswCM" id="pswCM" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="pswCM" id="pswCM">
 								<label>CONFIRMAR CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="pswCCM" id="pswCCM" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="pswCCM" id="pswCCM">
 							</div>
 						</form>
 					</div>
@@ -255,11 +267,12 @@
 	<script type="text/javascript" src="../js/retina-1.1.0.min.js"></script>
 	<script type="text/javascript" src="../js/SmoothScroll.js"></script>
 	<script type="text/javascript" src="../js/script.js"></script>
-	<script type="text/javascript" src="js/js_cliente_actualizar.js"></script>
-	<script type="text/javascript" src="js/js_cliente_crud.js"></script>
-	<script type="text/javascript" src="js/js_cliente_validacion.js"></script>
-	<script type="text/javascript" src="js/js_cliente_opciones.js"></script>
+	<script type="text/javascript" src="js/js-cliente-actualizar.js"></script>
+	<script type="text/javascript" src="js/js-cliente-crud.js"></script>
+	<script type="text/javascript" src="js/js-cliente-validacion.js"></script>
+	<script type="text/javascript" src="js/js-cliente-opciones.js"></script>
 	<script type="text/javascript" src="../js/js_validaciones.js"></script>
+	<script type="text/javascript" src="js/js-cliente-eventos.js"></script>
 	<script src="../assets/alertify/alertify.js"></script>
 </body>
 </html>

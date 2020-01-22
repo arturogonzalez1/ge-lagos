@@ -1,16 +1,17 @@
 <?php 
 	session_start();
-	require "../../assets/database.php";
+    require "../../assets/bd.php";
 
+    $_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
 	$id = $_POST['idClienteM'];
 
-    $nombre = $_POST['nombreCM'];
-    $rfc = $_POST['rfcCM'];
+    $nombre = strtoupper($_POST['nombreCM']);
+    $rfc = strtoupper($_POST['rfcCM']);
 	$lim = $_POST['limiteCM'];
 	$dias = $_POST['diasPagoCM'];
     $diasLimite = $_POST['diasLimiteCM'];
     $modalidad = $_POST['modalidadCM'];
-    $pa = $_POST['paCM'];
+    $pa = strtoupper($_POST['paCM']);
     $usr = $_POST['usuarioCM'];
     $psw = $_POST['pswCM'];
     $pswc = $_POST['pswCCM'];
@@ -33,21 +34,22 @@
     {
 
     	$query = "CALL p_UPDATE_CLIENTE($id, '$nombre', '$rfc',$lim, $dias, '$modalidad','$pa', '$usr', '$psw', $diasLimite);";
-    	$result =  mysqli_query($conn,$query);
-
-        if ($result){
-                $ver = mysqli_fetch_row($result);
-                if ($ver[0] == 2){
-                    echo 1;
-                }
-                if ($ver[0] == 3){
-                    echo "USUARIO NO DISPONIBLE. INTENTE USAR OTRO";
-                }
+        $datos = $_conexion->EjecutarConsulta($query);
+        if (is_array($datos)) {
+            if ($datos[0] == 1) {
+                $_conexion->Commit();
+                echo 1;
             }
-            else{
-                echo 0;
+            if ($datos[0] == 2) {
+                echo "EL SALDO ACTUAL NO PUEDE SER MAYOR AL LIMITE DE CREDITO";
             }
-
+            if ($datos[0] == 3) {
+                echo "EL USUARIO INGRSADO NO ESTA DISPONIBLE";
+            }
+        }
+        else {
+            $_conexion->Rollback();
+        }
     }
     else 
     	echo "LAS CONTRASEÑAS NO COINCIDEN";

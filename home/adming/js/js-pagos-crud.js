@@ -2,6 +2,7 @@
 
 $(document).ready(function(){
 	$('#btnbuscar').click(function(){
+		
 		if(validarFormVacio('frmBusca') > 0){
 			alertify.alert("Error","Debes llenar todos los campos");
 			return false;
@@ -19,10 +20,9 @@ $(document).ready(function(){
 			data:datos,
 			url:"consultas/modificarPagos.php",
 			success:function(r) {
-				alertify.alert("Respuesta Servidor: ",r);
 				if (r==1) {
 					alertify.success("El pago se ha realizado correctamente");
-					ActualizarPagos();				
+					ActualizarPagos();
 				}
 				else if (r==2) {
 					alertify.error("Error en las fechas");

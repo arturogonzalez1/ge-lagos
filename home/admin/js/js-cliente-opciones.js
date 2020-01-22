@@ -1,5 +1,51 @@
 'use strict'
 
+
+//ACTIVAR CLIENTE
+function activarCliente(idcliente){
+alertify.confirm('ACTIVAR CLIENTE', '<CENTER>¿ESTA SEGURO DE ACTIVAR ESTE CLIENTE? <br><br> <FONT style="color:red;"><FONT></CENTER>', 
+		function(){ 
+			$.ajax({
+				type:"POST",
+				data:"usr=" + idcliente,
+				url:"consultas/activarCliente.php",
+				success:function(r){
+					if(r==1){     
+						buscar_datos();
+						alertify.success("Cliente activo");
+					}else{
+						alertify.error("No se pudo activar"+r);
+					}
+				}
+			});
+		}
+		,function(){ 
+			alertify.error('OPERACION CANCELADA')
+		});
+}
+//SUSPENDER CLIENTE
+function suspenderCliente(idcliente){
+	alertify.confirm('SUSPENDER CLIENTE', '<CENTER>¿ESTA SEGURO DE SUSPENDER ESTE CLIENTE? <br><br> <FONT style="color:red;"><FONT></CENTER>', 
+		function(){ 
+			$.ajax({
+				type:"POST",
+				data:"usr=" + idcliente,
+				url:"consultas/suspenderCliente.php",
+				success:function(r){
+					if(r==1){    
+						buscar_datos();
+						alertify.success("Cliente suspendido");
+					}else{
+						alertify.error("No se pudo suspender"+r);
+					}
+				}
+			});
+		}
+		,function(){ 
+			alertify.error('OPERACION CANCELADA')
+		});
+}
+
 //VER ESTADO DE CUENTA DEL CLIENTE
 function estadoCuenta(idcliente, year, month){
 	var datos = new FormData();

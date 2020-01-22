@@ -34,6 +34,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="css/light-blue.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="assets/alertify/css/themes/default.css">
 	<link rel="stylesheet" type="text/css" href="assets/alertify/css/alertify.css">
 
@@ -56,18 +57,18 @@
 							<div class="col-md-6">
 								<br>
 								<label>PLACA</label>
-								<input type="text" class="form-control form-control-sm" name="placaV" id="placaV">
+								<input type="text" class="form-control form-control-sm upper" name="placaV" id="placaV">
 								<label>MARCA</label>
-								<input type="text" class="form-control form-control-sm" name="marcaV" id="marcaV">
+								<input type="text" class="form-control form-control-sm upper" name="marcaV" id="marcaV">
 								<label>MODELO</label>
-								<input type="text" class="form-control form-control-sm" name="modeloV" id="modeloV">
+								<input type="text" class="form-control form-control-sm upper" name="modeloV" id="modeloV">
 							</div>
 							<div class="col-md-6">
 								<br>
 								<label>NO. UNIDAD</label>
-								<input type="text" class="form-control form-control-sm" name="unidadV" id="unidadV">
+								<input type="text" class="form-control form-control-sm upper" name="unidadV" id="unidadV">
 								<label>MOTOR</label>
-								<input type="text" class="form-control form-control-sm" name="motorV" id="motorV">
+								<input type="text" class="form-control form-control-sm upper" name="motorV" id="motorV">
 								<label>FOTO</label>
 								<input type="file" class="form-control form-control-sm" name="fotoV" id="fotoV" accept="image/jpeg">
 								<br><br>
@@ -101,15 +102,15 @@
 							<div class="col-md-6">
 								<input type="hidden" class="form-control form-control-sm" name="placaVM" id="placaVM">
 								<label>MARCA</label>
-								<input type="text" class="form-control form-control-sm" name="marcaVM" id="marcaVM">
+								<input type="text" class="form-control form-control-sm upper" name="marcaVM" id="marcaVM">
 								<label>MODELO</label>
-								<input type="text" class="form-control form-control-sm" name="modeloVM" id="modeloVM">
+								<input type="text" class="form-control form-control-sm upper" name="modeloVM" id="modeloVM">
 								</div>
 							<div class="col-md-6">
 								<label>NO. UNIDAD</label>
-								<input type="text" class="form-control form-control-sm" name="unidadVM" id="unidadVM">
+								<input type="text" class="form-control form-control-sm upper" name="unidadVM" id="unidadVM">
 								<label>MOTOR</label>
-								<input type="text" class="form-control form-control-sm" name="motorVM" id="motorVM">
+								<input type="text" class="form-control form-control-sm upper" name="motorVM" id="motorVM">
 							</div>
 							<div class="col-md-12">
 							    <label>FOTO</label>
@@ -232,6 +233,7 @@
 	<script type="text/javascript" src="js/js_validaciones.js"></script>
 	<script type="text/javascript" src="js/js-vehiculos-crud.js"></script>
 	<script type="text/javascript" src="js/js-vehiculos-opciones.js"></script>
+	<script type="text/javascript" src="js/js-vehiculos-validaciones.js"></script>
 	<script src="assets/alertify/alertify.js"></script>
 
 	<script type="text/javascript">

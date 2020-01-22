@@ -152,7 +152,7 @@
 			$pdf->lastPage();
 			$fecha = getdate();
 
-			$pdf -> Output("VALE_". $datos[0]. "_".$fecha['year']."-".$fecha['mon']."-".$fecha['mday'].".pdf", "D");
+			$pdf -> Output("VALE-". $datos[0]. "-".$fecha['year']."-".$fecha['mon']."-".$fecha['mday'].".pdf", "D");
 		}
 	}
  ?>

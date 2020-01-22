@@ -2,6 +2,7 @@
 
 //----------------------------------------- VALIDAR FORMULARIO AGREGAR NUEVA ESTACION -----------------------------------------
 $(document).ready(function(){
+	console.log("DOM Cargado");
 	$('#mainset').load('tabla.admin.estaciones.view.php');
 	$('#btnAgregarEstacion').click(function(){
 		if(validarFormVacio('frmAgrega') > 0){
@@ -18,10 +19,10 @@ $(document).ready(function(){
 					$('#frmAgrega')[0].reset();
 					$('#addmodal').modal('hide');
 					$('#mainset').load('tabla.admin.estaciones.view.php');
-					alertify.success("Agregado con exito :)");
+					alertify.success("Estacion agregada con exito.");
 				}
 				else{
-					alertify.error("No se pudo agregar: " + r);
+					alertify.alert("Error ", r);
 				}
 			}
 		});
@@ -52,4 +53,7 @@ $(document).ready(function(){
 		}
 		});
 	});
+
+	//------------------------------------------- ABRIR MODAL PARA MODIFICAR ------------------------------
+	$('#')
 });

@@ -1,6 +1,8 @@
 <?php 
 	session_start();
-	require "../../assets/database.php";
+    require "../../assets/bd.php";
+
+    $_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
 
 	$id = $_POST['idClienteM'];
 
@@ -33,24 +35,23 @@
     {
 
         $query = "CALL p_UPDATE_CLIENTE($id, '$nombre', '$rfc',$lim, $dias, '$modalidad','$pa', '$usr', '$psw', $diasLimite);";
-        $result =  mysqli_query($conn,$query);
-
-        if ($result){
-                $ver = mysqli_fetch_row($result);
-                if ($ver[0] == 1){
-                    echo 1;
-                }
-                if ($ver[0] == 2){
-                    echo "LA DEUDA ACTUAL SOBREPASA EL LIMITE DE CREDITO";
-                }
-                if ($ver[0] == 3){
-                    echo "USUARIO NO DISPONIBLE. INTENTE USAR OTRO";
-                }
+        $datos = $_conexion->EjecutarConsulta($query);
+        if (is_array($datos)) {
+            if ($datos[0] == 1) {
+                $_conexion->Commit();
+                echo 1;
             }
-            else{
-                echo 0;
+            else if ($datos[0] == 2) {
+                echo "EL SALDO ACTUAL NO PUEDE SER MAYOR AL NUEVO LIMITE DE CREDITO";
             }
-
+            else if ($datos[0] == 3) {
+                echo "EL USUARIO INGRESADO NO ESTA DISPONIBLE";
+            }
+        }
+        else {
+            $_conexion->Rollback();
+            echo "ERROR AL REALIZAR LA CONSULTA";
+        }
     }
     else 
         echo "LAS CONTRASEÑAS NO COINCIDEN";

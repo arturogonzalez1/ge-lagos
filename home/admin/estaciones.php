@@ -218,7 +218,7 @@
 	<script src="../assets/alertify/alertify.js"></script>
 	<script type="text/javascript" src="js/js-estaciones-crud.js"></script>
 	<script type="text/javascript" src="js/js-estaciones-opciones.js"></script>
-	<script type="text/javascript" src="js/js-estaciones-validaciones.js"></script>
+	<script type="text/javascript" src="js/js-estaciones-eventos.js"></script>
 	<script type="text/javascript" src="../js/js_validaciones.js"></script>
 
 	<script type="text/javascript">

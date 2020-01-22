@@ -52,13 +52,17 @@
 						<form id="frmAgregar">
 							<div class="col-md-6">
 								<label>NOMBRE</label>
-								<input type="text" class="form-control form-control-sm upper" name="nombreC" id="nombreC" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="nombreC" id="nombreC">
 								<label>RFC</label>
-								<input type="text" class="form-control form-control-sm upper" name="rfcC" id="rfcC" maxlength="13">
+								<input type="text" class="form-control form-control-sm upper" name="rfcC" id="rfcC">
 								<label>LIMITE CREDITO</label>
 								<input type="text" class="form-control form-control-sm" name="limiteC" id="limiteC">
 								<label>DIAS DE PAGO</label>
-								<input type="text" class="form-control form-control-sm" name="diasPagoC" id="diasPagoC">
+								<select class="form-control" id = "diasPagoC" name="diasPagoC">
+									<option value="7">SEMANAL</option>
+									<option value="15">QUINCENAL</option>
+									<option value="30">MENSUAL</option>
+								</select>
 								<label>MODALIDAD</label>
 								<select class="form-control" id = "modalidadC" name="modalidadC">
 									<option value="CREDITO">CREDITO</option>
@@ -73,13 +77,13 @@
 									<option value="3">TRIMESTRAL</option>
 								</select>
 								<label>PERSONA AUTORIZADA</label>
-								<input type="text" class="form-control form-control-sm upper" name="paC" id="paC" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="paC" id="paC">
 								<label>USUARIO</label>
-								<input type="text" class="form-control form-control-sm" name="usuarioC" id="usuarioC" maxlength="20">
+								<input type="text" class="form-control form-control-sm" name="usuarioC" id="usuarioC">
 								<label>CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="pswC" id="pswC" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="pswC" id="pswC">
 								<label>CONFIRMAR CONTRASEÑA</label>
-								<input type="password" class="form-control form-control-sm" name="pswCC" id="pswCC" maxlength="10">
+								<input type="password" class="form-control form-control-sm" name="pswCC" id="pswCC">
 							</div>
 						</form>
 					</div>
@@ -111,13 +115,17 @@
 							<div class="col-md-6">
 								<input type="text" hidden="" name="idClienteM" id="idClienteM">
 								<label>NOMBRE</label>
-								<input type="text" class="form-control form-control-sm upper" name="nombreCM" id="nombreCM" maxlength="50">
+								<input type="text" class="form-control form-control-sm upper" name="nombreCM" id="nombreCM">
 								<label>RFC</label>
-								<input type="text" class="form-control form-control-sm upper" name="rfcCM" id="rfcCM" maxlength="13">
+								<input type="text" class="form-control form-control-sm upper" name="rfcCM" id="rfcCM">
 								<label>LIMITE CREDITO</label>
 								<input type="text" class="form-control form-control-sm" name="limiteCM" id="limiteCM">
 								<label>DIAS DE PAGO</label>
-								<input type="text" class="form-control form-control-sm" name="diasPagoCM" id="diasPagoCM">
+								<select class="form-control" id = "diasPagoCM" name="diasPagoCM">
+									<option value="7">SEMANAL</option>
+									<option value="15">QUINCENAL</option>
+									<option value="30">MENSUAL</option>
+								</select>
 								<label>DIAS LIMITE DE PAGO</label>
 								<select class="form-control" id = "diasLimiteCM" name="diasLimiteCM">
 									<option value="1">MENSUAL</option>
@@ -133,13 +141,13 @@
 										<option value="3">CONTADO</option>
 									</select>
 									<label>PERSONA AUTORIZADA</label>
-									<input type="text" class="form-control form-control-sm upper" name="paCM" id="paCM" maxlength="50">
+									<input type="text" class="form-control form-control-sm upper" name="paCM" id="paCM">
 									<label>USUARIO</label>
-									<input type="text" class="form-control form-control-sm" name="usuarioCM" id="usuarioCM" maxlength="20">
+									<input type="text" class="form-control form-control-sm" name="usuarioCM" id="usuarioCM">
 									<label>NUEVA CONTRASEÑA</label>
-									<input type="password" class="form-control form-control-sm" name="pswCM" id="pswCM" maxlength="10">
+									<input type="password" class="form-control form-control-sm" name="pswCM" id="pswCM">
 									<label>CONFIRMAR CONTRASEÑA</label>
-									<input type="password" class="form-control form-control-sm" name="pswCCM" id="pswCCM" maxlength="10">
+									<input type="password" class="form-control form-control-sm" name="pswCCM" id="pswCCM">
 								</div>
 						</form>
 					</div>
@@ -256,10 +264,11 @@
 	<script type="text/javascript" src="../js/retina-1.1.0.min.js"></script>
 	<script type="text/javascript" src="../js/SmoothScroll.js"></script>
 	<script type="text/javascript" src="../js/script.js"></script>
-	<script type="text/javascript" src="js/js_cliente_actualizar.js"></script>
-	<script type="text/javascript" src="js/js_cliente_crud.js"></script>
-	<script type="text/javascript" src="js/js_cliente_validacion.js"></script>
-	<script type="text/javascript" src="js/js_cliente_opp.js"></script>
+	<script type="text/javascript" src="js/js-cliente-actualizar.js"></script>
+	<script type="text/javascript" src="js/js-cliente-crud.js"></script>
+	<script type="text/javascript" src="js/js-cliente-validacion.js"></script>
+	<script type="text/javascript" src="js/js-cliente-opciones.js"></script>
+	<script type="text/javascript" src="js/js-cliente-eventos.js"></script>
 	<script type="text/javascript" src="../js/js_validaciones.js"></script>
 	<script type="text/javascript" src="../assets/alertify/alertify.js"></script>
 	<script type="text/javascript">

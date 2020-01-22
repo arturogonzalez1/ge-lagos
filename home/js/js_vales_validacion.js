@@ -13,7 +13,6 @@ txtLitros.addEventListener("keypress", function (e){
 })
 
 txtLitros.addEventListener("keyup", function (e){
-	console.log(txtLitros.value);
   	if (ValidarPrecios(txtLitros.value, 15000)){
   		console.log("Valor aceptado");
   		e.preventDefault();
@@ -46,3 +45,15 @@ txtImporte.addEventListener("keyup", function (e){
   		console.log("Valor NO aceptado");
   	}
 });
+
+function ValidarVale(){
+  var respuesta = true;
+
+  var nombre = document.querySelector("#txtChofer");
+
+  if (!ValidarNombre(nombre.value, 50)) {
+    console.log("Nombre de operador invalido.");
+    respuesta = false;
+  }
+  return respuesta;
+}

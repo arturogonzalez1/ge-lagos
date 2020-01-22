@@ -15,6 +15,8 @@ function ActualizarPagos(){
 		cache: false, 
 		success:function(r){
 			$('#mainset').html(r);
+			$('#updatemodal').modal('hide');
+			$('#frmactualiza')[0].reset();
 		}
 	});
 }

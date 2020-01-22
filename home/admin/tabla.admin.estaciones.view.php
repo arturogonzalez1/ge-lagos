@@ -35,7 +35,7 @@ while($ver=mysqli_fetch_array($result))
 	<td><?php echo $ver[6]; ?></td>
 	<td style="text-align: center;">
 		<span class="btn btn-raised btn-warning btn-xs" 
-			onclick="obtenerDatos('<?php echo $ver[0]; ?>')" data-toggle="modal" data-target="#updatemodal">
+			onclick="obtenerDatos('<?php echo $ver[0]; ?>')" >
 			<span class="fa fa-pencil-square-o"></span>
 		</span>
 	</td>

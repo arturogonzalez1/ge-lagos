@@ -10,8 +10,11 @@ $(document).ready(function(){
 					alertify.alert("Error","Debes llenar todos los campos.");
 					return false;
 				}
-				GenerarVale();
-				$('#autorizarmodal').modal();
+				if (ValidarVale())
+				{
+					GenerarVale();
+					$('#autorizarmodal').modal();
+				}
 			});
 
 			$('#btnEnviar').click(function(){
