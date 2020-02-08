@@ -44,7 +44,7 @@
 		<td style="text-align: center;">
 			<span class="btn btn-raised btn-danger btn-xs" 
 				onclick="eliminarVehiculo('<?php echo $ver[0]; ?>')">
-				<span class="fa fa-trash"></span>  ELIMINAR
+				<span class="fa fa-trash"></span>  BAJA
 			</span>
 		</td>
 	</tr>

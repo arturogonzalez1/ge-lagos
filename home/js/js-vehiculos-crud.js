@@ -34,7 +34,7 @@ $(document).ready(function(){
 					Location.reload();
 				}
 				else{
-					alertify.error("No se pudo agregar: " + r);
+					alertify.alert("No se pudo agregar: " + r);
 				}
 			}
 		});
@@ -71,9 +71,9 @@ $(document).ready(function(){
 				$('#frmactualiza')[0].reset();
 				$('#updatemodal').modal('hide');
 				$('#mainset').load('tabla.client.vehiculos.view.php');
-				alertify.success("Actualizado con exito");
+				alertify.success("Actualizado con exito.");
 			}else{
-				alertify.error("No se pudo actualizar");
+				alertify.alert("ERROR","No se pudo actualizar: "+r);
 			}
 		}
 		});
@@ -83,7 +83,7 @@ $(document).ready(function(){
 
 //------------------------------------------ ELIMINAR VEHICULO ------------------------------------------->
 function eliminarVehiculo(placa){
-alertify.confirm('ELIMINAR VEHICULO', '<CENTER>¿ESTA SEGURO DE BORRAR ESTE VEHICULO?</CENTER>', 
+alertify.confirm('ELIMINAR VEHICULO', '<CENTER>¿ESTA SEGURO DE DAR DE BAJA ESTE VEHICULO?</CENTER>', 
 	function(){ 
 		$.ajax({
 			type:"POST",

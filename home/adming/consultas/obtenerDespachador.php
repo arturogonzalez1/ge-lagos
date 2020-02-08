@@ -9,7 +9,7 @@
 
 	$ver = mysqli_fetch_row($result);
 
-	$datos=array(
+	$datos = array(
 					'idGas'=>$ver[0],
 					'nombre'=>$ver[1],
 					'domicilio'=>$ver[2],

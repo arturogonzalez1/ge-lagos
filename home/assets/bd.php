@@ -3,15 +3,14 @@
 		private $con;
 		public function __construct($server, $username, $password, $database)
 		{
-			$this->con = mysqli_connect($server, $username, $password, $database) or die('Error al conectar con MySQL Server.');
+			$this->con = mysqli_connect($server, $username, $password, $database) or die('Error al conectar con SQL Server.');
 		}
-		// public function InsertarDatos($query)
-		// {
-		// 	return mysqli_query($this->$con, $query);
-		// }
+		public function ConsultarDatos($query) {
+			return mysqli_query($this->con, $query) or die($this->con->error);
+		}
 		public function EjecutarConsulta($query)
 		{
-			$consult = mysqli_query($this->con, $query) or die($this->con->error);;
+			$consult = mysqli_query($this->con, $query) or die($this->con->error);
 			if ($consult) {
 				$data = mysqli_fetch_array($consult);
 				

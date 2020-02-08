@@ -1,11 +1,10 @@
 <?php 
     session_start();
 
+     require "../../assets/ftp.php";
     require "../../assets/bd.php";
-	require "../../assets/database.php";
-    require "../../assets/funciones.php";
 
-    $funciones = new Funciones();
+    $_conexionFTP = new ConexionFTP();
     $_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
 
     //INFORMACION
@@ -29,37 +28,44 @@
 
         $copia = imagecreatetruecolor(240, 300);
         imagecopyresampled($copia, $original, 0,0,0,0, 240, 300, $anchoOriginal, $altoOriginal);
-        $ruta= '../../images/imgDes'; $ruta=$ruta."/".$usr.".jpg";
-        
-        move_uploaded_file(imagejpeg($copia, $ruta, 100),$ruta);
-        $query = "CALL p_GASOLINERO('$nombre','$domicilio','$ciudad','$estado','$telefono','$usr','$psw', $estacion)";
-        $ver = $_conexion->EjecutarConsulta($query);
-        //$result = mysqli_query($conn,$query);
-
-        if (is_array($ver))
+        $origen = "../temp/despachador.jpg";
+        $destino = "images/web/despachadores/".$usr.".jpg";
+        if(file_exists($origen))
         {
-            if ($ver[0] == 1)
+            unlink($origen);
+        }
+
+        imagejpeg($copia, $origen, 100);
+        
+        if ($_conexionFTP->SetImage($destino, $origen)) {
+            $query = "CALL p_GASOLINERO('$nombre','$domicilio','$ciudad','$estado','$telefono','$usr','$psw', $estacion)";
+            $ver = $_conexion->EjecutarConsulta($query);
+
+            if (is_array($ver))
             {
-                $_conexion->Commit();
-                echo 1;
+                if ($ver[0] == 1)
+                {
+                    $_conexion->Commit();
+                    echo 1;
+                }
+                else if ($ver[0] == 2)
+                {
+                    if(file_exists($ruta))
+                    {
+                        unlink($ruta);
+                    }
+                    echo "ESTE USUARIO YA ESTA REGISTRADO";
+                }
             }
-            else if ($ver[0] == 2)
+            else
             {
+                $_conexion->Rollback();
                 if(file_exists($ruta))
                 {
                     unlink($ruta);
                 }
-                echo "ESTE USUARIO YA ESTA REGISTRADO";
+                echo "ERROR AL INSERTAR";
             }
-        }
-        else
-        {
-            $funciones -> Rollback();
-            if(file_exists($ruta))
-            {
-                unlink($ruta);
-            }
-            echo "ERROR AL INSERTAR";
         }
     }
     else echo "LAS CONTRASENAS NO COINCIDEN";

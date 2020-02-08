@@ -62,15 +62,45 @@ function ControlPorTipoCombustible(){
 //---------------------------------------------------- MOSTRAR IMAGEN VEHICULO ------------------------------------------------------------->
 function ImagenV()
 {
+	GetImage();
+	// var combobox = document.getElementById("slcVehiculo"); 
+	// var placa = combobox.options[combobox.selectedIndex].text;
+	// var fvehiculo = document.getElementById("imgFotoVehiculo");
+	// var numplaca = document.getElementById("lblPlaca");
+	// fvehiculo.src = "images/imgVeh/"+placa+".jpg";
+	// fvehiculo.style.visibility = "visible";
+	// fvehiculo.width = 240;
+	// fvehiculo.height = 150;
+	// numplaca.innerHTML = placa;
+}
+function GetImage(placa) {
 	var combobox = document.getElementById("slcVehiculo"); 
 	var placa = combobox.options[combobox.selectedIndex].text;
-	var fvehiculo = document.getElementById("imgFotoVehiculo");
-	var numplaca = document.getElementById("lblPlaca");
-	fvehiculo.src = "images/imgVeh/"+placa+".jpg";
-	fvehiculo.style.visibility = "visible";
-	fvehiculo.width = 240;
-	fvehiculo.height = 150;
-	numplaca.innerHTML = placa;
+
+	var datos = new FormData();
+	
+	datos.append('placa', placa);
+
+	$.ajax({
+			url: 'php/getimage.php',
+			type: 'POST', 
+			contentType: false,
+			data: datos, 
+			dataType: 'html',
+			processData: false,
+			cache: false, 
+		success:function(r){
+			BorrarEtiquetaImagen();
+			$('#imagebox').html(r);
+		}
+	});
+}
+
+function BorrarEtiquetaImagen() {
+	if (document.getElementById("imagen")) {
+		var imagen = document.getElementById("imagen");
+		imagen.src = "";
+	}
 }
 //----------------------------------------------------------------------------------------------------------------------------------------->
 

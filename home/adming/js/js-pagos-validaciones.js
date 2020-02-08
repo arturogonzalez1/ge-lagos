@@ -5,7 +5,7 @@
 
 
 //VALIDAR FORMULARIO PAGAR
-var inputFactura = document.querySelector("#nfacturau");
+var inputFactura = document.querySelector("#numeroFactura");
 
 inputFactura.addEventListener('keypress', function(event) {
 	var key = event.charCode;

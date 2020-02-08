@@ -65,14 +65,14 @@
 									<?php echo $contenidoCombobox ?>
 								</select>
 								<label>TIPO DE COMBUSTIBLE</label>
-								<select class="form-control" id = "slcTipoCombustible">
+								<select class="form-control" id = "slcTipoCombustible" name="cmbTipoCombustible">
 									<option value="DIESEL">DIESEL</option>
 									<option value="MAGNA">MAGNA</option>
 									<option value="PREMIUM">PREMIUM</option>
 									<option value="LUBRICANTE">LUBRICANTE</option>
 								</select>
 								<label>TIPO DE CONSUMO</label>
-								<select class="form-control" id = "slcTipoCons">
+								<select class="form-control" id = "slcTipoCons" name="cmbTipoComsumo">
 									<option value="Litros">POR LITROS</option>
 									<option value="Importe">POR IMPORTE</option>
 								</select>
@@ -81,7 +81,7 @@
 						<div class="col-md-6">
 							<br>
 							<label>LITROS</label>
-							<input type="text" name="txtLitros" class="form-control" placeholder="0.000" disabled="" id="txtLitros">
+							<input type="text" name="txtLitros" class="form-control" placeholder="0.000" id="txtLitros">
 							<label>IMPORTE</label>
 							<input type="text" name="txtImporte" class="form-control" placeholder="0.00" disabled="" id="txtImporte">
 							<label>OPERADOR AUTORIZADO</label>
@@ -92,6 +92,7 @@
 							<br>
 							<center>
 								<img id="imgFotoVehiculo" width="0" height="0" class="img" style="visibility: hidden;">
+								<div id="imagebox"></div>
 							</center>
 							<br>
 							<br>
@@ -311,9 +312,10 @@
 	<script type="text/javascript" src="js/SmoothScroll.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 	<script type="text/javascript" src="js/js_validaciones.js"></script>
-	<script type="text/javascript" src="js/js_vales_validacion.js"></script>
+	<script type="text/javascript" src="js/js-vales-validacion.js"></script>
 	<script type="text/javascript" src="js/js-vales-opciones.js"></script>
 	<script type="text/javascript" src="js/js-vales-crud.js"></script>
+	<script type="text/javascript" src="js/js-vales-eventos.js"></script>
 	<script src="assets/alertify/alertify.js"></script>
 
 	<script type="text/javascript">

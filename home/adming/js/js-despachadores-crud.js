@@ -99,7 +99,7 @@ $(document).ready(function(){
 
 //ELIMINAR DESPACHADOR
 function eliminarDespachador(usr){
-alertify.confirm('BAJA DESPACHADOR', '<CENTER>¿ESTA SEGURO DE BORRAR EL DESPACHADOR? <br><br> <FONT style="color:red;">SE PERDERAN TODOS LOS REGISTROS EN RELACION<FONT></CENTER>', 
+alertify.confirm('BAJA DESPACHADOR', '<CENTER>¿ESTA SEGURO DE DAR DE BAJA EL DESPACHADOR? <br><br> <FONT style="color:red;">SE PERDERAN TODOS LOS REGISTROS EN RELACION<FONT></CENTER>', 
 		function(){ 
 			$.ajax({
 				type:"POST",

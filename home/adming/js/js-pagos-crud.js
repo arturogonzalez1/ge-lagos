@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 $(document).ready(function(){
 	$('#btnbuscar').click(function(){
@@ -10,15 +10,15 @@ $(document).ready(function(){
 		$('#frmBusca').submit();
 	});
 	$('#btnpagar').click(function(){
-		if(validarFormVacio('frmactualiza') > 0){
+		if(validarFormVacio('frmPagar') > 0){
 			alertify.alert("Error","Debes llenar todos los campos");
 			return false;
 		}
-		var datos = $('#frmactualiza').serialize();
+		var datos = $('#frmPagar').serialize();
 		$.ajax({
 			type:"POST",
 			data:datos,
-			url:"consultas/modificarPagos.php",
+			url:"consultas/agregarPago.php",
 			success:function(r) {
 				if (r==1) {
 					alertify.success("El pago se ha realizado correctamente");

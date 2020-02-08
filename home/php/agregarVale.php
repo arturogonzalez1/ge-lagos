@@ -1,62 +1,51 @@
 <?php 
 	session_start();
-	if (!isset($_SESSION['c_loged']) || $_SESSION['c_loged'] == false || $_SESSION['c_nivelP'] != 2)
-	{
-		header("Location: logout.php");
-	}
+	require '../assets/bd.php';
 	require '../assets/database.php';
 
-	$idU = $_SESSION['c_user_id'];
+	$_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
 
-	$placa = $_POST['txtVPlacaAutorizada'];
-	$chofer = strtoupper($_POST['txtVChoferAutorizado']);
-	$tipoComb = $_POST['txtVTipoCombustible'];
+	$idUsuario = $_SESSION['c_user_id'];
 
+	if (isset($_POST['litros']) && $_POST['concepto'] != "LUBRICANTE") {
+		$litros = $_POST['litros'];
+		$importe = 0;
+	}
+	else if (isset($_POST['importe'])) {
+		$importe = $_POST['importe'];
+		$litros = 0;
+	}
+	else {
+		echo "ERROR EN LOS DATOS";
+		exit;
+	}
 
-	if (isset($_POST['txtVPlacaAutorizada']) && isset($_POST['txtVChoferAutorizado']) && isset($_POST['txtVTipoCombustible']))
-	{
+	$placa = $_POST['placa'];
+	$concepto = $_POST['concepto'];
+	$operador = strtoupper($_POST['operador']);
 
-		if ($_POST['txtVPlacaAutorizada'] != "NA" && $_POST['txtVChoferAutorizado'] != "NA" && $_POST['txtVTipoCombustible'] != "NA") 
-		{  
-			$tipoCombustible = $_POST['txtVTipoCombustible'];
-			//POR LITROS
-			if ($_POST['txtVPorLitros'] != "NA" && $_POST['txtVPorImporte'] == "NA" && $tipoCombustible != "LUBRICANTE")
-			{
-				$litros = $_POST['txtVPorLitros'];
-
-				$query = "CALL p_VALE('$chofer', $litros, 0, '$placa', $idU, '$tipoCombustible')";
-				$result = mysqli_query($conn, $query);
-				$ver = mysqli_fetch_row($result);
-				if ($ver[0] == 1)
-					echo 1;
-				else if ($ver[0] == 2)
-					echo 2;
-				else if ($ver[0] == 3)
-					echo 3;
-				else if ($ver[0] == 4)
-					echo 4;
-			}
-			//POR IMPORTE
-			if ($_POST['txtVPorLitros'] == "NA" && $_POST['txtVPorImporte'] != "NA" || $tipoCombustible == "LUBRICANTE")
-			{
-				$importe = $_POST['txtVPorImporte'];
-
-				$query = "CALL p_VALE('$chofer', 0, $importe, '$placa', $idU, '$tipoCombustible')";
-				$result = mysqli_query($conn, $query);
-				$ver = mysqli_fetch_row($result);
-				if ($ver[0] == 1)
-					echo 1;
-				else if ($ver[0] == 2)
-					echo 2;
-				else if ($ver[0] == 3)
-					echo 3;
-				else if ($ver[0] == 4)
-					echo 4;
-			}
+	$query = "CALL p_VALE('$operador', $litros, $importe, '$placa', $idUsuario, '$concepto')";
+	$datos = $_conexion->EjecutarConsulta($query);
+	if (is_array($datos)) {
+		if ($datos[0] == 1) {
+			$_conexion->Commit();
+			echo 1;
 		}
-		else
-		{
-			echo "LLENE TODOS LOS CAMPOS DE TEXTO"; 
+		else if ($datos[0] == 2) {
+			echo "CREDITO INSUFICIENTE.";
 		}
+		else if ($datos[0] == 3) {
+			echo "SU CUENTA NO ESTA ACTIVA.";
+		}
+		else if ($datos[0] == 4) {
+			echo "VEHICULO NO CORRESPONDE AL CLIENTE.";
+		}
+		else if ($datos[0] == 5) {
+			echo "ERROR DE PRECIOS DE ESTACION. COMUNIQUE LA FALLA A UN ADMINISTRADOR.";
+		}
+		exit;
+	}
+	else {
+		$_conexion->Rollback();
 	}
  ?>

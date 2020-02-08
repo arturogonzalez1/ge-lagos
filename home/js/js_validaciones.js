@@ -68,12 +68,13 @@ function ValidarEmail(email){
 }
 
 //Solo permite introducir numeros.
-function soloNumeros(e){
+function SoloNumeros(e){
     var key = e.charCode;
     if (key == 46 || key >= 48 && key <=57) {
     	return true;
     }
     else{
+    	console.log("valor no aceptado " + key);
     	return false;
     }
 }

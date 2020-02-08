@@ -26,10 +26,6 @@
   <!-- Mobile Specific Metas-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-
-	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,700,800' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Crete+Round:400,400italic' rel='stylesheet' type='text/css'>
-
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" media="screen">
 	
 	<link rel="stylesheet" type="text/css" href="../css/magnific-popup.css" media="screen">
@@ -37,6 +33,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../css/light-blue.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../css/responsive.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../css/w3.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../assets/alertify/css/themes/default.css">
 	<link rel="stylesheet" type="text/css" href="../assets/alertify/css/alertify.css">
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
@@ -85,7 +83,7 @@
   </div>
 	<!--************************************************* agregar datosmodal ***********************************************-->
 	<div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="width: 400px">
+    <div class="modal-dialog" role="document" style="width: 1000px">
       <div class="modal-content">
         <div class="modal-header">
 
@@ -96,32 +94,37 @@
         </div>
         <div class="modal-body">
         	<div class="container-fluid">
-        		<form id="frmactualiza">
-	        		<label>CLIENTE</label>
-	        		<input list="clientesu" class="form-control" name = "clientesuu" id = "clientesuu">
-						<datalist id="clientesu" name= "clientesu">
-						<option disabled selected>Estacion</option>
-						<?php echo $contenidoComboboxCliente ?>
-						</datalist>
-	            	<label>Fecha y hora Inicial</label><br>
-		        	<input type="date"  name="finicialu" id="finicialu">
-		            <input type="time" value="00:00" name="hinicialu" id="hinicialu">
-		            <br><label>Fecha y Hora Final</label><br>
-		            <input type="date"  name="ffinalu" id="ffinalu">
-		            <input type="time" value="23:59" name="hfinalu" id="hfinalu">
-		            <br><label>Tipo de Pago</label>
-		            <select class="form-control" name = "tpagou" id = "tpagou">
-						<option value="Deposito Bancario">Deposito Bancario</option>
-						<option value="Tranferencia Bancaria">Tranferencia Bancaria</option>
-						<option value="Cheques">Cheques</option>
-						<option value="Efectivo">Efectivo</option>
-					</select>
-					<label>Numero de Factura</label>
-		            <input type="text" class="form-control form-control-sm" name="nfacturau" id="nfacturau">
-		            <br><label>Fecha y Hora de Pago</label><br>
-		            <input type="date"  name="fpago" id="fpago">
-		            <input type="time" value="23:59" name="hpago" id="hpago">
-	          </form>
+        		<div class="col-md-5" style="height: 450px">
+        			<form id="frmPagar">
+		        		<label>CLIENTE</label>
+		        		<input list="listaClientes" class="form-control" name = "cliente" id = "cliente">
+							<datalist id="listaClientes" name= "listaClientes">
+								<?php echo $contenidoComboboxCliente ?>
+							</datalist>
+		            	<label>Fecha y hora Inicial</label><br>
+			        	<input type="date"  name="fechaInicial" id="fechaInicial">
+			            <input type="time" value="00:00" name="horaInicial" id="horaInicial">
+			            <br><label>Fecha y Hora Final</label><br>
+			            <input type="date"  name="fechaFinal" id="fechaFinal">
+			            <input type="time" value="23:59" name="horaFinal" id="horaFinal">
+			            <br><label>Tipo de Pago</label>
+			            <select class="form-control" name = "tipoPago" id = "tipoPago">
+							<option value="Deposito Bancario">Deposito Bancario</option>
+							<option value="Tranferencia Bancaria">Tranferencia Bancaria</option>
+							<option value="Cheques">Cheques</option>
+							<option value="Efectivo">Efectivo</option>
+						</select>
+						<label>Numero de Factura</label>
+			            <input type="text" class="form-control form-control-sm" name="numeroFactura" id="numeroFactura">
+			            <br><label>Fecha y Hora de Pago</label><br>
+			            <input type="date"  name="fechaPago" id="fechaPago">
+			            <input type="time" value="23:59" name="horaPago" id="horaPago">
+		          </form>
+        		</div>
+        		<div class="col-md-7">
+        			<label>TICKETS</label>
+        			<div id="tickets" class="scroll"></div>
+        		</div>
         	</div>
         </div>
         <div class="modal-footer">
@@ -249,6 +252,8 @@
 	<script type="text/javascript" src="js/js-pagos-crud.js"></script>
 	<script type="text/javascript" src="js/js-pagos-opciones.js"></script>
 	<script type="text/javascript" src="js/js-pagos-validaciones.js"></script>
+	<script type="text/javascript" src="js/js-pagos-eventos.js"></script>
+
 
 	<script type="text/javascript">
 		//Magnific Popup

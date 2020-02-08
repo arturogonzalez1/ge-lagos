@@ -221,20 +221,8 @@
 						alertify.success('El importe se ha modificado correctamente');
 						verHistorial('".$idcliente."', '', '');
 					}
-					if (r == 2)
-					{
-						$('#newImporteModal').modal('hide');
-						alertify.error('El importe no puede ser igual o mayor al total del vale. No se ha modificado');
-					}
-					if (r == 3)
-					{
-						$('#newImporteModal').modal('hide');
-						alertify.error('No es posible modificar tickets por lubricante. No se ha modificado');
-					}
-					if (r == 4)
-					{
-						$('#newImporteModal').modal('hide');
-						alertify.error('No es posible modificar el ticket si otro ha sido cobrado. No se ha modificado');
+					else {
+						alertify.alert('ERROR', 'NO SE HA MODIFICADO EL TICKET: ' + r);
 					}
 				}
 			});

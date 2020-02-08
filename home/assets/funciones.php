@@ -134,7 +134,7 @@
 			{
 				while($ver=mysqli_fetch_array($consult))
 				{
-					$contenido = $contenido."<option value='".$ver['nombre']."'>".$ver['nombre']."</option>";
+					$contenido = $contenido."<option data-value='".$ver['idCliente']."' value='".$ver['nombre']."'></option>";
 				}	
 			}
 			else return 0;

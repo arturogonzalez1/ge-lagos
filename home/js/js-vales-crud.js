@@ -6,23 +6,38 @@ $(document).ready(function(){
 			$('#mainset').load('tabla.cliente.vales.view.php');
 
 			$('#btnAgregarVale').click(function(){
-				if(validarFormVacio('frmAgrega') > 0){
-					alertify.alert("Error","Debes llenar todos los campos.");
-					return false;
-				}
 				if (ValidarVale())
 				{
 					GenerarVale();
 					$('#autorizarmodal').modal();
 				}
+				else {
+					return false;
+				}
 			});
 
 			$('#btnEnviar').click(function(){
-				var datos = $('#frmAutoriza').serialize();
+				var datos = new FormData();
+				var tipoconsumo = document.querySelector('#slcTipoCons').value;
+
+				datos.append('placa', $('#slcVehiculo option:selected').text());
+				datos.append('concepto', $('#slcTipoCombustible').prop('value'));
+				datos.append('operador', $('#txtChofer').prop('value'));
+
+				if (tipoconsumo == 'Litros') {
+					datos.append('litros', $('#txtLitros').prop('value'));
+				}
+				else if (tipoconsumo == 'Importe') {
+					datos.append('importe', $('#txtImporte').prop('value'));
+				}
+				
 				$.ajax({
-					type:"POST",
-					data:datos,
-					url:"php/agregarVale.php",
+						url:"php/agregarVale.php",
+						type:"POST",
+						contentType: false,
+						data:datos,
+						processData: false,
+						cache: false, 
 					success:function(r){
 						if(r==1){
 							$('#addmodal').modal('hide');
@@ -32,17 +47,8 @@ $(document).ready(function(){
 							$('#mainset').load('tabla.cliente.vales.view.php');
 							alertify.success("Vale autorizado.");
 						}
-						else if (r==2){
-							alertify.error("Vehiculo no corresponde al cliente.");
-						}
-						else if (r==3){
-							alertify.error("Saldo Insuficiente para autorizar el vale.");
-						}
-						else if (r==4){
-							alertify.error("No se pudo autorizar. Su cuenta no esta activa.");
-						}
-						else{
-							alertify.error("No se pudo autorizar.");
+						else {
+							alertify.alert("ERROR","No se pudo autorizar el vale. " + r);
 						}
 					}
 				});
