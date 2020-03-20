@@ -41,6 +41,7 @@ function ControlPorTipoCombustible(){
 	var comboboxTipoConsumo = document.getElementById("slcTipoCons");
 
 	if (comboboxTipoCombustible.value == "LUBRICANTE"){
+		comboboxTipoConsumo.value = "Importe";
 		comboboxTipoConsumo.disabled = true;
 		litros.value = "";litros.disabled = true;
 		importe.disabled = false; 
@@ -62,7 +63,7 @@ function ControlPorTipoCombustible(){
 //---------------------------------------------------- MOSTRAR IMAGEN VEHICULO ------------------------------------------------------------->
 function ImagenV()
 {
-	GetImage();
+	// GetImage();
 	// var combobox = document.getElementById("slcVehiculo"); 
 	// var placa = combobox.options[combobox.selectedIndex].text;
 	// var fvehiculo = document.getElementById("imgFotoVehiculo");
@@ -218,10 +219,10 @@ function cancelar(numVale)
               url:"php/cancelar.php",
               success:function(r){
                   if(r==1){     
-                      window.location="vales.php";
+                      $('#mainset').load('tabla.cliente.vales.view.php');
                       alertify.success("EL VALE SE HA CANCELADO");
                   }else{
-                       alertify.error("NO SE PUDO CANCELAR EL VALE");
+                       alertify.alert("ERROR", "NO SE PUDO CANCELAR EL VALE: " + r);
                   }
               }
           });

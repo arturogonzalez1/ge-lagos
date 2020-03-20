@@ -14,16 +14,16 @@
 	</thead>
 <?php
 $idEstacion = $_SESSION['adm_idEstacion'] ;
-$sql="CALL v_SOLOESTACION($idEstacion);";
+$sql="CALL v_PrecioActual($idEstacion);";
 $result=mysqli_query($conn,$sql);
 
 while($ver=mysqli_fetch_array($result))
 {
  ?>
  <tr>
-	<td><?php echo $ver[4]; ?></td>
-	<td><?php echo $ver[5]; ?></td>
-	<td><?php echo $ver[6]; ?></td>
+	<td><?php echo $ver[0]; ?></td>
+	<td><?php echo $ver[1]; ?></td>
+	<td><?php echo $ver[2]; ?></td>
 </tr>
 
 <?php 

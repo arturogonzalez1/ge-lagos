@@ -2,7 +2,7 @@
 
 	require "../../assets/bd.php";
 
-	$_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
+	$_conexion = new Conexion('35.239.178.56', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge_legos');
 	$nombre = strtoupper($_POST['nombreE']);
 	$no = $_POST['noE'];
     $rfc = strtoupper($_POST['rfcE']);

@@ -8,7 +8,12 @@
 	$f = new Funciones();
 
 	$idU = $_SESSION['c_user_id'];
+	$etiquetas = "";
 	$saldo = $f ->ConsultarSaldo($idU);
+	$totalregistros = $f->TotalRegEstadoCuenta($idU);
+	if ($totalregistros == 0) {
+		$etiqueta = 'disabled=""';
+	}
 	$anios = $f ->LlenarAniosEC($idU);
  ?>
 <!DOCTYPE html >
@@ -53,11 +58,11 @@
 		        	<div class="container-fluid">
 		        		<form name="frmFiltroMes" id="frmFiltroMes">
 		   					<label>AÑO</label>
-		   					<select class="form-control" name = "selectAnio" id = "selectAnio" onchange="">
+		   					<select class="form-control" name = "selectAnio" id = "selectAnio" <?php echo $etiqueta ?>>
 								<?php echo $anios ?>
 							</select>
 							<label>MES</label>
-							<select class="form-control" name = "selectMes" id = "selectMes">
+							<select class="form-control" name = "selectMes" id = "selectMes" <?php echo $etiqueta ?>>
 								<option value="1">Enero</option>
 								<option value="2">Febrero</option>
 								<option value="3">Marzo</option>

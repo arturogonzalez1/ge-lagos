@@ -4,7 +4,7 @@
 var nombre = document.querySelector("#nombreC");
 var rfc = document.querySelector("#rfcC");
 var limiteCredito = document.querySelector("#limiteC");
-var personaAutorizada = document.querySelector("#paC");
+var razons = document.querySelector("#razonsC");
 var usuario = document.querySelector("#usuarioC");
 var clave = document.querySelector("#pswC");
 var claveC = document.querySelector("#pswCC");
@@ -28,8 +28,9 @@ limiteCredito.addEventListener('keypress', function(event) {
 		event.returnValue = false;
 	}
 });
-personaAutorizada.addEventListener('keypress', function(event) {
+razons.addEventListener('keypress', function(event) {
 	var key = event.charCode;
+	console.log(key);
 	if (personaAutorizada.value.length >= 50) {
 		console.log("El campo persona autorizada solo acepta 50 caracteres como maximo");
 		event.returnValue = false;

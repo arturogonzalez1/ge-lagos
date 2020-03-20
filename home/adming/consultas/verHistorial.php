@@ -9,8 +9,8 @@
 	$salida = "";
 	$datosCliente = $f ->VerDatosCliente("$idcliente");
 
-	$idUsuario = $datosCliente[3];
-	$limiteCredito = $datosCliente[4];
+	$idUsuario = $datosCliente[2];
+	$limiteCredito = $datosCliente[3];
 	$anios = $f ->LlenarAniosEC($idUsuario);
 
 	if ($filtro1 != 0 && $filtro2 == 0)
@@ -31,8 +31,7 @@
 		<center>
 			<h4 style='color: white'>
 			CLIENTE: ". $datosCliente[0] ." <br>
-			SALDO: ". $datosCliente[1] ."<br>
-			SALDO EN VALES: ". $datosCliente[2] ." 
+			SALDO: ". $datosCliente[1] ." 
 			</h4>
 		</center>
 	</div>";

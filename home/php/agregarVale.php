@@ -15,10 +15,6 @@
 		$importe = $_POST['importe'];
 		$litros = 0;
 	}
-	else {
-		echo "ERROR EN LOS DATOS";
-		exit;
-	}
 
 	$placa = $_POST['placa'];
 	$concepto = $_POST['concepto'];
@@ -28,7 +24,6 @@
 	$datos = $_conexion->EjecutarConsulta($query);
 	if (is_array($datos)) {
 		if ($datos[0] == 1) {
-			$_conexion->Commit();
 			echo 1;
 		}
 		else if ($datos[0] == 2) {
@@ -44,8 +39,5 @@
 			echo "ERROR DE PRECIOS DE ESTACION. COMUNIQUE LA FALLA A UN ADMINISTRADOR.";
 		}
 		exit;
-	}
-	else {
-		$_conexion->Rollback();
 	}
  ?>

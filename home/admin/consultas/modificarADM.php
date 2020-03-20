@@ -2,7 +2,7 @@
 	require "../../assets/bd.php";
 	require "../../assets/database.php";
 
-	$_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
+	$_conexion = new Conexion();
 
 	$id = $_POST['idADMM'];
 	$nombre = strtoupper($_POST['nombreADMM']);
@@ -22,7 +22,6 @@
 		$datos = $_conexion->EjecutarConsulta($query);
 		if (is_array($datos)) {
 			if ($datos[0] == 1) {
-				$_conexion->Commit();
 				echo 1;
 			}
 			if ($datos[0] == 2) {
@@ -33,7 +32,6 @@
 			}
 		}
 		else {
-			$_conexion->Rollback();
 			echo "No se ha podido actualizar";
 		}
 	}

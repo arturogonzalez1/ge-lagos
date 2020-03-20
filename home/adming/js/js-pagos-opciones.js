@@ -38,4 +38,16 @@ function TicketsToPay(){
 			$("#tickets").html(r);
 		}
 	});
+	$.ajax({
+		url: 'consultas/totalAPagar.php',
+		type: 'POST',
+		contentType: false,
+		data: datos,
+		dataType: 'html',
+		processData: false,
+		cache: false, 
+		success:function(r){
+			$("#total").html(r);
+		}
+	});
 }

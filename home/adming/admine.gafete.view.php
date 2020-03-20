@@ -25,10 +25,10 @@ session_start();
 		$encode_data = base64_encode($datos[0]);
 
 		$f = new Funciones();
-		$_conexionFTP = new ConexionFTP();
-		$local_file = "temp/despachador.jpg";
-		$server_file = "images/web/despachadores/".$nameFoto.".jpg";
-		$_conexionFTP->GetImage($local_file, $server_file);
+		//$_conexionFTP = new ConexionFTP();
+		//$local_file = "temp/despachador.jpg";
+		//$server_file = "images/web/despachadores/".$nameFoto.".jpg";
+		//$_conexionFTP->GetImage($local_file, $server_file);
 
 		$qrcode = $f ->GenerarQR($encode_data);
 

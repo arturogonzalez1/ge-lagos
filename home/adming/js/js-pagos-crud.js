@@ -14,21 +14,24 @@ $(document).ready(function(){
 			alertify.alert("Error","Debes llenar todos los campos");
 			return false;
 		}
-		var datos = $('#frmPagar').serialize();
+		var formulario = document.querySelector("#frmPagar");
+		var datos = new FormData(formulario);
+		var value = $('#cliente').val();
+		datos.append('id', $('#listaClientes [value="' + value + '"]').data('value'));
 		$.ajax({
-			type:"POST",
-			data:datos,
 			url:"consultas/agregarPago.php",
+			type:"POST",
+			contentType: false,
+			data:datos,
+			processData: false,
+			cache: false, 
 			success:function(r) {
 				if (r==1) {
 					alertify.success("El pago se ha realizado correctamente");
 					ActualizarPagos();
 				}
-				else if (r==2) {
-					alertify.error("Error en las fechas");
-				}
 				else {
-					alertify.error("Error al realizar el pago");
+					alertify.alert("ERROR","Error al realizar el pago. "+r);
 				}
 			}
 		});

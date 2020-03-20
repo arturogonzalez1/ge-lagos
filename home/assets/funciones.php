@@ -77,6 +77,15 @@
 
 			return $contenido;
 		}
+		function TotalRegEstadoCuenta($idusuario) {
+			require 'bd.php';
+			$bd_conn = new Conexion();
+			$query = "CALL v_REG_ESTADOCUENTA($idusuario);";
+			$result = $bd_conn->EjecutarConsulta($query);
+			if (is_array($result)) {
+				return $result[0];
+			}
+		}
 		function LlenarMesesEC($id, $anio)
 		{
 			require 'database.php'; 
@@ -140,6 +149,16 @@
 			else return 0;
 
 			return $contenido;
+		}
+		function TotalParaPagar($idcliente, $idestacion, $finicial, $ffinal) {
+			require 'bd.php';
+			$bd_conn = new Conexion();
+			$query = "CALL v_TOTAL_TO_PAY($idcliente, $idestacion, '$finicial', '$ffinal')";
+			$result = $bd_conn->EjecutarConsulta($query);
+			if (is_array($result)) {
+				return $result[0];
+			}
+			else return false;
 		}
 		function VerDatosVehiculo($id)
 		{
@@ -249,18 +268,6 @@
 				$ver = mysqli_fetch_array($consult);
 			}
 				return $ver;
-	    }
-
-	    function Commit(){
-	    	require 'database.php';
-	    	$query = "CALL p_COMMIT()";
-	    	return mysqli_query($conn2, $query);
-	    }
-
-	    function Rollback(){
-	    	require 'database.php';
-	    	$query = "CALL p_ROLLBACK()";
-	    	return mysqli_query($conn2, $query);
 	    }
 	}
  ?>

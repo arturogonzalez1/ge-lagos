@@ -8,6 +8,13 @@
 
 	$idU = $_SESSION['c_user_id'];
 	$datosCliente = $f -> verEstadoCliente($idU);
+	$totalregistros = $f->TotalRegEstadoCuenta($idU);
+	if ($totalregistros == 0) {
+		echo '<div class="alert alert-warning">
+		        <strong>Sin Registros! </strong> Todavia no se ha realizado ningun movimiento.
+		      </div>';
+    	exit();
+	}
 	$limiteCredito = $datosCliente[2];
 	$anio = $_POST['anio'];
 	$mes = $_POST['mes'];

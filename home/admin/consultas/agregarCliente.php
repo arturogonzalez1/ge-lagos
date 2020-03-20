@@ -1,15 +1,28 @@
 <?php 
     require "../../assets/bd.php";
 
-    $_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
+    $_conexion = new Conexion();
 
 	$nombre = strtoupper($_POST['nombreC']);
+    $apellidos = strtoupper($_POST['apellidosC']);
     $rfc = strtoupper($_POST['rfcC']);
+    $codpos = $_POST['codposC'];
+    $email = $_POST['emailC'];
+    $email2 = $_POST['email2C'];
+    $email3 = $_POST['email3C'];
+    $telefono = $_POST['telefonoC'];
+    $razons = strtoupper($_POST['razonsC']);
+    $colonia = strtoupper($_POST['coloniaC']);
+    $estado = strtoupper($_POST['estadoC']);
+    $ciudad = strtoupper($_POST['ciudadC']);
+    $pais = strtoupper($_POST['paisC']);
+    $delegacion = strtoupper($_POST['delegacionC']);
+    $numregidtrib = strtoupper($_POST['numregidtribC']);
+    $usocfdi = strtoupper($_POST['usocfdiC']);
     $limite = $_POST['limiteC'];
     $diasPago = $_POST['diasPagoC'];
     $diasLimite = $_POST['diasLimiteC'];
     $modalidad = $_POST['modalidadC'];
-    $pa = strtoupper($_POST['paC']);
     $usuario = $_POST['usuarioC'];
     $psw = $_POST['pswC'];
     $pswC = $_POST['pswCC'];
@@ -23,11 +36,11 @@
 
     if ($psw == $pswC)
     {
-		$query = "CALL p_CLIENTE('$nombre', '$rfc', $limite, $diasPago, $diasLimite, '$modalidad', '$pa', '$usuario', '$psw');";
+		$query = "CALL p_CLIENTE('$nombre', '$apellidos', '$rfc', '$codpos', '$email', '$email2', '$email3', '$telefono', '$razons', '$colonia', 
+        '$estado', '$ciudad', '$pais', '$delegacion', '$numregidtrib', '$usocfdi', $limite, $diasPago, $diasLimite, '$modalidad', '$usuario', '$psw');";
         $ver = $_conexion->EjecutarConsulta($query);
         if (is_array($ver)) {
             if ($ver[0] == 1) {
-                $_conexion->Commit();
                 echo 1;
             }
             else if ($ver[0] == 2) {
@@ -35,7 +48,6 @@
             }
         }
         else {
-            $_conexion->Rollback();
             echo "ERROR AL INSERTAR";
         }
 	}

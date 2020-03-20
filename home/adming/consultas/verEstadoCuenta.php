@@ -10,16 +10,15 @@
 	$f = new Funciones();
 	$salida = "";
 	$datosCliente = $f ->VerDatosCliente($idcliente);
-	$idUsuario = $datosCliente[3];
-	$limiteCredito = $datosCliente[4];
+	$idUsuario = $datosCliente[2];
+	$limiteCredito = $datosCliente[3];
 	$anios = $f ->LlenarAniosEC($idUsuario);
 
 	$salida .= "<div class='col-md-12' style='background-color: #343A46'>
 		<center>
 			<h4 style='color: white'>
 			CLIENTE: ". $datosCliente[0] ." <br>
-			SALDO: ". $datosCliente[1] ."<br>
-			SALDO EN VALES: ". $datosCliente[2] ." 
+			SALDO: ". $datosCliente[1] ."
 			</h4>
 		</center>
 	</div>";
@@ -123,10 +122,10 @@
 				<style type='text/css'>
 	.scroll { height:600px; overflow: auto;}
 	</style>
-	<div class='col-md-1'></div>
-	<div class='col-md-10' >
-		<div  class='col-md-12 scroll' >
-			<table class='table table-striped table-bordered'  style='border-style:solid;' >
+	<div class='col-sm'></div>
+	<div class='col-sm' >
+		<div  class='col-md scroll' >
+			<table class='table table-striped table-bordered'  style='border-style:solid; font-size: 12px' >
 				<thead>
 					<tr>
 						<th>Fecha</th>
@@ -168,7 +167,7 @@
 				$salida .= "</table>
 			</div>
 	</div>
-	<div class='col-md-1'></div>
+	<div class='col-sm'></div>
 	<script type='text/javascript'>
 		function Filtrar(){
 				$('#filtromodal').modal('hide');

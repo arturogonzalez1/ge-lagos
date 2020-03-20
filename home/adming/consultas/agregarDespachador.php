@@ -4,7 +4,7 @@
      require "../../assets/ftp.php";
     require "../../assets/bd.php";
 
-    $_conexionFTP = new ConexionFTP();
+    //$_conexionFTP = new ConexionFTP();
     $_conexion = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
 
     //INFORMACION
@@ -37,7 +37,7 @@
 
         imagejpeg($copia, $origen, 100);
         
-        if ($_conexionFTP->SetImage($destino, $origen)) {
+        //if ($_conexionFTP->SetImage($destino, $origen)) {
             $query = "CALL p_GASOLINERO('$nombre','$domicilio','$ciudad','$estado','$telefono','$usr','$psw', $estacion)";
             $ver = $_conexion->EjecutarConsulta($query);
 
@@ -45,7 +45,6 @@
             {
                 if ($ver[0] == 1)
                 {
-                    $_conexion->Commit();
                     echo 1;
                 }
                 else if ($ver[0] == 2)
@@ -59,14 +58,13 @@
             }
             else
             {
-                $_conexion->Rollback();
                 if(file_exists($ruta))
                 {
                     unlink($ruta);
                 }
                 echo "ERROR AL INSERTAR";
             }
-        }
+        //}
     }
     else echo "LAS CONTRASENAS NO COINCIDEN";
  ?>

@@ -222,7 +222,6 @@
 	<script src="../assets/alertify/alertify.js"></script>
 	<script type="text/javascript" src="../js/js_validaciones.js"></script>
 	<script type="text/javascript" src="js/js-precios-crud.js"></script>
-	<script type="text/javascript" src="js/js-precios-opciones.js"></script>
 	<script type="text/javascript" src="js/js-precios-validaciones.js"></script>
 
 	<script type="text/javascript">

@@ -30,7 +30,7 @@
 				if ($results["nivelPriv"] == 2)
 				{
 					$_SESSION['c_user_id'] = $results["idUsuario"];
-					$_SESSION['c_name_user'] = $results["paCliente"];
+					$_SESSION['c_name_user'] = $results["razons"];
 					$_SESSION['c_name_cliente'] = $results["nombreUsuario"];
 					$_SESSION['c_nivelP'] = $results["nivelPriv"];
 					$_SESSION['c_loged'] = true;

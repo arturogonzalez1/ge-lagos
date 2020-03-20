@@ -1,5 +1,11 @@
 'use strict';
 
+//CONTROL POR LUBRICANTE
+var inputTipoCombustible = document.querySelector("#slcTipoCombustible");
+inputTipoCombustible.addEventListener('change', function(e) {
+	ControlPorTipoCombustible();
+});
+
 //VALIDAR LITROS
 var txtLitros = document.querySelector("#txtLitros");
 txtLitros.addEventListener("keypress", function (event) {

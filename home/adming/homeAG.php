@@ -79,7 +79,7 @@
 					</li>
 					
 					<br>
-                    <li><a href="http://ge-lagos.com/"><i class="fa fa-user-times"></i><span>SALIR</span></a></li>
+                    <li><a href="../logout.php"><i class="fa fa-user-times"></i><span>SALIR</span></a></li>
 					
 				</ul>				
 			</div>

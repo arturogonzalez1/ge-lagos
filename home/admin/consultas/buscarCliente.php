@@ -27,7 +27,7 @@
 								<th>SALDO</th>
 								<th>ESTADO</th>
 								<th>MODALIDAD</th>
-								<th>PERSONAL AUTORIZADO</th>
+								<th>RAZON SOCIAL</th>
 							</tr>
 						</thead>";
 

@@ -40,49 +40,8 @@
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 </head>
 <body>
-
 	<!--************************************************* agregar datosmodal ***********************************************-->
-	<div class="modal fade" id="insertmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="width: 400px">
-      <div class="modal-content">
-        <div class="modal-header">
-
-          <h5 class="modal-title" id="exampleModalLabel">Buscar</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        	<div class="container-fluid">
-        		<form id="frmBusca" action="consultas/excel.php" method="POST">
-	        		<label>CLIENTE</label>
-	        		<input list="clientesb" class="form-control" name = "clientesba" id = "clientesba">
-						<datalist id="clientesb" name= "clientesb">
-						<?php echo $contenidoComboboxCliente ?>
-						</datalist>
-					</imput>
-						<label>FECHA Y HORA INICIAL</label><br>
-						<span>
-							<input type="date"  name="finicialb" id="finicialb">
-							<input type="time" value="00:00" name="hinicialb" id="hinicialb">
-						</span><br>
-						<label>FECHA Y HORA FINAL</label><br>
-						<span>
-							<input type="date" name="ffinalb" id="ffinalb">
-							<input type="time" value="23:59" name="hfinalb" id="hfinalb">
-						</span>
-	            </form>
-        	</div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-raised btn-warning" id="btnbuscar">Buscar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-	<!--************************************************* agregar datosmodal ***********************************************-->
-	<div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- <div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="width: 1000px">
       <div class="modal-content">
         <div class="modal-header">
@@ -93,7 +52,7 @@
           </button>
         </div>
         <div class="modal-body">
-        	<div class="container-fluid">
+        	<div class="container-fluid" id="idContenedorFormulario">
         		<div class="col-md-5" style="height: 450px">
         			<form id="frmPagar">
 		        		<label>CLIENTE</label>
@@ -101,18 +60,22 @@
 							<datalist id="listaClientes" name= "listaClientes">
 								<?php echo $contenidoComboboxCliente ?>
 							</datalist>
-		            	<label>Fecha y hora Inicial</label><br>
-			        	<input type="date"  name="fechaInicial" id="fechaInicial">
-			            <input type="time" value="00:00" name="horaInicial" id="horaInicial">
-			            <br><label>Fecha y Hora Final</label><br>
-			            <input type="date"  name="fechaFinal" id="fechaFinal">
-			            <input type="time" value="23:59" name="horaFinal" id="horaFinal">
-			            <br><label>Tipo de Pago</label>
+		            	<label>Fecha y hora Inicial</label>
+		            	<p>
+		            		<input type="date"  name="fechaInicial" id="fechaInicial">
+			            	<input type="time" value="00:00" name="horaInicial" id="horaInicial">
+		            	</p>
+			            <label>Fecha y Hora Final</label>
+			            <p>
+			            	<input type="date"  name="fechaFinal" id="fechaFinal">
+			            	<input type="time" value="23:59" name="horaFinal" id="horaFinal">
+			            </p>
+			            <label>Tipo de Pago</label>
 			            <select class="form-control" name = "tipoPago" id = "tipoPago">
-							<option value="Deposito Bancario">Deposito Bancario</option>
-							<option value="Tranferencia Bancaria">Tranferencia Bancaria</option>
-							<option value="Cheques">Cheques</option>
-							<option value="Efectivo">Efectivo</option>
+							<option value="1">Deposito Bancario</option>
+							<option value="2">Tranferencia Bancaria</option>
+							<option value="3">Cheques</option>
+							<option value="4">Efectivo</option>
 						</select>
 						<label>Numero de Factura</label>
 			            <input type="text" class="form-control form-control-sm" name="numeroFactura" id="numeroFactura">
@@ -133,8 +96,74 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 	<!--************************************************* agregar datosmodal-->
+
+	<!-- Crear Factura -->
+
+	<div class="modal fade" id="facturamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h5 class="modal-title" id="exampleModalLabel">Generar Factura</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        	<div class="container-fluid" id="idContenedorFormulario">
+        		<div class="row">
+        			<div class="col-lg-5 col-md-12" style="height: 450px">
+	        			<form id="frmPagar">
+			        		<label>CLIENTE</label>
+			        		<input list="listaClientes" class="form-control" name = "cliente" id = "cliente">
+								<datalist id="listaClientes" name= "listaClientes">
+									<?php echo $contenidoComboboxCliente ?>
+								</datalist>
+			            	<label>Fecha y hora Inicial</label>
+			            	<p>
+			            		<input type="date"  name="fechaInicial" id="fechaInicial">
+				            	<input type="time" value="00:00" name="horaInicial" id="horaInicial">
+			            	</p>
+				            <label>Fecha y Hora Final</label>
+				            <p>
+				            	<input type="date"  name="fechaFinal" id="fechaFinal">
+				            	<input type="time" value="23:59" name="horaFinal" id="horaFinal">
+				            </p>
+				            <label>Tipo de Pago</label>
+				            <select class="form-control" name = "tipoPago" id = "tipoPago">
+								<option value="1">Deposito Bancario</option>
+								<option value="2">Tranferencia Bancaria</option>
+								<option value="3">Cheques</option>
+								<option value="4">Efectivo</option>
+							</select>
+							
+			          </form>
+	        		</div>
+	        		<div class="col-lg-7 col-md-12">
+	        			<label>TICKETS</label>
+	        			<div id="tickets" class="scroll"></div>
+	        		</div>
+        		</div>
+        		<div class="row">
+        			<center><label>Total</label></center>
+        			<div id="total">
+						<h1 align="center">0.0</h1>
+					</div>
+        		</div>
+        	</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <a heref="consultas/excel.php"><button type="button" class="btn btn-raised btn-warning" id="btnpagar">Imprimir</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	<!-- Crear Factura -->
+
 	<!-- Container -->
 	<div id="container">
 		<!-- Header
@@ -204,8 +233,8 @@
 			</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
-					<span class="btn btn-raised btn-primary btn-lg" data-toggle="modal" data-target="#insertmodal">
-						<span class="fa fa-plus-circle"></span> BUSCAR TICKETS
+					<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#facturamodal"> GENERAR FACTURA
+						<span class="fa fa-pencil-square-o"></span> 
 					</span>
 					<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#updatemodal"> REALIZAR PAGO
 						<span class="fa fa-pencil-square-o"></span> 

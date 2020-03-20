@@ -57,46 +57,44 @@
 				</div>
 				<div class="modal-body">
 					<div class="container-fluid">
-						<div class="col-md-6">
-							<br>
-							<form id="frmAgrega">
-								<label>PLACA</label>
-								<select class="form-control" name = "txtfkVehiculo" id = "slcVehiculo">
-									<?php echo $contenidoCombobox ?>
-								</select>
-								<label>TIPO DE COMBUSTIBLE</label>
-								<select class="form-control" id = "slcTipoCombustible" name="cmbTipoCombustible">
-									<option value="DIESEL">DIESEL</option>
-									<option value="MAGNA">MAGNA</option>
-									<option value="PREMIUM">PREMIUM</option>
-									<option value="LUBRICANTE">LUBRICANTE</option>
-								</select>
-								<label>TIPO DE CONSUMO</label>
-								<select class="form-control" id = "slcTipoCons" name="cmbTipoComsumo">
-									<option value="Litros">POR LITROS</option>
-									<option value="Importe">POR IMPORTE</option>
-								</select>
-							</form>
-						</div>
-						<div class="col-md-6">
-							<br>
-							<label>LITROS</label>
-							<input type="text" name="txtLitros" class="form-control" placeholder="0.000" id="txtLitros">
-							<label>IMPORTE</label>
-							<input type="text" name="txtImporte" class="form-control" placeholder="0.00" disabled="" id="txtImporte">
-							<label>OPERADOR AUTORIZADO</label>
-							<input type="text" name="txtChofer" class="form-control upper" placeholder="NOMBRE" id="txtChofer">
-						</div>
-						<div class="col-md-12">
-							<font color="black" style="text-align: center;"><H3 id = "lblPlaca">PLACA</H3></font>
-							<br>
-							<center>
-								<img id="imgFotoVehiculo" width="0" height="0" class="img" style="visibility: hidden;">
-								<div id="imagebox"></div>
-							</center>
-							<br>
-							<br>
-						</div>
+						<form id="frmAgrega">
+							<div class="col-md-6">
+								
+
+									<label>PLACA</label>
+									<select class="form-control" name = "txtfkVehiculo" id = "slcVehiculo">
+										<?php echo $contenidoCombobox ?>
+									</select>
+									<label>TIPO DE COMBUSTIBLE</label>
+									<select class="form-control" id = "slcTipoCombustible" name="cmbTipoCombustible">
+										<option value="DIESEL">DIESEL</option>
+										<option value="MAGNA">MAGNA</option>
+										<option value="PREMIUM">PREMIUM</option>
+										<option value="LUBRICANTE">LUBRICANTE</option>
+									</select>
+									<label>TIPO DE CONSUMO</label>
+									<select class="form-control" id = "slcTipoCons" name="cmbTipoComsumo">
+										<option value="Litros">POR LITROS</option>
+										<option value="Importe">POR IMPORTE</option>
+									</select>
+								
+							</div>
+							<div class="col-md-6">
+								<label>LITROS</label>
+								<input type="text" name="txtLitros" class="form-control" placeholder="0.000" id="txtLitros">
+								<label>IMPORTE</label>
+								<input type="text" name="txtImporte" class="form-control" placeholder="0.00" disabled="" id="txtImporte">
+								<label>OPERADOR AUTORIZADO</label>
+								<input type="text" name="txtChofer" class="form-control upper" placeholder="NOMBRE" id="txtChofer">
+							</div>
+							<div class="col-md-12">
+								<font color="black" style="text-align: center;"><H3 id = "lblPlaca">PLACA</H3></font>
+								<center>
+									<img id="imgFotoVehiculo" width="0" height="0" class="img" style="visibility: hidden;">
+									<div id="imagebox"></div>
+								</center>
+							</div>
+						</form>
 					</div>
 					
 				</div>

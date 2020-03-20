@@ -4,13 +4,13 @@
 	require "../assets/bd.php";
 
 
-    $ftp_conn = new ConexionFTP();
+    // $ftp_conn = new ConexionFTP();
     $bd_conn = new Conexion('207.210.232.36', 'gelagos_ultra', 'd43m0nt00l5', 'gelagos_ge');
 
     $id = $_SESSION['c_user_id'];
 	$placa = strtoupper($_POST['placaV']);
     $marca = strtoupper($_POST['marcaV']);
-    $modelo = $_POST['modeloV'];
+    $modelo = strtoupper($_POST['modeloV']);
     $unidad = strtoupper($_POST['unidadV']);
     $motor = $_POST['motorV'];
 
@@ -33,23 +33,22 @@
 
     imagejpeg($copia, $origen, 100);
     
-    if ($ftp_conn->SetImage($destino, $origen)) {
+    // if ($ftp_conn->SetImage($destino, $origen)) {
         $query = "CALL p_VEHICULO('$placa','$marca','$modelo', '$unidad', '$motor', $id)";
-        $datos = $bd_conn -> EjecutarConsulta($query);
-        if (is_array($datos)) {
-            if ($datos[0] == 1) {
-                $bd_conn->Commit();
-                echo 1;
-            }
-            else if ($datos[0] == 2) {
-                echo "UNIDAD REGISTRADA.";
-            }
-        }
-        else {
-            $bd_conn->Rollback();
-            echo "HA OCURRIDO UN ERROR.";
-        }
-    }
+        echo $query;
+        // $datos = $bd_conn -> EjecutarConsulta($query);
+        // if (is_array($datos)) {
+        //     if ($datos[0] == 1) {
+        //         echo 1;
+        //     }
+        //     else if ($datos[0] == 2) {
+        //         echo "UNIDAD REGISTRADA.";
+        //     }
+        // }
+        // else {
+        //     echo "HA OCURRIDO UN ERROR.";
+        // }
+    // }
 
 
     

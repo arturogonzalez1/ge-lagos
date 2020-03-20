@@ -39,7 +39,7 @@
 	<!--************************************************* agregar datosmodal ***********************************************-->
 	<div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
-			<div class="modal-content">
+			<div class="modal-content modal-lg">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">NUEVO CLIENTE</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -48,43 +48,69 @@
 				</div>
 				<div class="modal-body">
 					<div class="container-fluid">
-						<form id="frmAgregar">
+						<form id="frmAgregar" class="">
 							<div class="col-md-12">
-								<label>NOMBRE</label>
+								<label>NOMBRE (*)</label>
 								<input type="text" class="form-control form-control-sm upper" name="nombreC" id="nombreC">
 							</div>
 							<div class="col-md-6">
-								<label>RFC</label>
+								<label>APELLIDOS</label>
+								<input type="text" class="form-control form-control-sm upper" name="apellidosC" id="apellidosC">
+								<label>RFC (*)</label>
 								<input type="text" class="form-control form-control-sm upper" name="rfcC" id="rfcC">
-								<label>LIMITE CREDITO</label>
+								<label>CODIGO POSTAL (*)</label>
+								<input type="text" class="form-control form-control-sm upper" name="codposC" id="codposC">
+								<label>EMAIL (*)</label>
+								<input type="text" class="form-control form-control-sm" name="emailC" id="emailC">
+								<label>EMAIL 2</label>
+								<input type="text" class="form-control form-control-sm" name="email2C" id="email2C">
+								<label>EMAIL 3</label>
+								<input type="text" class="form-control form-control-sm" name="email3C" id="email3C">
+								<label>TELEFONO</label>
+								<input type="text" class="form-control form-control-sm upper" name="telefonoC" id="telefonoC">
+								<label>RAZON SOCIAL</label>
+								<input type="text" class="form-control form-control-sm upper" name="razonsC" id="razonsC">
+								<label>COLONIA</label>
+								<input type="text" class="form-control form-control-sm upper" name="coloniaC" id="coloniaC">
+								<label>CIUDAD</label>
+								<input type="text" class="form-control form-control-sm upper" name="ciudadC" id="ciudadC">
+								<label>ESTADO</label>
+								<input type="text" class="form-control form-control-sm upper" name="estadoC" id="estadoC">
+							</div>
+							<div class="col-md-6">
+								<label>PAIS</label>
+								<input type="text" class="form-control form-control-sm upper" name="paisC" id="paisC">
+								<label>DELEGACION</label>
+								<input type="text" class="form-control form-control-sm upper" name="delegacionC" id="delegacionC">
+								<label>NO. REGISTRO TRIBUTARIO</label>
+								<input type="text" class="form-control form-control-sm upper" name="numregidtribC" id="numregidtribC">
+								<label>USO CFDI (*)</label>
+								<input type="text" class="form-control form-control-sm upper" name="usocfdiC" id="usocfdiC">
+								<label>LIMITE CREDITO (*)</label>
 								<input type="text" class="form-control form-control-sm" name="limiteC" id="limiteC">
-								<label>DIAS DE PAGO</label>
+								<label>DIAS DE PAGO (*)</label>
 								<select class="form-control" id = "diasPagoC" name="diasPagoC">
 									<option value="7">SEMANAL</option>
 									<option value="15">QUINCENAL</option>
 									<option value="30">MENSUAL</option>
 								</select>
-								<label>MODALIDAD</label>
-								<select class="form-control" id = "modalidadC" name="modalidadC">
-									<option value="CREDITO">CREDITO</option>
-									<option disabled="" value="DEBITO">DEBIDO</option>
-								</select>
-								<label>DIAS LIMITE DE PAGO</label>
+								<label>DIAS LIMITE DE PAGO (*)</label>
 								<select class="form-control" id = "diasLimiteC" name="diasLimiteC">
 									<option value="1">MENSUAL</option>
 									<option value="2">BIMESTRAL</option>
 									<option value="3">TRIMESTRAL</option>
 								</select>
-							</div>
-							<div class="col-md-6">
-								
-								<label>PERSONA AUTORIZADA</label>
-								<input type="text" class="form-control form-control-sm upper" name="paC" id="paC">
-								<label>USUARIO</label>
+								<label>MODALIDAD (*)</label>
+								<select class="form-control" id = "modalidadC" name="modalidadC">
+									<option value="CREDITO">CREDITO</option>
+									<option value="DEBITO">DEBITO</option>
+									<option value="CONTADO">CONTADO</option>
+								</select>
+								<label>USUARIO (*)</label>
 								<input type="text" class="form-control form-control-sm" name="usuarioC" id="usuarioC">
-								<label>CONTRASEÑA</label>
+								<label>CONTRASEÑA (*)</label>
 								<input type="password" class="form-control form-control-sm" name="pswC" id="pswC">
-								<label>CONFIRMAR CONTRASEÑA</label>
+								<label>CONFIRMAR CONTRASEÑA (*)</label>
 								<input type="password" class="form-control form-control-sm" name="pswCC" id="pswCC">
 							</div>
 						</form>
@@ -116,41 +142,67 @@
 						<form id="frmactualiza">
 							<input type="text" hidden="" name="idClienteM" id="idClienteM">
 							<div class="col-md-12">
-								<label>NOMBRE</label>
+								<label>NOMBRE (*)</label>
 								<input type="text" class="form-control form-control-sm upper" name="nombreCM" id="nombreCM">
 							</div>
 							<div class="col-md-6">
-								<label>RFC</label>
+								<label>APELLIDOS</label>
+								<input type="text" class="form-control form-control-sm upper" name="apellidosCM" id="apellidosCM">
+								<label>RFC (*)</label>
 								<input type="text" class="form-control form-control-sm upper" name="rfcCM" id="rfcCM">
-								<label>LIMITE CREDITO</label>
+								<label>CODIGO POSTAL (*)</label>
+								<input type="text" class="form-control form-control-sm upper" name="codposCM" id="codposCM">
+								<label>EMAIL (*)</label>
+								<input type="text" class="form-control form-control-sm" name="emailCM" id="emailCM">
+								<label>EMAIL 2</label>
+								<input type="text" class="form-control form-control-sm" name="email2CM" id="email2CM">
+								<label>EMAIL 3</label>
+								<input type="text" class="form-control form-control-sm" name="email3CM" id="email3CM">
+								<label>TELEFONO</label>
+								<input type="text" class="form-control form-control-sm upper" name="telefonoCM" id="telefonoCM">
+								<label>RAZON SOCIAL</label>
+								<input type="text" class="form-control form-control-sm upper" name="razonsCM" id="razonsCM">
+								<label>COLONIA</label>
+								<input type="text" class="form-control form-control-sm upper" name="coloniaCM" id="coloniaCM">
+								<label>CIUDAD</label>
+								<input type="text" class="form-control form-control-sm upper" name="ciudadCM" id="ciudadCM">
+								<label>ESTADO</label>
+								<input type="text" class="form-control form-control-sm upper" name="estadoCM" id="estadoCM">
+							</div>
+							<div class="col-md-6">
+								<label>PAIS</label>
+								<input type="text" class="form-control form-control-sm upper" name="paisCM" id="paisCM">
+								<label>DELEGACION</label>
+								<input type="text" class="form-control form-control-sm upper" name="delegacionCM" id="delegacionCM">
+								<label>NO. REGISTRO TRIBUTARIO</label>
+								<input type="text" class="form-control form-control-sm upper" name="numregidtribCM" id="numregidtribCM">
+								<label>USO CFDI (*)</label>
+								<input type="text" class="form-control form-control-sm upper" name="usocfdiCM" id="usocfdiCM">
+								<label>LIMITE CREDITO (*)</label>
 								<input type="text" class="form-control form-control-sm" name="limiteCM" id="limiteCM">
-								<label>DIAS DE PAGO</label>
-								<select class="form-control" id = "diasPagoCM" name="diasPagoCM">
+								<label>DIAS DE PAGO (*)</label>
+								<select class="form-control" id = "diasPagoC" name="diasPagoCM">
 									<option value="7">SEMANAL</option>
 									<option value="15">QUINCENAL</option>
 									<option value="30">MENSUAL</option>
 								</select>
-								<label>DIAS LIMITE DE PAGO</label>
-								<select class="form-control" id = "diasLimiteCM" name="diasLimiteCM">
+								<label>DIAS LIMITE DE PAGO (*)</label>
+								<select class="form-control" id = "diasLimiteC" name="diasLimiteCM">
 									<option value="1">MENSUAL</option>
 									<option value="2">BIMESTRAL</option>
 									<option value="3">TRIMESTRAL</option>
 								</select>
-								<label>MODALIDAD</label>
-								<select class="form-control" id = "modalidadCM" name="modalidadCM">
-									<option value="1">CREDITO</option>
-									<option value="2">DEBITO</option>
-									<option value="3">CONTADO</option>
+								<label>MODALIDAD (*)</label>
+								<select class="form-control" id = "modalidadC" name="modalidadCM">
+									<option value="CREDITO">CREDITO</option>
+									<option value="DEBITO">DEBITO</option>
+									<option value="CONTADO">CONTADO</option>
 								</select>
-							</div>
-							<div class="col-md-6">
-								<label>PERSONA AUTORIZADA</label>
-								<input type="text" class="form-control form-control-sm upper" name="paCM" id="paCM">
-								<label>USUARIO</label>
+								<label>USUARIO (*)</label>
 								<input type="text" class="form-control form-control-sm" name="usuarioCM" id="usuarioCM">
-								<label>NUEVA CONTRASEÑA</label>
+								<label>CONTRASEÑA (*)</label>
 								<input type="password" class="form-control form-control-sm" name="pswCM" id="pswCM">
-								<label>CONFIRMAR CONTRASEÑA</label>
+								<label>CONFIRMAR CONTRASEÑA (*)</label>
 								<input type="password" class="form-control form-control-sm" name="pswCCM" id="pswCCM">
 							</div>
 						</form>
