@@ -83,6 +83,10 @@
   	}
   
   $content .= '</table>';
+
+  	session_unset($user = $_SESSION['report_user']);
+	session_unset($anio = $_SESSION['report_anio']);
+	session_unset($mes = $_SESSION['report_month']);
 	
   	ob_end_clean();
 	

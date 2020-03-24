@@ -22,14 +22,13 @@
     	$estacion = $row[4];
     	
 		$salida .= '
-            <div class="w3-card margen col-lg-5 col-md-3 col-sm-3">
+            <div class="w3-card margen col-lg-5 col-md-3 col-sm-12">
                 <span>
                     <label>'.$noTicket.'</label>
                     <br>
                     FECHA: '.$fecha.' IMPORTE: '.$importe.'
                 </span>
             </div>
-    	
 	';
     	
     }

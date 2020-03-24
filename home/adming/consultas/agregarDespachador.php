@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-     require "../../assets/ftp.php";
+    require "../../assets/ftp.php";
     require "../../assets/bd.php";
 
     //$_conexionFTP = new ConexionFTP();

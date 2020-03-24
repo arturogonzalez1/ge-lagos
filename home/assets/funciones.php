@@ -160,6 +160,16 @@
 			}
 			else return false;
 		}
+		function TotalFactura($folio) {
+			require 'bd.php';
+			$bd_conn = new Conexion();
+			$query = "CALL v_TOTAL_FACTURA('$folio')";
+			$result = $bd_conn->EjecutarConsulta($query);
+			if (is_array($result)) {
+				return $result[0];
+			}
+			else return false;
+		}
 		function VerDatosVehiculo($id)
 		{
 			require 'database.php';

@@ -156,7 +156,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <a heref="consultas/excel.php"><button type="button" class="btn btn-raised btn-warning" id="btnpagar">Imprimir</button></a>
+          <button type="button" class="btn btn-raised btn-warning" id="btnFacturar">Imprimir</button>
         </div>
       </div>
     </div>
@@ -236,7 +236,7 @@
 					<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#facturamodal"> GENERAR FACTURA
 						<span class="fa fa-pencil-square-o"></span> 
 					</span>
-					<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#updatemodal"> REALIZAR PAGO
+					<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#updatemodal"> ACREDITAR PAGO
 						<span class="fa fa-pencil-square-o"></span> 
 					</span>
 					
