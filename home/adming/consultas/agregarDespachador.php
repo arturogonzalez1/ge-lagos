@@ -30,15 +30,16 @@
         imagecopyresampled($copia, $original, 0,0,0,0, 240, 300, $anchoOriginal, $altoOriginal);
         $origen = "../temp/despachador.jpg";
         $destino = "images/web/despachadores/".$usr.".jpg";
-        if(file_exists($origen))
-        {
-            unlink($origen);
-        }
+        // if(file_exists($origen))
+        // {
+        //     unlink($origen);
+        // }
 
         imagejpeg($copia, $origen, 100);
         
         //if ($_conexionFTP->SetImage($destino, $origen)) {
             $query = "CALL p_GASOLINERO('$nombre','$domicilio','$ciudad','$estado','$telefono','$usr','$psw', $estacion)";
+            echo $query;
             $ver = $_conexion->EjecutarConsulta($query);
 
             if (is_array($ver))
@@ -49,19 +50,11 @@
                 }
                 else if ($ver[0] == 2)
                 {
-                    if(file_exists($ruta))
-                    {
-                        unlink($ruta);
-                    }
                     echo "ESTE USUARIO YA ESTA REGISTRADO";
                 }
             }
             else
             {
-                if(file_exists($ruta))
-                {
-                    unlink($ruta);
-                }
                 echo "ERROR AL INSERTAR";
             }
         //}

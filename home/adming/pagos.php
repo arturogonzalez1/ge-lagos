@@ -40,64 +40,6 @@
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 </head>
 <body>
-	<!--************************************************* agregar datosmodal ***********************************************-->
-	<!-- <div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="width: 1000px">
-      <div class="modal-content">
-        <div class="modal-header">
-
-          <h5 class="modal-title" id="exampleModalLabel">Realizar Pago</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        	<div class="container-fluid" id="idContenedorFormulario">
-        		<div class="col-md-5" style="height: 450px">
-        			<form id="frmPagar">
-		        		<label>CLIENTE</label>
-		        		<input list="listaClientes" class="form-control" name = "cliente" id = "cliente">
-							<datalist id="listaClientes" name= "listaClientes">
-								<?php echo $contenidoComboboxCliente ?>
-							</datalist>
-		            	<label>Fecha y hora Inicial</label>
-		            	<p>
-		            		<input type="date"  name="fechaInicial" id="fechaInicial">
-			            	<input type="time" value="00:00" name="horaInicial" id="horaInicial">
-		            	</p>
-			            <label>Fecha y Hora Final</label>
-			            <p>
-			            	<input type="date"  name="fechaFinal" id="fechaFinal">
-			            	<input type="time" value="23:59" name="horaFinal" id="horaFinal">
-			            </p>
-			            <label>Tipo de Pago</label>
-			            <select class="form-control" name = "tipoPago" id = "tipoPago">
-							<option value="1">Deposito Bancario</option>
-							<option value="2">Tranferencia Bancaria</option>
-							<option value="3">Cheques</option>
-							<option value="4">Efectivo</option>
-						</select>
-						<label>Numero de Factura</label>
-			            <input type="text" class="form-control form-control-sm" name="numeroFactura" id="numeroFactura">
-			            <br><label>Fecha y Hora de Pago</label><br>
-			            <input type="date"  name="fechaPago" id="fechaPago">
-			            <input type="time" value="23:59" name="horaPago" id="horaPago">
-		          </form>
-        		</div>
-        		<div class="col-md-7">
-        			<label>TICKETS</label>
-        			<div id="tickets" class="scroll"></div>
-        		</div>
-        	</div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <a heref="consultas/excel.php"><button type="button" class="btn btn-raised btn-warning" id="btnpagar">Pagar</button></a>
-        </div>
-      </div>
-    </div>
-  </div> -->
-	<!--************************************************* agregar datosmodal-->
 
 	<!-- Crear Factura -->
 
@@ -115,7 +57,7 @@
         	<div class="container-fluid" id="idContenedorFormulario">
         		<div class="row">
         			<div class="col-lg-5 col-md-12" style="height: 450px">
-	        			<form id="frmPagar">
+	        			<form id="frmFacturar">
 			        		<label>CLIENTE</label>
 			        		<input list="listaClientes" class="form-control" name = "cliente" id = "cliente">
 								<datalist id="listaClientes" name= "listaClientes">
@@ -142,7 +84,7 @@
 			          </form>
 	        		</div>
 	        		<div class="col-lg-7 col-md-12">
-	        			<label>TICKETS</label>
+	        			<center><label>TICKETS</label></center>
 	        			<div id="tickets" class="scroll"></div>
 	        		</div>
         		</div>
@@ -163,6 +105,64 @@
   </div>
 
 	<!-- Crear Factura -->
+
+	<!-- Acreditar Pago -->
+	<div class="modal fade" id="pagomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h5 class="modal-title" id="exampleModalLabel">Realizar Pago</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        	<div class="container-fluid" id="idContenedorFormulario">
+        		<div class="row">
+        			<div class="col-lg-5 col-md-12" style="height: 450px">
+	        			<form id="frmPagar">
+			        		<label>CLIENTE</label>
+			        		<input list="listaClientesP" class="form-control" name = "clienteP" id = "clienteP">
+								<datalist id="listaClientesP" name= "listaClientesP">
+									<?php echo $contenidoComboboxCliente ?>
+								</datalist>
+			            	<label>Fecha y hora Inicial</label>
+			            	<p>
+			            		<input type="date"  name="fechaInicialP" id="fechaInicialP">
+				            	<input type="time" value="00:00" name="horaInicialP" id="horaInicialP">
+			            	</p>
+				            <label>Fecha y Hora Final</label>
+				            <p>
+				            	<input type="date"  name="fechaFinalP" id="fechaFinalP">
+				            	<input type="time" value="23:59" name="horaFinalP" id="horaFinalP">
+				            </p>
+				            <br><label>Fecha y Hora de Pago</label><br>
+				            <input type="date"  name="fechaPagoP" id="fechaPagoP">
+				            <input type="time" value="23:59" name="horaPagoP" id="horaPagoP">
+			          </form>
+	        		</div>
+	        		<div class="col-lg-7 col-md-12 col-sm-12">
+	        			<center><label>FACTURAS</label></center>
+	        			<div id="facturas" class="scroll"></div>
+	        		</div>
+        		</div>
+        		<div class="row">
+        			<center><label>Total</label></center>
+        			<div id="totalFacturas">
+						<h1 align="center">0.0</h1>
+					</div>
+        		</div>
+        	</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <a heref="consultas/excel.php"><button type="button" class="btn btn-raised btn-warning" id="btnPagar">Pagar</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+	<!-- Acreditar Pago -->
 
 	<!-- Container -->
 	<div id="container">
@@ -233,10 +233,10 @@
 			</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
-					<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#facturamodal"> GENERAR FACTURA
+					<span class="btn btn-raised btn-success btn-lg" data-toggle="modal" data-target="#facturamodal"> FACTURAR TICKETS
 						<span class="fa fa-pencil-square-o"></span> 
 					</span>
-					<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#updatemodal"> ACREDITAR PAGO
+					<span class="btn btn-raised btn-warning btn-lg" data-toggle="modal" data-target="#pagomodal"> ACREDITAR PAGO
 						<span class="fa fa-pencil-square-o"></span> 
 					</span>
 					

@@ -8,9 +8,8 @@
 				<tr>
 					<th>CLIENTE</th>
 					<th>FECHA PAGO</th>
-					<th>PAGO</th>
-					<th>FACTURA</th>
-					<th>TICKET(S)</th>
+					<th>FOLIO</th>
+					<th>ABONO</th>
 				</tr>
 			</thead>";
 		$sql="CALL v_CONSULTAPAGOSP($idEstacion)";
@@ -24,7 +23,6 @@
 			<td>".$ver[1]."</td>
 			<td>".$ver[2]."</td>
 			<td>".$ver[3]."</td>
-			<td>".$ver[4]."</td>
 		</tr>";
 		}
 	$salida .= "</table>";

@@ -35,19 +35,18 @@
     
     // if ($ftp_conn->SetImage($destino, $origen)) {
         $query = "CALL p_VEHICULO('$placa','$marca','$modelo', '$unidad', '$motor', $id)";
-        echo $query;
-        // $datos = $bd_conn -> EjecutarConsulta($query);
-        // if (is_array($datos)) {
-        //     if ($datos[0] == 1) {
-        //         echo 1;
-        //     }
-        //     else if ($datos[0] == 2) {
-        //         echo "UNIDAD REGISTRADA.";
-        //     }
-        // }
-        // else {
-        //     echo "HA OCURRIDO UN ERROR.";
-        // }
+        $datos = $bd_conn -> EjecutarConsulta($query);
+        if (is_array($datos)) {
+            if ($datos[0] == 1) {
+                echo 1;
+            }
+            else if ($datos[0] == 2) {
+                echo "UNIDAD REGISTRADA.";
+            }
+        }
+        else {
+            echo "HA OCURRIDO UN ERROR.";
+        }
     // }
 
 

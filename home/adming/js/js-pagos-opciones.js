@@ -16,13 +16,12 @@ function ActualizarPagos(){
 		success:function(r){
 			$('#mainset').html(r);
 			$('#updatemodal').modal('hide');
-			$('#frmPagar')[0].reset();
+			$('#frmFacturar')[0].reset();
 		}
 	});
 }
 function TicketsToPay(){
-	var formulario = document.querySelector("#frmPagar");
-	var caja_Tickets = document.querySelector("#tickets");
+	var formulario = document.querySelector("#frmFacturar");
 	var datos = new FormData(formulario);
 	var value = $('#cliente').val();
 	datos.append('id', $('#listaClientes [value="' + value + '"]').data('value'));
@@ -39,7 +38,7 @@ function TicketsToPay(){
 		}
 	});
 	$.ajax({
-		url: 'consultas/totalAPagar.php',
+		url: 'consultas/totalTickets.php',
 		type: 'POST',
 		contentType: false,
 		data: datos,
@@ -48,6 +47,36 @@ function TicketsToPay(){
 		cache: false, 
 		success:function(r){
 			$("#total").html(r);
+		}
+	});
+}
+function FacturasToPay(){
+	var formulario = document.querySelector("#frmPagar");
+	var datos = new FormData(formulario);
+	var value = $('#clienteP').val();
+	datos.append('idP', $('#listaClientesP [value="' + value + '"]').data('value'));
+	$.ajax({
+		url: 'consultas/verFacturas.php',
+		type: 'POST',
+		contentType: false,
+		data: datos,
+		dataType: 'html',
+		processData: false,
+		cache: false, 
+		success:function(r){
+			$("#facturas").html(r);
+		}
+	});
+	$.ajax({
+		url: 'consultas/totalFacturas.php',
+		type: 'POST',
+		contentType: false,
+		data: datos,
+		dataType: 'html',
+		processData: false,
+		cache: false, 
+		success:function(r){
+			$("#totalFacturas").html(r);
 		}
 	});
 }

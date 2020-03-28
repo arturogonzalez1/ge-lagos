@@ -37,7 +37,6 @@
         $datos = $_conexion->EjecutarConsulta($query);
         if (is_array($datos)) {
             if ($datos[0] == 1) {
-                $_conexion->Commit();
                 echo 1;
             }
             if ($datos[0] == 2) {
@@ -48,7 +47,6 @@
             }
         }
         else {
-            $_conexion->Rollback();
         }
     }
     else 

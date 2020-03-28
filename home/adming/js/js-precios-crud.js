@@ -1,7 +1,6 @@
 'use strict'
 
 $(document).ready(function(){
-	$(":input").inputmask();
 	$('#mainsetPrecioActual').load('content.admine.precioactual.view.php');
 	$('#mainsetSiguientePrecio').load('content.admine.precionext.view.php');
 	$('#mainsetHistorialPrecios').load('content.admine.historial.view.php');

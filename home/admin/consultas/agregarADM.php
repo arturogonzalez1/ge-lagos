@@ -20,7 +20,6 @@
     $result = $_conexion->EjecutarConsulta($query);
     if (is_array($result)) {
         if ($result[0] == 1) {
-            $_conexion->Commit();
             echo 1;
         }
         else if ($result[0] == 2) {
@@ -31,7 +30,6 @@
         }
     }
     else {
-        $_conexion->Rollback();
         echo "Error al insertar";
     }
  ?>

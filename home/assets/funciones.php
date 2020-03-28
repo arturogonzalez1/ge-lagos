@@ -170,6 +170,16 @@
 			}
 			else return false;
 		}
+		function TotalFacturas($idcliente, $idestacion, $finicial, $ffinal){
+			require 'bd.php';
+			$bd_conn = new Conexion();
+			$query = "CALL v_TOTAL_TO_PAY($idcliente, $idestacion, '$finicial', '$ffinal')";
+			$result = $bd_conn->EjecutarConsulta($query);
+			if (is_array($result)) {
+				return $result[0];
+			}
+			else return false;
+		}
 		function VerDatosVehiculo($id)
 		{
 			require 'database.php';

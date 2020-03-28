@@ -13,7 +13,7 @@
 	
 	$pdf->SetCreator(PDF_CREATOR);
 	$pdf->SetAuthor('Eduardo Arturo Gonzalez');
-	$pdf->SetTitle('Estado de Cuenta');
+	$pdf->SetTitle('FACTURA');
 	
 	$pdf->setPrintHeader(false); 
 	$pdf->setPrintFooter(false);
@@ -29,7 +29,7 @@
     		<tr>
     			<th style="width: 5cm"><div align="center"><img src="../../images/logo1.jpg" width="100" height="50"></div></th>
     			<th style="width: 20cm">
-    				<h2 style="text-align:center;">FACTURA '.$folio. '</h2>
+    				<h2 style="text-align:center;">FOLIO: '.$folio. '</h2>
     				<label style="text-align:center;">CLIENTE</label>
     			</th>
     		</tr>
@@ -45,8 +45,8 @@
 				<th align="center">IMPORTE (MXN)</th>
 			</tr>
 		</thead>';
-
   	$query = "CALL v_TICKETS_IN_FACTURA('$folio')";
+  	echo $query;
 	$result = mysqli_query($conn, $query);
   	while ($ver=mysqli_fetch_array($result)) 
   	{
@@ -57,6 +57,12 @@
 				<td align="center">'. $ver[2] .'</td>
 			</tr>';
   	}
+  	$content .= '
+  	    <tr>
+  	        <td align="center" colspan="2">Total</td>
+  	        <td align="center">'.$total.'</td>
+        </tr>
+  	';
   
   $content .= '</table>';
 	
