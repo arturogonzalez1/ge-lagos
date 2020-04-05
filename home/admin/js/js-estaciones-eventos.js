@@ -8,6 +8,25 @@ var nombreM = document.getElementById("nombreEM");
 var noestacionM = document.getElementById("numEM");
 var rfcM = document.getElementById("rfcEM");
 
+var checkEmpresa = document.querySelector('#checkEmpresa');
+var conEmpresaControl = document.getElementById('con-empresa');
+var sinEmpresaControl = document.getElementById('sin-empresa');
+
+checkEmpresa.addEventListener('change', function(event){
+	if (checkEmpresa.checked == true) {
+		console.log("Checked");
+		checkEmpresa.value = 1;
+		conEmpresaControl.classList.remove('hidden');
+		sinEmpresaControl.classList.add('hidden');
+	}
+	else {
+		console.log("Unchecked");
+		checkEmpresa.value = 0;
+		conEmpresaControl.classList.add('hidden');
+		sinEmpresaControl.classList.remove('hidden');
+	}
+});
+
 nombre.addEventListener('keypress', function(event){
 	if (nombre.value.length >= 50) {
 		console.log("Solo se permiten 50 caracteres en el campo nombre");

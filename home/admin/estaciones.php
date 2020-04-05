@@ -5,6 +5,10 @@
 		header("Location: ../logout.php");
 	}
 	require '../assets/database.php';
+	require '../assets/funciones.php';
+	$f = new Funciones();
+
+	$listaEmpresas = $f->LlenarComboboxEmpresas();
  ?>
 <!DOCTYPE html >
 <html lang="en">
@@ -49,24 +53,56 @@
 				<div class="modal-body">
 					<div class="container-fluid">
 						<form id="frmAgrega">
-							<div class="col-md-12">
-								<br>
+							<div class="col-sm-12 col-md-12 col-lg-12">
 								<label>NOMBRE</label>
 								<input type="text" class="form-control form-control-sm upper" name="nombreE" id="nombreE">
 							</div>
-							<div class="col-md-6">
-								<br>
-								<label>RFC</label>
-								<input type="text" class="form-control form-control-sm upper" name="rfcE" id="rfcE">
+							<div class="col-sm-12 col-md-6 col-lg-6">
 								<label>NO. ESTACION</label>
 								<input type="text" class="form-control form-control-sm" name="noE" id="noE">
 							</div>
-							<div class="col-md-6">
-								<br>
+							<div class="col-sm-12 col-md-6 col-lg-6">
 								<label>ESTADO</label>
 								<select type="text" class="form-control form-control-sm" name="estadoE" id="estadoE">
 							  		<option value="JALISCO">JALISCO</option>
 								</select>
+							</div>
+							<div class="col-sm-12 col-md-6 col-lg-6">
+								<div class="form-check">
+									<br>
+									<input class="form-check-input" type="checkbox" value="abc" id="checkEmpresa" name="checkEmpresa" checked>
+									<label class="form-check-label" for="checkEmpresa">
+										NUEVA EMPRESA
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-12 col-lg-12 slempresa">
+								<br>
+								<div id="con-empresa">
+									<label class="con-empresa-control">EMPRESA</label>
+									<input list="listaEmpresas" class="form-control con-empresa-control" name = "empresaE" id = "empresaE">
+									<datalist id="listaEmpresas" name= "listaEmpresas">
+										<?php echo $listaEmpresas ?>
+									</datalist>
+								</div>
+							</div>
+							<div id="sin-empresa" class="hidden">
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<label class="sin-empresa-control">RFC</label>
+									<input type="text" class="form-control form-control-sm upper sin-empresa-control" name="rfcE" id="rfcE">
+								</div>
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<label class="sin-empresa-control">RAZON SOCIAL</label>
+									<input type="text" class="form-control form-control-sm upper sin-empresa-control" name="razonsE" id="razonsE">
+								</div>
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<label class="sin-empresa-control">REGIMEN</label>
+									<input type="text" class="form-control form-control-sm upper sin-empresa-control" name="regimenE" id="regimenE">
+								</div>
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<label class="sin-empresa-control">EMAIL</label>
+									<input type="text" class="form-control form-control-sm sin-empresa-control" name="emailE" id="emailE">
+								</div>
 							</div>
 						</form>
 					</div>
@@ -94,18 +130,18 @@
 				<div class="modal-body">
 					<div class="container-fluid">
 						<form id="frmactualiza">
-							<div class="col-md-12">
+							<div class="col-sm-6 col-md-12">
 								<input type="text" hidden="" name="idEM" id="idEM">
 								<label>Nombre</label>
 								<input type="text" class="form-control form-control-sm upper" name="nombreEM" id="nombreEM">
 							</div>
-							<div class="col-md-6">
+							<div class="col-sm-12 col-md-6 col-lg-12">
 								<label>No. Estacion</label>
 								<input type="text" class="form-control form-control-sm" name="numEM" id="numEM">
 								<label>RFC</label>
 								<input type="text" class="form-control form-control-sm upper" name="rfcEM" id="rfcEM">
 							</div>
-							<div class="col-md-6">
+							<div class="col-smcol-md-6 col-lg-12">
 								<label>ESTADO</label>
 								<select type="text" class="form-control form-control-sm" name="estadoEM" id="estadoEM">
 							  		<option value="JALISCO">JALISCO</option>

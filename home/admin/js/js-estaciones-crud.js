@@ -2,18 +2,28 @@
 
 //----------------------------------------- VALIDAR FORMULARIO AGREGAR NUEVA ESTACION -----------------------------------------
 $(document).ready(function(){
-	console.log("DOM Cargado");
 	$('#mainset').load('tabla.admin.estaciones.view.php');
 	$('#btnAgregarEstacion').click(function(){
-		if(validarFormVacio('frmAgrega') > 0){
-			alertify.alert("Error","Debes llenar todos los campos");
-			return false;
+		var checkEmpresa = document.querySelector('#checkEmpresa');
+		var opcion = 0;
+		var formulario = document.querySelector('#frmAgrega');
+		var datos = new FormData(formulario);
+		var value = $('#empresaE').val();
+		datos.append('idEmpresa', $('#listaEmpresas [value="' + value + '"]').data('value'));
+		if (checkEmpresa.checked == true) {
+			opcion = 1;
 		}
-		var datos = $('#frmAgrega').serialize();
+		else {
+			opcion = 0;
+		}
+		datos.append('checkbox', opcion);
 		$.ajax({
-			type:"POST",
-			data:datos,
 			url:"consultas/agregarEstacion.php",
+			type:"POST",
+			contentType: false,
+			data:datos,
+			processData: false,
+			cache: false, 
 			success:function(r){
 				if(r==1){
 					$('#frmAgrega')[0].reset();

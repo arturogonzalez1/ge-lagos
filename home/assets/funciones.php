@@ -122,6 +122,22 @@
 
 			return $contenido;
 		}
+		function LlenarComboboxEmpresas(){
+			require 'database.php';
+			$contenido = "";
+			$query = "CALL v_EMPRESAS()";
+			$consult = mysqli_query($conn, $query);
+			if ($consult)
+			{
+				while($ver=mysqli_fetch_array($consult))
+				{
+					$contenido = $contenido."<option data-value='".$ver[0]."' value='".$ver[2]."'></option>";
+				}	
+			}
+			else return 0;
+
+			return $contenido;
+		}
 		function VerDatosCliente($idcliente)
 		{
 			require 'database.php';
