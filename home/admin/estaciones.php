@@ -72,7 +72,7 @@
 									<br>
 									<input class="form-check-input" type="checkbox" value="abc" id="checkEmpresa" name="checkEmpresa" checked>
 									<label class="form-check-label" for="checkEmpresa">
-										NUEVA EMPRESA
+										ASIGNAR EMPRESA
 									</label>
 								</div>
 							</div>
@@ -138,8 +138,6 @@
 							<div class="col-sm-12 col-md-6 col-lg-12">
 								<label>No. Estacion</label>
 								<input type="text" class="form-control form-control-sm" name="numEM" id="numEM">
-								<label>RFC</label>
-								<input type="text" class="form-control form-control-sm upper" name="rfcEM" id="rfcEM">
 							</div>
 							<div class="col-smcol-md-6 col-lg-12">
 								<label>ESTADO</label>
@@ -147,6 +145,44 @@
 							  		<option value="JALISCO">JALISCO</option>
 								</select>
 							</div>
+							<div class="col-sm-12 col-md-6 col-lg-6">
+								<div class="form-check">
+									<br>
+									<input class="form-check-input" type="checkbox" value="" id="checkEmpresaEM" name="checkEmpresaEM">
+									<label class="form-check-label" for="checkEmpresaEM">
+										MODIFICAR EMPRESA
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-12 col-lg-12 slempresa">
+								<br>
+								<div id="con-empresaEM">
+									<label class="con-empresa-control">EMPRESA</label>
+									<input list="listaEmpresasM" class="form-control con-empresa-control" name = "empresaEM" id = "empresaEM">
+									<datalist id="listaEmpresasM" name= "listaEmpresasM">
+										<?php echo $listaEmpresas ?>
+									</datalist>
+								</div>
+							</div>
+							<div id="sin-empresaEM" class="hidden">
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<label>RFC</label>
+									<input type="text" class="form-control form-control-sm upper" name="rfcEM" id="rfcEM">
+								</div>
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<label class="sin-empresa-control">RAZON SOCIAL</label>
+									<input type="text" class="form-control form-control-sm upper sin-empresa-control" name="razonsEM" id="razonsEM">
+								</div>
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<label class="sin-empresa-control">REGIMEN</label>
+									<input type="text" class="form-control form-control-sm upper sin-empresa-control" name="regimenEM" id="regimenEM">
+								</div>
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<label class="sin-empresa-control">EMAIL</label>
+									<input type="text" class="form-control form-control-sm sin-empresa-control" name="emailEM" id="emailEM">
+								</div>
+							</div>
+							<input type="text" hidden="" name="idEmpresaEM" id="idEmpresaEM">
 						</form>
 					</div>
 				</div>

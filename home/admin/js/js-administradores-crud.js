@@ -21,7 +21,7 @@ $(document).ready(function(){
 					alertify.success("Agregado con exito.");
 				}
 				else{
-					alertify.error("No se pudo agregar: " + r);
+					alertify.alert("No se pudo agregar: " + r);
 				}
 			}
 		});

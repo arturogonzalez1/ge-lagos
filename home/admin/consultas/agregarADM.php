@@ -16,7 +16,6 @@
     $psw = $_POST['pswADM'];
     
     $query = "CALL p_ADM_ESTACIONES('$nombre', '$rfc', '$domicilio', '$ciudad', '$estado', '$telefono', $estacion, '$usr', '$psw');";
-
     $result = $_conexion->EjecutarConsulta($query);
     if (is_array($result)) {
         if ($result[0] == 1) {

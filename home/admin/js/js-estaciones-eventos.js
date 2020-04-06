@@ -12,6 +12,14 @@ var checkEmpresa = document.querySelector('#checkEmpresa');
 var conEmpresaControl = document.getElementById('con-empresa');
 var sinEmpresaControl = document.getElementById('sin-empresa');
 
+var checkEmpresaEM = document.querySelector('#checkEmpresaEM');
+var contenedorSelectEmpresa = document.getElementById('con-empresaEM');
+var contenedorDatosEmpresa = document.getElementById('sin-empresaEM');
+
+var selectEmpresa = document.querySelector('#empresaEM');
+
+//NUEVO REGISTRO
+
 checkEmpresa.addEventListener('change', function(event){
 	if (checkEmpresa.checked == true) {
 		console.log("Checked");
@@ -47,6 +55,26 @@ rfc.addEventListener('keypress', function(event){
 		event.returnValue = false;
 	}
 });
+
+// MODIFICACION
+
+checkEmpresaEM.addEventListener('change', function(event){
+	if (checkEmpresaEM.checked == true) {
+		console.log("Checked");
+		checkEmpresaEM.value = 1;
+		contenedorSelectEmpresa.classList.remove('hidden');
+		selectEmpresa.disabled = true;
+		contenedorDatosEmpresa.classList.remove('hidden');
+	}
+	else {
+		console.log("Unchecked");
+		checkEmpresaEM.value = 0;
+		contenedorSelectEmpresa.classList.remove('hidden');
+		selectEmpresa.disabled = false;
+		contenedorDatosEmpresa.classList.add('hidden');
+	}
+});
+
 
 nombreM.addEventListener('keypress', function(event){
 	if (nombreM.value.length >= 50) {

@@ -12,8 +12,12 @@
 					'id' => $ver[0],
 					'num' => $ver[1],
 		            'nombre' => $ver[2],
-		            'rfc' => $ver[3],
-		            'estado' => $ver[4]
+		            'estado' => $ver[3],
+		            'rfc' => $ver[4],
+		            'razons' => $ver[5],
+		            'regimen' => $ver[6],
+		            'email' => $ver[7],
+		            'idEmpresa' => $ver[8],
 				);
 	echo json_encode($datos);
  ?>
