@@ -10,8 +10,8 @@
 	$f = new Funciones();
 	$salida = "";
 	$datosCliente = $f ->VerDatosCliente($idcliente);
-	$idUsuario = $datosCliente[3];
-	$limiteCredito = $datosCliente[4];
+	$idUsuario = $datosCliente[2];
+	$limiteCredito = $datosCliente[3];
 	$anios = $f ->LlenarAniosEC($idUsuario);
 
 	$salida .= "<div class='col-md-12' style='background-color: #343A46'>

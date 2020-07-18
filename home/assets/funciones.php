@@ -143,11 +143,9 @@
 			require 'database.php';
 			$query = "CALL v_DATOS_CLIENTE($idcliente)";
 			$consult = mysqli_query($conn, $query);
-			if ($consult)
-			{
-				$ver = mysqli_fetch_array($consult);
-			}
-				return $ver;
+			$ver = mysqli_fetch_array($consult);
+
+			return $ver;
 		}
 		function Cliente()
 		{

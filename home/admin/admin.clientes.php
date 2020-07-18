@@ -48,70 +48,182 @@
 				</div>
 				<div class="modal-body">
 					<div class="container-fluid">
+
 						<form id="frmAgregar" class="">
-							<div class="col-md-12">
-								<label>NOMBRE (*)</label>
-								<input type="text" class="form-control form-control-sm upper" name="nombreC" id="nombreC">
+							<div class="col-lg-12 text-primary">
+								<hr>
+								<center>
+									<h3>DATOS PERSONALES</h3>
+								</center>
 							</div>
-							<div class="col-md-6">
-								<label>APELLIDOS</label>
-								<input type="text" class="form-control form-control-sm upper" name="apellidosC" id="apellidosC">
-								<label>RFC (*)</label>
-								<input type="text" class="form-control form-control-sm upper" name="rfcC" id="rfcC">
-								<label>CODIGO POSTAL (*)</label>
-								<input type="text" class="form-control form-control-sm upper" name="codposC" id="codposC">
-								<label>EMAIL (*)</label>
-								<input type="text" class="form-control form-control-sm" name="emailC" id="emailC">
-								<label>EMAIL 2</label>
-								<input type="text" class="form-control form-control-sm" name="email2C" id="email2C">
-								<label>EMAIL 3</label>
-								<input type="text" class="form-control form-control-sm" name="email3C" id="email3C">
-								<label>TELEFONO</label>
-								<input type="text" class="form-control form-control-sm upper" name="telefonoC" id="telefonoC">
-								<label>RAZON SOCIAL</label>
-								<input type="text" class="form-control form-control-sm upper" name="razonsC" id="razonsC">
-								<label>COLONIA</label>
-								<input type="text" class="form-control form-control-sm upper" name="coloniaC" id="coloniaC">
-								<label>CIUDAD</label>
-								<input type="text" class="form-control form-control-sm upper" name="ciudadC" id="ciudadC">
-								<label>ESTADO</label>
-								<input type="text" class="form-control form-control-sm upper" name="estadoC" id="estadoC">
+							<div class="row">
+								<div class="col-lg-3">
+									<label>TIPO DE PERSONA</label>
+									<select class="form-control" id = "tipopersona" name="tipopersona">
+										<option value="1">FISICA</option>
+										<option value="2">MORAL</option>
+									</select>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<label>PAIS</label>
-								<input type="text" class="form-control form-control-sm upper" name="paisC" id="paisC">
-								<label>DELEGACION</label>
-								<input type="text" class="form-control form-control-sm upper" name="delegacionC" id="delegacionC">
-								<label>NO. REGISTRO TRIBUTARIO</label>
-								<input type="text" class="form-control form-control-sm upper" name="numregidtribC" id="numregidtribC">
-								<label>USO CFDI (*)</label>
-								<input type="text" class="form-control form-control-sm upper" name="usocfdiC" id="usocfdiC">
-								<label>LIMITE CREDITO (*)</label>
-								<input type="text" class="form-control form-control-sm" name="limiteC" id="limiteC">
-								<label>DIAS DE PAGO (*)</label>
-								<select class="form-control" id = "diasPagoC" name="diasPagoC">
-									<option value="7">SEMANAL</option>
-									<option value="15">QUINCENAL</option>
-									<option value="30">MENSUAL</option>
-								</select>
-								<label>DIAS LIMITE DE PAGO (*)</label>
-								<select class="form-control" id = "diasLimiteC" name="diasLimiteC">
-									<option value="1">MENSUAL</option>
-									<option value="2">BIMESTRAL</option>
-									<option value="3">TRIMESTRAL</option>
-								</select>
-								<label>MODALIDAD (*)</label>
-								<select class="form-control" id = "modalidadC" name="modalidadC">
-									<option value="CREDITO">CREDITO</option>
-									<option value="DEBITO">DEBITO</option>
-									<option value="CONTADO">CONTADO</option>
-								</select>
-								<label>USUARIO (*)</label>
-								<input type="text" class="form-control form-control-sm" name="usuarioC" id="usuarioC">
-								<label>CONTRASEÑA (*)</label>
-								<input type="password" class="form-control form-control-sm" name="pswC" id="pswC">
-								<label>CONFIRMAR CONTRASEÑA (*)</label>
-								<input type="password" class="form-control form-control-sm" name="pswCC" id="pswCC">
+							<div id="personafisica">
+								<div class="row">
+									<div class="col-lg-6">
+										<label>NOMBRE (*)</label>
+										<input type="text" class="form-control form-control-sm upper" name="nombreC" id="nombreC">
+									</div>
+									<div class="col-lg-6">
+										<label>APELLIDOS</label>
+										<input type="text" class="form-control form-control-sm upper" name="apellidosC" id="apellidosC">
+									</div>
+								</div>
+							</div>
+							<div id="personamoral" class="hidden">
+								<div class="row">
+									<div class="col-lg-6">
+										<label>RAZON SOCIAL</label>
+										<input type="text" class="form-control form-control-sm upper" name="razonsC" id="razonsC">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-4">
+									<label>RFC (*)</label>
+									<input type="text" class="form-control form-control-sm upper" name="rfcC" id="rfcC">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12 text-primary">
+									<hr>
+									<center>
+										<h3>DOMICILIO FISCAL</h3>
+									</center>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<label>CALLE</label>
+									<input type="text" class="form-control form-control-sm upper" name="calleC" id="calleC">
+								</div>
+								<div class="col-lg-3">
+									<label>NUMERO EXTERIOR</label>
+									<input type="text" class="form-control form-control-sm upper" name="numeroexteriorC" id="numeroexteriorC">
+								</div>
+								<div class="col-lg-3">
+									<label>NUMERO INTERIOR</label>
+									<input type="text" class="form-control form-control-sm upper" name="numerointeriorC" id="numerointeriorC">
+								</div>
+								<div class="col-lg-6">
+									<label>COLONIA</label>
+									<input type="text" class="form-control form-control-sm upper" name="coloniaC" id="coloniaC">
+								</div>
+								<div class="col-lg-6">
+									<label>DELEGACION</label>
+									<input type="text" class="form-control form-control-sm upper" name="delegacionC" id="delegacionC">
+								</div>
+								<div class="col-lg-3">
+									<label>CODIGO POSTAL (*)</label>
+									<input type="text" class="form-control form-control-sm upper" name="codposC" id="codposC">
+								</div>
+								<div class="col-lg-3">
+									<label>TELEFONO</label>
+									<input type="text" class="form-control form-control-sm upper" name="telefonoC" id="telefonoC">
+								</div>
+								<div class="col-lg-4">
+									<label>CIUDAD</label>
+									<input type="text" class="form-control form-control-sm upper" name="ciudadC" id="ciudadC">
+								</div>
+								<div class="col-lg-4">
+									<label>ENTIDAD FEDERATIVA</label>
+									<input type="text" class="form-control form-control-sm upper" name="estadoC" id="estadoC">
+								</div>
+								<div class="col-lg-4">
+									<label>PAIS</label>
+									<input type="text" class="form-control form-control-sm upper" name="paisC" id="paisC">
+								</div>
+								<div class="col-lg-4">
+									<label>EMAIL (*)</label>
+									<input type="text" class="form-control form-control-sm" name="emailC" id="emailC">
+								</div>
+								<div class="col-lg-4">
+									<label>EMAIL 2</label>
+									<input type="text" class="form-control form-control-sm" name="email2C" id="email2C">
+								</div>
+								<div class="col-lg-4">
+									<label>EMAIL 3</label>
+									<input type="text" class="form-control form-control-sm" name="email3C" id="email3C">
+								</div>
+								<div class="col-lg-4">
+									<label>NO. REGISTRO TRIBUTARIO</label>
+									<input type="text" class="form-control form-control-sm upper" name="numregidtribC" id="numregidtribC">
+								</div>
+								<div class="col-lg-3">
+									<label>USO CFDI (*)</label>
+									<input type="text" class="form-control form-control-sm upper" name="usocfdiC" id="usocfdiC">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12 text-primary">
+									<hr>
+									<center>
+										<h3>CUENTA</h3>
+									</center>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-3">
+									<label>CREDITO (*)</label>
+									<input type="text" class="form-control form-control-sm" name="limiteC" id="limiteC">
+								</div>
+								<div class="col-lg-3">
+									<label>MODALIDAD (*)</label>
+									<select class="form-control" id = "modalidadC" name="modalidadC">
+										<option value="CREDITO">CREDITO</option>
+										<option value="DEBITO">DEBITO</option>
+										<option value="CONTADO">CONTADO</option>
+									</select>
+								</div>
+								<div class="col-lg-3">
+									<label>PAGO (*)</label>
+									<select class="form-control" id = "diasPagoC" name="diasPagoC">
+										<option value="7">SEMANAL</option>
+										<option value="15">QUINCENAL</option>
+										<option value="30">MENSUAL</option>
+									</select>
+								</div>
+								<div class="col-lg-3">
+									<label>LIMITE DE PAGO (*)</label>
+									<select class="form-control" id = "diasLimiteC" name="diasLimiteC">
+										<option value="1">MENSUAL</option>
+										<option value="2">BIMESTRAL</option>
+										<option value="3">TRIMESTRAL</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12 text-primary">
+									<hr>
+									<center>
+										<h3>ACCESO</h3>
+									</center>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-4">
+									<label>USUARIO (*)</label>
+									<input type="text" class="form-control form-control-sm" name="usuarioC" id="usuarioC">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-4">
+									<label>CONTRASEÑA (*)</label>
+									<input type="password" class="form-control form-control-sm" name="pswC" id="pswC">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-4">
+									<label>CONFIRMAR CONTRASEÑA (*)</label>
+									<input type="password" class="form-control form-control-sm" name="pswCC" id="pswCC">
+								</div>
 							</div>
 						</form>
 					</div>

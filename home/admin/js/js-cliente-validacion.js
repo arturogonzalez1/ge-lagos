@@ -60,7 +60,7 @@ function ValidarNuevoCliente(){
 		resultado = false;
 		alertify.alert("ERROR", "Introduzca un TELEFONO valido");
 	}
-	else if (!ValidarNombre(razons)) {
+	else if (razons != "" && !ValidarNombre(razons)) {
 		resultado = false;
 		alertify.alert("ERROR", "Introduzca un NOMBRE para RAZON SOCIAL valido");
 	}

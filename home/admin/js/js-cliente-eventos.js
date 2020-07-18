@@ -9,6 +9,21 @@ var usuario = document.querySelector("#usuarioC");
 var clave = document.querySelector("#pswC");
 var claveC = document.querySelector("#pswCC");
 
+var tipopersona = document.querySelector('#tipopersona');
+var personafisica = document.querySelector('#personafisica');
+var personamoral = document.querySelector('#personamoral');
+
+tipopersona.addEventListener('change', function(){
+	if (tipopersona.value == 1) {
+		personafisica.classList.remove('hidden');
+		personamoral.classList.add('hidden');
+	}
+	else {
+		personafisica.classList.add('hidden');
+		personamoral.classList.remove('hidden');
+	}
+});
+
 nombre.addEventListener('keypress', function(event) {
 	if (nombre.value.length >= 50) {
 		console.log("El campo nombre solo acepta 50 caracteres como maximo");
